@@ -1,0 +1,566 @@
+on on off off on off off standby off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off standby standby off off on standby off off standby standby standby on off off #WatchingTV
+on on off off on off off standby off off off on off standby off standby standby standby on off off #WatchingTV
+on on off off on off on standby off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off standby off off standby on off off standby standby on standby on off off #WatchingTV
+on on off off on off on on off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off on off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off on off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off on off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off on off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off standby off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off standby off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off on standby off off standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby on on off off #WatchingTV
+off on on off off off off standby off on standby on off off off standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off off standby standby standby on off off #WatchingTV
+off on off off off off on standby standby off on standby off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off standby standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off standby standby off standby off on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on on off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off off standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off standby off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off standby standby off off on standby off off standby standby standby on off off #WatchingTV
+on on off off on off off standby off off off on off standby off standby standby standby on off off #WatchingTV
+on on off off on off on standby off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off standby off off standby on off off standby standby on standby on off off #WatchingTV
+on on off off on off on on off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off on off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off on off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off on off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off on off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off standby off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off off standby off off standby on off off standby standby standby standby on off off #WatchingTV
+on on off off on off on standby off off standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby on on off off #WatchingTV
+off on on off off off off standby off on standby on off off off standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off off standby standby standby on off off #WatchingTV
+off on off off off off on standby standby off on standby off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off standby standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off standby standby off standby off on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on on off standby standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off off standby standby standby on off off #WatchingTV
+off on off off off off on standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV
+off on off off off off off standby off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off off standby off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off on off standby off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off on on standby off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off off standby off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off off on off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off off on off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off on on off on standby on off on standby standby on standby on off off #PlayingKinect
+off on off off off off on on off on standby on off on standby standby on standby on off off #PlayingKinect
+off on off off off off on standby off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off on standby off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off off standby off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off on standby off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect
+off on off off off off on standby off off standby on off on standby standby on standby on off off #PlayingKinect
+off on off off off off on standby off off standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off on standby off off standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off on standby off off standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off on standby off off standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off off standby off on standby on off on standby standby standby standby on off off #PlayingKinect
+off on off off off off off standby off on standby standby on off standby standby standby standby on off off #Reading
+off on off off off off on on off on standby standby on off standby standby standby standby on off off #Reading
+off on off off off off on on off on standby standby on off standby standby standby standby on off off #Reading
+off on off off off off on standby off on standby standby on off standby standby standby standby on off off #Reading
+off on off off off off off standby off on standby standby on off standby standby standby standby on off off #Reading
+off on off off off off off standby off on standby standby on off standby standby standby standby on off off #Reading
+off on off off off off on standby off on standby standby on off standby standby standby standby on off off #Reading
+off on off off off off off standby off off standby standby on off standby standby standby standby on off off #Reading
+off on off off off off off on off off standby standby on off standby standby standby standby on off off #Reading
+off on off off off off on standby off off standby standby on off standby standby standby standby on off off #Reading
+off on off off off off on standby off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on standby off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on standby off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on standby off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on standby off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on standby off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on standby off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on on off on standby standby off off standby standby on standby on off off #Chatting
+off on off off off off on on off on standby standby off standby off standby on standby on off off #Chatting
+off on off off off off on on off off standby standby off off standby standby on standby on off off #Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on on off off standby standby off off standby standby on standby on off off #Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on on off off standby standby off off standby standby on standby on off off #Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting
+off on off off off off on on off off standby standby off off standby standby on standby on off off #Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting
+off on off off on off off standby off on standby standby off off on standby standby standby off off on #PreparingFood
+off on off off on off off standby off on standby standby off off on standby standby standby off off on #PreparingFood
+off on off off on off on standby standby on off standby off off standby standby standby on off off on #PreparingFood
+off on off off on off off standby standby on standby standby off off on standby standby standby off off on #PreparingFood
+off on off off on off off standby off on standby standby off off on standby standby off off off on #PreparingFood
+off on off off on off on standby off on standby standby off off standby standby standby standby off off on #PreparingFood
+off on off on off off off on standby off on standby off off standby on standby on off on off #UsingPC
+off on off on off off off standby off on on standby off off standby on standby on off on off #UsingPC
+off off off on off off on standby off on on standby off off standby on standby on off on off #UsingPC
+off on off on off off off standby standby on on standby off off standby standby standby on off on off #UsingPC
+off off off on off off off standby standby on off standby on off off standby standby on off on off #UsingPC
+off off off on off off on standby off on on standby off off standby standby standby on off on off #UsingPC
+off off off on off off off standby off on on standby off off standby standby standby on off on off #UsingPC
+off off off on off off on standby off on on standby off off standby on standby on off on off #UsingPC
+off off off on off off off standby off on on standby off off standby standby standby on off on off #UsingPC
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off off standby standby off off standby standby standby standby off off off #GoOut
+off off on off off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack
+off off on off off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack
+off off on off off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack
+off off on off off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack
+off off on off off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack
+off off on off off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack
+off off on off off on on standby off on standby standby off off standby standby standby standby off off off #ComeBack
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off on off off off off on standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off off on off off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack
+off off on off off on off standby off off standby standby off off standby standby standby standby off off off #ComeBack
+off on off off off off off standby off off standby standby on off standby standby standby standby on off off #Reading
+off on off off off off off standby off off standby standby on off standby standby standby standby on off off #Reading
+off on off off off off off on off off standby standby on off standby standby standby standby on off off #Reading
+off on off off off off off on off off standby standby on off standby standby standby standby on off off #Reading
+off on off off off off on on off off standby standby on off standby standby standby standby on off off #Reading
+off on off off on off off on off off standby standby off off on standby standby standby off off on #PreparingFood
+off on off off on off off on off off standby standby off off on standby standby standby off off on #PreparingFood
+off on off off on off off on off off standby standby off off on standby standby standby off off on #PreparingFood
+off on off off on off off on off off standby standby off off on standby standby standby off off on #PreparingFood
+off on off off on off off on off off standby standby off off on standby standby standby off off on #PreparingFood
+off on off off on off on standby off off standby standby off off standby standby standby standby off off on #PreparingFood
+off off off off off off off standby on off standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on off standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on off standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on off standby standby off off standby standby standby standby off on off #AllSleeping
+off off on off off on off standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off off on off off on off standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off off on off off on on standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off off on off off on off standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off off on off off on off standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off off on off off on on standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off on standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off on on off off standby standby off off standby standby standby standby on off off #Chatting Chatting
+off on off off off off off standby off off standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off off standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off off standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+off on off off off off on standby off off standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+off on off on off off off standby off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+off on off on off off off standby off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+off on off on off off on standby off off on on off off off standby standby on on on off #UsingPC WatchingTV
+off on off on off off off standby off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+off on off on off off off standby off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off off off standby off off off standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut GoOut
+on off on on off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack NO
+on off on on off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack NO
+on off on on off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack NO
+on on off on off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on on off on off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+on off off on on off off standby off on standby standby off off on standby standby standby off off on #PreparingFood NO
+on off off on on off off standby off on standby standby off off on standby standby standby off off on #PreparingFood NO
+on off off on on off off standby off on standby standby off off on standby standby standby off off on #PreparingFood NO
+on off off on on off off standby off on standby standby off off on standby standby standby off off on #PreparingFood NO
+on off off off on off off standby off on standby standby off off standby standby standby standby off off on #PreparingFood NO
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on on standby standby off off standby standby standby standby off on off #AllSleeping
+on off on on off off off standby on on standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+on off on on off off off standby on on standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+on off on on off on off standby on on standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+on off on on off on off standby on on standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+on off on on off on off standby on on standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+on off on on off on off standby on on standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+on off on on off on off standby on on standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+on off on on off on off standby on on standby standby off off standby standby standby standby off off off #NO ComeBack
+on on off on off off off standby off off on on off off standby standby standby standby on off off #NO WatchingTV
+on on off on off off off standby off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off standby off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off standby off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off standby off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on on on off off off on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off on on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on on on off off on on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off on on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off on on off off on on off off standby standby standby on on on off #UsingPC WatchingTV
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on on on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on off standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on on off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on on on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on on on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on on on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on off standby standby standby on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off on on off on standby standby standby on on on off #UsingPC PlayingKinect
+on on off on off off off on off off standby on off on standby standby standby standby on on off #UsingPC PlayingKinect
+on on off on off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+on on off on off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+on on off on off off on on off off standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+on on off on off off on on off off standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+on on off on off off on standby off on standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+on on off on off off off standby off on standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+on on off on off off on standby off on standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+on on off on off off off standby off on standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+on on off on off off off standby off on standby on off on standby standby standby standby on off off #PlayingKinect PlayingKinect
+on on off on off off off standby off on standby on off on standby standby standby standby on off off #NO PlayingKinect
+off on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off on standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off on standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on on off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on on on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+on on off on off off off standby off on standby on on on standby standby standby standby on off off #Reading PlayingKinect
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off off off standby off on standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off on off off on off standby off on standby standby off off off standby standby standby off off off #ComeBack NO
+off off on off off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack NO
+off off on off off on off standby off on standby standby off off standby standby standby standby off off off #ComeBack NO
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV NO
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV NO
+off on off off off off off standby off on standby on off off standby standby standby standby on off off #WatchingTV NO
+off on on off off off off on off on standby on off off standby standby standby standby on off off #WatchingTV NO
+off on off off off off on on off on standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off on on off on standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off on on off on standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off on on off on standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off on on off on standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off on on off on standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off on on off on standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off off on off on standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off on on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off on on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off on on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off off off off on off off standby on off on standby standby standby standby on off off #PlayingKinect NO
+off on off off on off off standby off off standby standby off off on standby standby standby off off on #PreparingFood NO
+off off off off off off off standby on off standby standby off off standby standby standby standby off on off #AllSleeping
+off off off off off off off standby on off standby standby off off standby standby standby standby off on off #AllSleeping
+off on on off off on on standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off on on off off on off standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off on on off off on off standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off on on off off on off standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off on on off off on off standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off on on off off on off standby on off standby standby off off standby standby standby standby off on off #Sleeping ComeBack
+off off off off off off off standby on off standby standby off off standby standby standby standby off on off #AllSleeping
+off on off off off off off standby off off on standby on off standby standby on standby off on off #UsingPC NO
+off on off on off off off standby off off on standby on off standby standby on standby on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off on off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off on off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off on off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off off on off off on standby on off standby standby standby on on on off #UsingPC Reading
+off on off on off off on standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off on off off on standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off on off off on standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off on off off on standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on on on off off on standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off on off off on standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off on off off off standby off off on standby on off standby standby on on on on off #UsingPC Reading
+off on off off off off on standby off off standby on on off standby standby on standby on off off #NO Reading
+off on off off off off on standby off off standby on on off standby standby on standby on off off #NO Reading
+off on off off off off on standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off on standby off off standby on on off standby standby off standby on off off #WatchingTV Reading
+off on off off off off on standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off on standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off on standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on on off off off on standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off on standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off on standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off off standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off off standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off off standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off off standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off off standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off off standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off off standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off off standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off on standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off on standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off off standby off off standby on on off standby standby on standby on off off #WatchingTV Reading
+off on off off off off on standby off off standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off on standby off off standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on on off off off on standby off off standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off on standby off off standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off on standby off off standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off on standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off on standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on standby on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off on standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off on standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off on standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off on standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off on off off off off off standby off on standby on off on standby standby on standby on off off #PlayingKinect PlayingKinect
+off off off off off on off standby off off standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off on off standby off off standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off on off standby off off standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off on off standby off off standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off on off standby off off standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off on off standby off off standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off on off standby off off standby standby off off standby standby standby standby off off off #GoOut GoOut
+off off off off off on off standby off off standby standby off off standby standby standby standby off off off #GoOut GoOut
+off on off off off off off standby on off standby on off on standby standby standby standby on on off #Sleeping PlayingKinect
+off on off off off off off standby on off standby on off on standby standby standby standby on on off #Sleeping PlayingKinect
