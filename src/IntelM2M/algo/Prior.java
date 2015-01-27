@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import IntelM2M.datastructure.EnvStructure;
-import IntelM2M.epcie.GaGenerator;
+import IntelM2M.ercie.GaGenerator;
 
 public class Prior {
 

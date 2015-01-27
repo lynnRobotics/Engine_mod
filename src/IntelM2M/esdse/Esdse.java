@@ -18,23 +18,23 @@ import s2h.platform.node.PlatformTopic;
 import s2h.platform.node.Sendable;
 import s2h.platform.support.JsonBuilder;
 import s2h.platform.support.MessageUtils;
-import IntelM2M.agent.control.ControlAgent;
-import IntelM2M.agent.thermal.ThermalAgent;
-import IntelM2M.agent.visual.VisualAgent;
 import IntelM2M.datastructure.AppNode;
 import IntelM2M.datastructure.EnvStructure;
 import IntelM2M.datastructure.RelationTable;
 import IntelM2M.datastructure.SensorNode;
-import IntelM2M.epcie.Epcie;
-import IntelM2M.epcie.GAinference;
-import IntelM2M.epcie.classifier.GaDbnClassifier;
-import IntelM2M.epcie.erc.GaEscGenerator;
+import IntelM2M.ercie.Ercie;
+import IntelM2M.ercie.GAinference;
+import IntelM2M.ercie.classifier.GaDbnClassifier;
+import IntelM2M.ercie.erc.GaEscGenerator;
 import IntelM2M.exp.ExpRecorder;
 import IntelM2M.mchess.Mchess;
 import IntelM2M.mq.Producer;
 import IntelM2M.preference.PreferenceAgent;
 import IntelM2M.preference.PreferenceAgent.PreferenceModel;
 import IntelM2M.test.SimulatorTest;
+import IntelM2M.ucee.control.ControlAgent;
+import IntelM2M.ucee.thermal.ThermalAgent;
+import IntelM2M.ucee.visual.VisualAgent;
 
 /**
  * 
@@ -413,26 +413,26 @@ public class Esdse {
 	}
 
 	/* This function is for simulator (No longer use) */
-	public void processForSimulator(Epcie epcie, String read, String read2, String updatedRead) {
+	public void processForSimulator(Ercie ercie, String read, String read2, String updatedRead) {
 
 		/* Infer GA */
 		String processRead = SimulatorTest.rawDataPreprocessing(updatedRead);
-		epcie.gaInferenceForSimulator(processRead);
+		ercie.gaInferenceForSimulator(processRead);
 
 		/* 1. EUS aggregation */
-		ArrayList<AppNode> eusList = eusAggregation(epcie.gaInference, read);/* 這邊怪怪，我沒有用process的read function裡面自己有process */
+		ArrayList<AppNode> eusList = eusAggregation(ercie.gaInference, read);/* 這邊怪怪，我沒有用process的read function裡面自己有process */
 		ArrayList<AppNode> decisionList = null;
 		/* infer 有可能沒有結果 */
-		if (epcie.gaInference.gaInferResultList.size() == 0) {
+		if (ercie.gaInference.gaInferResultList.size() == 0) {
 			decisionList = eusList;
 		} else {
 
 			/* 2. EUS dispatch */
-			eusDispatch(eusList, epcie.gaInference);/* update eusList */
+			eusDispatch(eusList, ercie.gaInference);/* update eusList */
 
 			/* 3 optimization */
 			Optimizer op = new Optimizer();
-			decisionList = op.getOptDecisionList(eusList, epcie.gaInference);
+			decisionList = op.getOptDecisionList(eusList, ercie.gaInference);
 		}
 
 		/* update decision for lastRead */
@@ -441,12 +441,12 @@ public class Esdse {
 		SimulatorTest.setLastDataForMchess(read2, decisionList);
 
 		/* 5 record result */
-		ExpRecorder.exp.processEXP(read, read2, epcie, decisionList, eusList);
+		ExpRecorder.exp.processEXP(read, read2, ercie, decisionList, eusList);
 
 	}
 	
 	/* This function is for simulator (No longer use) */
-	public void processForSimulatorWithPR_new(Epcie epcie, String read, String read2, String updatedRead) {
+	public void processForSimulatorWithPR_new(Ercie ercie, String read, String read2, String updatedRead) {
 
 		/* 更新READ的資料 */
 		/*
@@ -456,37 +456,37 @@ public class Esdse {
 		/* Infer GA */
 
 		String processRead = SimulatorTest.rawDataPreprocessing(updatedRead); // 去掉電器的狀態，例如on_19後面的_19會被去掉
-		epcie.gaInferenceForSimulator(processRead);
+		ercie.gaInferenceForSimulator(processRead);
 
 		/* 1. EUS aggregation */
 		ArrayList<AppNode> eusList = null;
 		ArrayList<AppNode> decisionList = null;
 
 		/* infer 結果可能為空 */
-		if (epcie.gaInference.gaInferResultList.size() == 0) {
-			eusList = eusAggregation(epcie.gaInference, read);
+		if (ercie.gaInference.gaInferResultList.size() == 0) {
+			eusList = eusAggregation(ercie.gaInference, read);
 			decisionList = eusList;
-		} else if (pr.inferPRmodel(epcie.gaInference) == null) {
+		} else if (pr.inferPRmodel(ercie.gaInference) == null) {
 			/* 1.EUS aggregation */
-			eusList = eusAggregation(epcie.gaInference, read);
+			eusList = eusAggregation(ercie.gaInference, read);
 			/* 2. EUS dispatch */
-			eusDispatch(eusList, epcie.gaInference);/* update eusList */
+			eusDispatch(eusList, ercie.gaInference);/* update eusList */
 			/* 3 optimization */
 			Optimizer op = new Optimizer();
-			decisionList = op.getOptDecisionList(eusList, epcie.gaInference);
+			decisionList = op.getOptDecisionList(eusList, ercie.gaInference);
 			/* 這邊可能有錯，檢查decisionList和gaInference是否有被update */
 			/* todo4 : chek if error */
-			pr.buildPRModel(decisionList, epcie.gaInference);
+			pr.buildPRModel(decisionList, ercie.gaInference);
 		} else {
-			PreferenceModel prM = pr.inferPRmodel(epcie.gaInference);
-			pr.updateInferResult(epcie.gaInference, prM);
+			PreferenceModel prM = pr.inferPRmodel(ercie.gaInference);
+			pr.updateInferResult(ercie.gaInference, prM);
 			/* 1.EUS aggregation */
-			eusList = eusAggregation(epcie.gaInference, read);
+			eusList = eusAggregation(ercie.gaInference, read);
 			/* 2. EUS dispatch */
-			eusDispatch(eusList, epcie.gaInference);/* update eusList */
+			eusDispatch(eusList, ercie.gaInference);/* update eusList */
 			/* 3 optimization */
 			Optimizer op = new Optimizer();
-			decisionList = op.getOptDecisionList(eusList, epcie.gaInference);
+			decisionList = op.getOptDecisionList(eusList, ercie.gaInference);
 		}
 
 		/* update decision for lastRead */
@@ -495,15 +495,15 @@ public class Esdse {
 		SimulatorTest.setLastDataForMchess(read2, decisionList);
 
 		/* 5 record result */
-		ExpRecorder.exp.processEXP(read, read2, epcie, decisionList, eusList);
+		ExpRecorder.exp.processEXP(read, read2, ercie, decisionList, eusList);
 
 		/* update prModel with feedback */
-		pr.userFeedback_new(epcie.gaInference, read, read2);
+		pr.userFeedback_new(ercie.gaInference, read, read2);
 
 	}
 	
 	/* Go through all process (Recognition -> Provide Service) */
-	public void processForRealTime(Epcie epcie, String message) {
+	public void processForRealTime(Ercie ercie, String message) {
 		// If still in the process of initialization then we don't infer
 		if (initialization) {
 			return;
@@ -570,7 +570,7 @@ public class Esdse {
 		Map<String, ArrayList<String>> sensorStatus = EnvStructure.sensorStatus;
 		String[] sensorNameArray = (String[]) sensorStatus.keySet().toArray(new String[0]);
 		
-		if(epcie == null) { // jump out if it is in a learning mode
+		if(ercie == null) { // jump out if it is in a learning mode
 			for (String sensorName : sensorNameArray) {
 				String featureString = sensorReading.get(sensorName).split("_")[0];
 				System.out.print(featureString + " ");
@@ -603,19 +603,19 @@ public class Esdse {
 		System.out.println("#humanNumer = " + humanNumber);
 		
 		// Infer GA
-		epcie.gaInferenceForRealTime_new(sensorReading, humanNumber);
+		ercie.gaInferenceForRealTime_new(sensorReading, humanNumber);
 		
 		// Eliminate some impossible activities
-		activityPostProcessing(epcie);
+		activityPostProcessing(ercie);
 		
 		// Flag for PlayingKinect
 		boolean flag = false; 
 		// Print out inferred activity
-		if (epcie.gaInference.actInferResultSet.size() == 0) {
+		if (ercie.gaInference.actInferResultSet.size() == 0) {
 			System.out.print("@@@Infer: NoActivity");
 		}
 		else {
-			for(String activity : epcie.gaInference.actInferResultSet){
+			for(String activity : ercie.gaInference.actInferResultSet){
 				if (activity.equals("PlayingKinect")) {
 					flag = true;
 				}
@@ -641,16 +641,16 @@ public class Esdse {
 		
 		// Check unwanted (ComeBack & GoOut) activity
 		// Now we address ComeBack & GoOut with some rules
-		if (epcie.gaInference.actInferResultSet.contains("ComeBack") || epcie.gaInference.actInferResultSet.contains("GoOut")) {
+		if (ercie.gaInference.actInferResultSet.contains("ComeBack") || ercie.gaInference.actInferResultSet.contains("GoOut")) {
 			return;
 		}
 		
 		// Check inferred activity set with previous time 
 		// If there's one activity not including in the previous inferred set, set sameInferResult = false; 
-		epcie.currentActInferResultSet = new ArrayList<String>(epcie.gaInference.actInferResultSet);
+		ercie.currentActInferResultSet = new ArrayList<String>(ercie.gaInference.actInferResultSet);
 		boolean sameInferResult = true;
-		for (String activity : epcie.currentActInferResultSet) {
-			if (!epcie.previousActInferResultSet.contains(activity)) {
+		for (String activity : ercie.currentActInferResultSet) {
+			if (!ercie.previousActInferResultSet.contains(activity)) {
 				sameInferResult = false;
 				break;
 			}
@@ -658,11 +658,11 @@ public class Esdse {
 		
 		// If inferred activity set equals to previous time
 		Date currentTime = new Date();
-		if (epcie.currentActInferResultSet.size() == epcie.previousActInferResultSet.size() && sameInferResult) {
-			epcie.duration = (currentTime.getTime() - epcie.startTime.getTime()) / 1000.0;
+		if (ercie.currentActInferResultSet.size() == ercie.previousActInferResultSet.size() && sameInferResult) {
+			ercie.duration = (currentTime.getTime() - ercie.startTime.getTime()) / 1000.0;
 			activityChanged = false;
 			// Make sure activity changed is not because some noise
-			if (epcie.duration < epcie.threshold) {
+			if (ercie.duration < ercie.threshold) {
 				activityChanged = true;
 				System.err.println("Still in the non-stable period!");
 				System.out.println("===========================================");
@@ -671,28 +671,28 @@ public class Esdse {
 		}
 		else {
 			// Decide wake up or not
-			if (epcie.previousActInferResultSet.contains("AllSleeping")) {
+			if (ercie.previousActInferResultSet.contains("AllSleeping")) {
 				wakeUpFlag = true;
 			}
-			epcie.previousActInferResultSet = new ArrayList<String>(epcie.gaInference.actInferResultSet);
-			epcie.startTime = currentTime;
+			ercie.previousActInferResultSet = new ArrayList<String>(ercie.gaInference.actInferResultSet);
+			ercie.startTime = currentTime;
 			System.err.println("Activity change happened!");
 			System.out.println("===========================================");
 			return;
 		}
 		
 		// Update previous result set
-		epcie.previousActInferResultSet = new ArrayList<String>(epcie.gaInference.actInferResultSet);
+		ercie.previousActInferResultSet = new ArrayList<String>(ercie.gaInference.actInferResultSet);
 		
 		// Check previous activity for reject mode 
 		// If activity set is different between present set and reject set 
 		// activity've changed, reject = false;
-		if(epcie.gaInference.actInferResultSet.size() != epcie.previousActInferResultSetForReject.size()){
+		if(ercie.gaInference.actInferResultSet.size() != ercie.previousActInferResultSetForReject.size()){
 			reject = false;
 		}
 		else{
-			for(String activity : epcie.gaInference.actInferResultSet){
-				if(!epcie.previousActInferResultSetForReject.contains(activity)){
+			for(String activity : ercie.gaInference.actInferResultSet){
+				if(!ercie.previousActInferResultSetForReject.contains(activity)){
 					sameInferResult = false;
 					System.err.println("Inferred activity is different from the one in reject mode!");
 					reject = false;
@@ -703,38 +703,38 @@ public class Esdse {
 		
 		// Reject period
 		if (reject && sameInferResult) {
-			epcie.previousActInferResultSetForReject = new ArrayList<String>(epcie.gaInference.actInferResultSet);
-			sendInferedActivityToMQ(epcie);
+			ercie.previousActInferResultSetForReject = new ArrayList<String>(ercie.gaInference.actInferResultSet);
+			sendInferedActivityToMQ(ercie);
 			System.err.println("In the rejected period!");
 			return;
 		}
 		
-		epcie.previousActInferResultSetForReject = new ArrayList<String>(epcie.gaInference.actInferResultSet);
+		ercie.previousActInferResultSetForReject = new ArrayList<String>(ercie.gaInference.actInferResultSet);
 		
 		// Send inferred activity to MQ
-		sendInferedActivityToMQ(epcie);
+		sendInferedActivityToMQ(ercie);
 		
 		// For testing data recording (Yi-Hsiu)
-		recordSensorDataVector(epcie);
+		recordSensorDataVector(ercie);
 		
 		ArrayList<AppNode> eusList = null;
 		ArrayList<AppNode> decisionList = null;
 		
 		// Optimization step
 		// Inferred result set might be empty
-		if(epcie.gaInference.actInferResultSet.size() == 0){
-			eusList = eusAggregationForRealTime(epcie.gaInference, sensorReading);
+		if(ercie.gaInference.actInferResultSet.size() == 0){
+			eusList = eusAggregationForRealTime(ercie.gaInference, sensorReading);
 			decisionList = eusList;
 		} 
 		else {
 			// 1.EUS aggregation
-			eusList = eusAggregationForRealTime(epcie.gaInference, sensorReading);
+			eusList = eusAggregationForRealTime(ercie.gaInference, sensorReading);
 			// 2.EUS dispatch
-			eusDispatch_new(eusList, epcie.gaInference); 
+			eusDispatch_new(eusList, ercie.gaInference); 
 			// 3.Optimization
 			Optimizer op = new Optimizer(producer);
 			// 4.Get appliance control decision list
-			decisionList = op.getOptDecisionList(eusList, epcie.gaInference);
+			decisionList = op.getOptDecisionList(eusList, ercie.gaInference);
 		}
 		
 		// Debug print out
@@ -780,11 +780,11 @@ public class Esdse {
 			return;
 		}*/
 		// If there is no activity
-		else if (epcie.gaInference.actInferResultSet.size() == 0) {
+		else if (ercie.gaInference.actInferResultSet.size() == 0) {
 			return;
 		}
 		else {
-			if(epcie.gaInference.actInferResultSet.contains("AllSleeping") && epcie.gaInference.actInferResultSet.size() == 1){
+			if(ercie.gaInference.actInferResultSet.contains("AllSleeping") && ercie.gaInference.actInferResultSet.size() == 1){
 				ArrayList<String> exceptionID = new ArrayList<String>();
 				exceptionID.add("16");
 				if (!standbyOff) {
@@ -812,7 +812,7 @@ public class Esdse {
 	}
 
 	/* Call by default MQ processMsg(String m) in Mchess.java */
-	public void processMQMessage(Epcie epcie, String message) {
+	public void processMQMessage(Ercie ercie, String message) {
 		// Receive over 50000 message then restart producer
 		reconnect_counter++;
 		if(reconnect_counter > 50000) {
@@ -940,7 +940,7 @@ public class Esdse {
 			//Calendar cl = Calendar.getInstance();
 			//while(time_substract(cl, Calendar.getInstance()) < 20);
 			noSignalStartTime = null;
-			processForRealTime(epcie, message);
+			processForRealTime(ercie, message);
 		} 
 		else{
 			if(noSignalStartTime == null){
@@ -953,18 +953,18 @@ public class Esdse {
 	}
 	
 	/* Send inferred activity to MQ */
-	private void sendInferedActivityToMQ(Epcie epcie) {
+	private void sendInferedActivityToMQ(Ercie ercie) {
 		json.reset();
-		if (epcie.gaInference.actInferResultSet.size() != 0) {
+		if (ercie.gaInference.actInferResultSet.size() != 0) {
 			String inferedActivity = "";
 			String inferedGA = "";
 			// Concat all inferred activities
-	    	for (String activity : epcie.gaInference.actInferResultSet) {
+	    	for (String activity : ercie.gaInference.actInferResultSet) {
 	    		inferedActivity = inferedActivity.concat(activity + " ");
 	    	}
 	    	inferedActivity = inferedActivity.trim().replace(' ', '#');
 	    	// Concat all inferred GAs
-	    	for(String GA : epcie.gaInference.gaInferResultList){
+	    	for(String GA : ercie.gaInference.gaInferResultList){
 	    		inferedGA = inferedGA.concat(GA + " ");
 	    	}
 	    	inferedGA = inferedGA.trim().replace(' ', '#');
@@ -999,25 +999,25 @@ public class Esdse {
 	}
 
 	/* Remove some impossible activities from actInferResultSet */
-	private void activityPostProcessing(Epcie epcie) {
+	private void activityPostProcessing(Ercie ercie) {
 		// WatchingTV and PlayingKinect, We want playingkinect
-		if(epcie.gaInference.actInferResultSet.contains("WatchingTV") && epcie.gaInference.actInferResultSet.contains("PlayingKinect")){
-			epcie.gaInference.actInferResultSet.remove("WatchingTV");
+		if(ercie.gaInference.actInferResultSet.contains("WatchingTV") && ercie.gaInference.actInferResultSet.contains("PlayingKinect")){
+			ercie.gaInference.actInferResultSet.remove("WatchingTV");
 		}
-		if(epcie.gaInference.actInferResultSet.contains("Reading") && !sensorReading.get("current_lamp_livingroom").startsWith("on")){
-			epcie.gaInference.actInferResultSet.remove("Reading");
+		if(ercie.gaInference.actInferResultSet.contains("Reading") && !sensorReading.get("current_lamp_livingroom").startsWith("on")){
+			ercie.gaInference.actInferResultSet.remove("Reading");
 		}
 		// PlayingKinect but XOBX is not on
-		if(epcie.gaInference.actInferResultSet.contains("PlayingKinect") && (!sensorReading.get("current_xbox_livingroom").startsWith("on") || !sensorReading.get("current_TV_livingroom").startsWith("on"))){
-			epcie.gaInference.actInferResultSet.remove("PlayingKinect");
+		if(ercie.gaInference.actInferResultSet.contains("PlayingKinect") && (!sensorReading.get("current_xbox_livingroom").startsWith("on") || !sensorReading.get("current_TV_livingroom").startsWith("on"))){
+			ercie.gaInference.actInferResultSet.remove("PlayingKinect");
 		}
 		// WatchingTV but TV is not on
-		if(epcie.gaInference.actInferResultSet.contains("WatchingTV") && !sensorReading.get("current_TV_livingroom").startsWith("on")){
-			epcie.gaInference.actInferResultSet.remove("WatchingTV");
+		if(ercie.gaInference.actInferResultSet.contains("WatchingTV") && !sensorReading.get("current_TV_livingroom").startsWith("on")){
+			ercie.gaInference.actInferResultSet.remove("WatchingTV");
 		}
 		// AllSleeping and Sleeping, We want AllSleeping
-		if(epcie.gaInference.actInferResultSet.contains("AllSleeping") && epcie.gaInference.actInferResultSet.contains("Sleeping")){
-			epcie.gaInference.actInferResultSet.remove("Sleeping");
+		if(ercie.gaInference.actInferResultSet.contains("AllSleeping") && ercie.gaInference.actInferResultSet.contains("Sleeping")){
+			ercie.gaInference.actInferResultSet.remove("Sleeping");
 		}
 	}
 
@@ -1100,7 +1100,7 @@ public class Esdse {
 	}
 	
 	/* Yi-Hsiu experiment usage */
-	private void recordSensorDataVector(Epcie epcie) {
+	private void recordSensorDataVector(Ercie ercie) {
 		Map<String, ArrayList<String>> sensorStatus = EnvStructure.sensorStatus;
 		sensorDataVector = "";
 		String[] sensorNameArray = (String[]) sensorStatus.keySet().toArray(new String[0]);
@@ -1108,9 +1108,9 @@ public class Esdse {
 			sensorDataVector = sensorDataVector.concat(sensorReading.get(sensorName) + " ");
 		}
 		sensorDataVector = sensorDataVector.concat("#");
-		if (epcie.gaInference.actInferResultSet.size() != 0) {
+		if (ercie.gaInference.actInferResultSet.size() != 0) {
 			String inferedActivity = "";
-	    	for (String activity : epcie.gaInference.actInferResultSet) {
+	    	for (String activity : ercie.gaInference.actInferResultSet) {
 	    		inferedActivity = inferedActivity.concat(activity + " ");
 	    	}
 	    	inferedActivity = inferedActivity.trim();

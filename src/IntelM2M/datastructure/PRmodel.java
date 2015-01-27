@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
-import IntelM2M.epcie.GaGenerator;
-import IntelM2M.epcie.erc.GaEscGenerator;
+import IntelM2M.ercie.GaGenerator;
+import IntelM2M.ercie.erc.GaEscGenerator;
 import IntelM2M.preference.PreferenceAgent;
 /*old not use*/
 public class PRmodel {

@@ -15,7 +15,7 @@ import weka.core.Instances;
 import IntelM2M.datastructure.AppNode;
 import IntelM2M.datastructure.EnvStructure;
 import IntelM2M.datastructure.RelationTable;
-import IntelM2M.epcie.GaGenerator;
+import IntelM2M.ercie.GaGenerator;
 
 public class GaEtcGenerator {
  	public Map<String, RelationTable> actAppList; //< roomname_activity , relationtable> 儲存該room對應的電器與電器資訊

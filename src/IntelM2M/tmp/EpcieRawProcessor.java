@@ -3,8 +3,7 @@ package IntelM2M.tmp;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import IntelM2M.epcie.classifier.DbnClassifier;
-
+import IntelM2M.ercie.classifier.DbnClassifier;
 import s2h.platform.annotation.MessageFrom;
 import s2h.platform.annotation.UPnP;
 import s2h.platform.node.LogicNode;

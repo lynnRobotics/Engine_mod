@@ -16,11 +16,11 @@ import java.util.Set;
 
 import IntelM2M.algo.GaEtcGenerator;
 import IntelM2M.datastructure.ExpResult;
-import IntelM2M.epcie.Epcieold;
-import IntelM2M.epcie.GaGenerator;
-import IntelM2M.epcie.classifier.DbnClassifier;
-import IntelM2M.epcie.classifier.GaDbnClassifier;
-import IntelM2M.epcie.erc.EtcGenerator;
+import IntelM2M.ercie.Epcieold;
+import IntelM2M.ercie.GaGenerator;
+import IntelM2M.ercie.classifier.DbnClassifier;
+import IntelM2M.ercie.classifier.GaDbnClassifier;
+import IntelM2M.ercie.erc.EtcGenerator;
 import IntelM2M.tmp.KmCluster;
 
 public class CrossValidate {

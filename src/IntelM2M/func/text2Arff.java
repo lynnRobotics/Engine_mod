@@ -12,7 +12,7 @@ import java.util.Set;
 
 import IntelM2M.algo.Prior;
 import IntelM2M.datastructure.EnvStructure;
-import IntelM2M.epcie.GaGenerator;
+import IntelM2M.ercie.GaGenerator;
 
 
 public class text2Arff

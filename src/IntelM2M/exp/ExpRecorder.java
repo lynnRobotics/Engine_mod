@@ -7,14 +7,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-import IntelM2M.agent.thermal.ThermalAgent;
-import IntelM2M.agent.visual.VisualAgent;
 import IntelM2M.datastructure.AppNode;
 import IntelM2M.datastructure.EnvStructure;
-import IntelM2M.epcie.Epcie;
-import IntelM2M.epcie.GAinference;
+import IntelM2M.ercie.Ercie;
+import IntelM2M.ercie.GAinference;
 import IntelM2M.esdse.Optimizer;
 import IntelM2M.test.SimulatorTest;
+import IntelM2M.ucee.thermal.ThermalAgent;
+import IntelM2M.ucee.visual.VisualAgent;
 
 public class ExpRecorder {
 	
@@ -1321,7 +1321,7 @@ public class ExpRecorder {
 
 	
 	
-	public void processEXPForLocationBased(String read,String read2, Epcie epcie,ArrayList<AppNode> decisionList,ArrayList<AppNode> envList){
+	public void processEXPForLocationBased(String read,String read2, Ercie ercie,ArrayList<AppNode> decisionList,ArrayList<AppNode> envList){
 
 		
 	
@@ -1334,7 +1334,7 @@ public class ExpRecorder {
 			
 	}
 	
-	public void processEXP(String read,String read2, Epcie epcie,ArrayList<AppNode> decisionList,ArrayList<AppNode>eusList){
+	public void processEXP(String read,String read2, Ercie ercie,ArrayList<AppNode> decisionList,ArrayList<AppNode>eusList){
 		/*set duration*/
 		ExpRecorder.exp.setDuration(SimulatorTest.duration);
 		/*set day*/
@@ -1342,9 +1342,9 @@ public class ExpRecorder {
 		/*5.4 record infer result*/
 		ExpRecorder.exp.setRowNum(SimulatorTest.rowNum);
 		ExpRecorder.exp.setActTruth(read);
-		ExpRecorder.exp.setActInfer(epcie.gaInference.actInferResultSet);
-		ExpRecorder.exp.setGaInfer(epcie.gaInference.gaInferResultList);
-		ExpRecorder.exp.setRawInfer(epcie.gaInference.rawGAinferResultList,epcie.gaInference.rawActInferResultSet);
+		ExpRecorder.exp.setActInfer(ercie.gaInference.actInferResultSet);
+		ExpRecorder.exp.setGaInfer(ercie.gaInference.gaInferResultList);
+		ExpRecorder.exp.setRawInfer(ercie.gaInference.rawGAinferResultList,ercie.gaInference.rawActInferResultSet);
 		/*record total consumption*/
 		ExpRecorder.exp.setCousumption(eusList, decisionList);
 		/*record thermal save*/
@@ -1363,11 +1363,11 @@ public class ExpRecorder {
 		ExpRecorder.exp.setThermalTypeSave(eusList, decisionList);
 		ExpRecorder.exp.setVisualTypeSave(eusList, decisionList);
 		
-		ExpRecorder.exp.setThermalComfort_new(eusList, decisionList, epcie.gaInference);
-		ExpRecorder.exp.setVisualComfort_new(eusList, decisionList, epcie.gaInference);
+		ExpRecorder.exp.setThermalComfort_new(eusList, decisionList, ercie.gaInference);
+		ExpRecorder.exp.setVisualComfort_new(eusList, decisionList, ercie.gaInference);
 		
-		ExpRecorder.exp.calServingTime(epcie.gaInference);
-		ExpRecorder.exp.setRecRate(epcie.gaInference.actInferResultSet,read);
+		ExpRecorder.exp.calServingTime(ercie.gaInference);
+		ExpRecorder.exp.setRecRate(ercie.gaInference.actInferResultSet,read);
 		//ExpRecorder.exp.setRecRate(epcie.gaInference.rawActInferResultSet,read);
 		
 		

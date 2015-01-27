@@ -7,7 +7,7 @@ import java.util.Map;
 
 import IntelM2M.datastructure.AppNode;
 import IntelM2M.datastructure.EnvStructure;
-import IntelM2M.epcie.Epcie;
+import IntelM2M.ercie.Ercie;
 import IntelM2M.esdse.Esdse;
 import IntelM2M.exp.ExpRecorder;
 import IntelM2M.exp.ExpRecorderByDay;
@@ -153,7 +153,7 @@ public class SimulatorTest {
 
 	}
 
-	public void simulatorTesting(Epcie epcie, Esdse esdse) {
+	public void simulatorTesting(Ercie ercie, Esdse esdse) {
 		try {
 
 			BufferedReader reader = new BufferedReader(new FileReader(testingDataPath));
@@ -177,12 +177,12 @@ public class SimulatorTest {
 					String updatedReadForMchess = updateReadForMchess(read, read2);
 
 					// esdse.processForSimulator(epcie, lastRead,read2);
-					esdse.processForSimulatorWithPR_new(epcie, read, read2, updatedReadForMchess);
+					esdse.processForSimulatorWithPR_new(ercie, read, read2, updatedReadForMchess);
 
 					/* 注意location based的測試要放在 esdse之後，因為esdse會設定時間參數 */
 					/* location based */
 					LocationBasedSaving lbs = new LocationBasedSaving();
-					lbs.processForSimulator(epcie, lastRead, read2);
+					lbs.processForSimulator(ercie, lastRead, read2);
 					System.out.println(i++);
 				}
 

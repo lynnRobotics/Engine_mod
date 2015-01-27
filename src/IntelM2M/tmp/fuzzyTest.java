@@ -1,7 +1,7 @@
 package IntelM2M.tmp;
 
-import IntelM2M.agent.ap.FuzzyInference;
 import IntelM2M.datastructure.AppNode;
+import IntelM2M.ucee.ap.FuzzyInference;
 
 public class fuzzyTest {
     public static void main(String[] args) throws Exception {

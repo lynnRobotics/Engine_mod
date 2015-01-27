@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import IntelM2M.datastructure.AppNode;
-import IntelM2M.epcie.GAinference;
-import IntelM2M.epcie.GaGenerator;
+import IntelM2M.ercie.GAinference;
+import IntelM2M.ercie.GaGenerator;
 
 
 public class PreferenceAgent {

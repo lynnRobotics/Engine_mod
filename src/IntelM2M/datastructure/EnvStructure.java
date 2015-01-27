@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import IntelM2M.agent.visual.VisualComfortTable;
+import IntelM2M.ucee.visual.VisualComfortTable;
 
 /**
  * 

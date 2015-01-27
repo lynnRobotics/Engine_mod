@@ -8,8 +8,8 @@ import java.util.Set;
 import IntelM2M.datastructure.AppNode;
 import IntelM2M.datastructure.ESService;
 import IntelM2M.datastructure.PRmodel;
-import IntelM2M.epcie.GaGenerator;
-import IntelM2M.epcie.erc.GaEscGenerator;
+import IntelM2M.ercie.GaGenerator;
+import IntelM2M.ercie.erc.GaEscGenerator;
 
 public class PRClassifier {
 	ArrayList<PRmodel> prModelList=new ArrayList<PRmodel>();

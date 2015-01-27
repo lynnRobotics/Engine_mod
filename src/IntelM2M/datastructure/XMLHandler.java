@@ -15,7 +15,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
-import IntelM2M.agent.visual.VisualComfortTable;
+import IntelM2M.ucee.visual.VisualComfortTable;
 
 /**
  * 

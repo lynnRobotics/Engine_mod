@@ -21,9 +21,9 @@ import IntelM2M.datastructure.ExpResult;
 import IntelM2M.datastructure.PRmodel;
 import IntelM2M.datastructure.RelationTable;
 import IntelM2M.datastructure.SensorNode;
-import IntelM2M.epcie.GaGenerator;
-import IntelM2M.epcie.classifier.GaDbnClassifier;
-import IntelM2M.epcie.erc.GaEscGenerator;
+import IntelM2M.ercie.GaGenerator;
+import IntelM2M.ercie.classifier.GaDbnClassifier;
+import IntelM2M.ercie.erc.GaEscGenerator;
 
 public class IrosTest {
 	 

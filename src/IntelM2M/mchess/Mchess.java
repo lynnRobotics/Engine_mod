@@ -1,10 +1,11 @@
 package IntelM2M.mchess;
 
 import org.apache.log4j.Logger;
+
 import s2h.platform.support.MessageUtils;
 
 /* Import necessary package */
-import IntelM2M.epcie.Epcie;
+import IntelM2M.ercie.Ercie;
 import IntelM2M.esdse.Esdse;
 import IntelM2M.mq.Consumer;
 import IntelM2M.test.SimulatorTest;
@@ -18,7 +19,7 @@ import IntelM2M.test.SimulatorTest;
 public class Mchess extends Consumer implements Runnable {
 
 	/* Two main engine */
-	static Epcie epcie = null;
+	static Ercie ercie = null;
 	static Esdse esdse;
 	
 	s2h.platform.support.JsonBuilder json = MessageUtils.jsonBuilder();
@@ -42,21 +43,21 @@ public class Mchess extends Consumer implements Runnable {
 
 	/* For simulated usage */
 	public void sysProcForSimulator() {
-		epcie.buildModel();
+		ercie.buildModel();
 		// Simulate sensor data
 		SimulatorTest test = new SimulatorTest();
-		test.simulatorTesting(epcie, esdse);
+		test.simulatorTesting(ercie, esdse);
 	}
 
 	/* For real-time usage */
 	public void realTimeSysProc() {
-		epcie.buildModel();
+		ercie.buildModel();
 	}
 	
 	/* MQ message process function */
 	@Override
 	public void processMsg(String m) {
-		esdse.processMQMessage(epcie, m);
+		esdse.processMQMessage(ercie, m);
 	}
 	
 	/* Define what M-CHESS thread should do */ 
@@ -94,11 +95,11 @@ public class Mchess extends Consumer implements Runnable {
 			System.out.println("===Running Mode===");
 			if (args.length < 2) {
 				System.out.println("...using default training threshold: 3");
-				epcie = new Epcie("3");  // New a epcie object and set threshold (args[0])
+				ercie = new Ercie("3");  // New a epcie object and set threshold (args[0])
 				new Mchess(args[0]).run();          // New a M-CHESS object and start the thread
 			}
 			else {
-				epcie = new Epcie(args[1]);  // New a epcie object and set threshold (args[0])
+				ercie = new Ercie(args[1]);  // New a epcie object and set threshold (args[0])
 				new Mchess(args[0]).run();          // New a M-CHESS object and start the thread
 			}
 		}

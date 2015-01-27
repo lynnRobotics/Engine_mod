@@ -37,7 +37,7 @@ import IntelM2M.datastructure.AppNode;
 import IntelM2M.datastructure.EnvStructure;
 import IntelM2M.datastructure.RelationTable;
 import IntelM2M.datastructure.SensorNode;
-import IntelM2M.epcie.erc.EtcGenerator;
+import IntelM2M.ercie.erc.EtcGenerator;
 /**
  * InferenceEngine
  * @author Mao  (2011.05)

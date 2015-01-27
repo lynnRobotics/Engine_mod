@@ -8,7 +8,7 @@ import java.util.Set;
 import IntelM2M.datastructure.AppNode;
 import IntelM2M.datastructure.EnvStructure;
 import IntelM2M.datastructure.RelationTable;
-import IntelM2M.epcie.Epcie;
+import IntelM2M.ercie.Ercie;
 import IntelM2M.esdse.Optimizer;
 
 public class LocationBasedSaving {
@@ -123,7 +123,7 @@ public class LocationBasedSaving {
 		return decisionList;
 	}
 
-	public void processForSimulator(Epcie epcie,String read,String read2){
+	public void processForSimulator(Ercie ercie,String read,String read2){
 		ArrayList<AppNode> envList= buildEnvList(read);
 		ArrayList<AppNode> decisionList=buildDecisionList(read,envList);
 		
@@ -132,7 +132,7 @@ public class LocationBasedSaving {
 		double newAmp=Optimizer.calEnergyConsumptionForSimulator(decisionList);
 		
 		
-		ExpRecorder.exp.processEXPForLocationBased(read, read2, epcie, decisionList,envList);
+		ExpRecorder.exp.processEXPForLocationBased(read, read2, ercie, decisionList,envList);
 		
 		
 	}

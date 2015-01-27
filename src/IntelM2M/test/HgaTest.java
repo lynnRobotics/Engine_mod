@@ -14,8 +14,8 @@ import IntelM2M.datastructure.EnvStructure;
 import IntelM2M.datastructure.ExpResult;
 import IntelM2M.datastructure.GroupActivity;
 import IntelM2M.datastructure.SensorNode;
-import IntelM2M.epcie.GaGenerator;
-import IntelM2M.epcie.classifier.GaDbnClassifier;
+import IntelM2M.ercie.GaGenerator;
+import IntelM2M.ercie.classifier.GaDbnClassifier;
 import IntelM2M.func.CrossValidate;
 
 public class HgaTest {
