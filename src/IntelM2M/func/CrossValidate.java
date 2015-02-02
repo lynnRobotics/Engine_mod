@@ -1,3 +1,5 @@
+
+
 package IntelM2M.func;
 
 import java.io.BufferedReader;
@@ -16,7 +18,7 @@ import java.util.Set;
 
 import IntelM2M.algo.GaEtcGenerator;
 import IntelM2M.datastructure.ExpResult;
-import IntelM2M.ercie.Epcieold;
+//import IntelM2M.ercie.Epcieold;
 import IntelM2M.ercie.GaGenerator;
 import IntelM2M.ercie.classifier.DbnClassifier;
 import IntelM2M.ercie.classifier.GaDbnClassifier;
@@ -35,10 +37,7 @@ public class CrossValidate {
 	public static int cvRound=0;
 	
 
-	public Map<String,ArrayList<String>> testDataTransform(){
-		
-
-		
+	public Map<String,ArrayList<String>> testDataTransform(){	
 		Map<String,ArrayList<String>> actDataMap= new LinkedHashMap<String,ArrayList<String>>();
 //		for(String str: EnvStructure.activityList){
 //			ArrayList<String> data= new ArrayList<String>();
@@ -242,9 +241,8 @@ public class CrossValidate {
 			}
 			
 			return cvDataMap;
-
-	
 	}
+	
 	public void wbCVData(Map<String,ArrayList<String>> dataMap,Map<String,int[]> cvDataMap,int testNumIndex){
 		try {			
 			Set<String>  keys = dataMap.keySet();
@@ -290,9 +288,7 @@ public class CrossValidate {
 			// TODO: handle exception
 		}
 	}
-	
-
-	
+		
 	public void wbResult(String path, Map <String,ExpResult> expResult,Boolean append){
 		try {
 			FileWriter writer = new FileWriter(new File(path),append);
@@ -364,6 +360,7 @@ public class CrossValidate {
 				
 				return finalResult;
 	}
+	
 	public ArrayList<Map <String,ExpResult>> addResult(ArrayList<Map <String,ExpResult>> finalResult,ArrayList<Map <String,ExpResult>> tmpResult)
 	{
 			int minSize=0;
@@ -518,7 +515,7 @@ public class CrossValidate {
 		oneRoundResult.add(GAfinalResult);
 		return oneRoundResult;
 	}
-	
+	/*
 	public  ArrayList<Map <String,ExpResult>> cvProcessForHga(){
 		//Build test and training data Map
 		Map<String,ArrayList<String>> dataMap=testDataTransform();
@@ -536,7 +533,7 @@ public class CrossValidate {
 				copyData(cvTrainingDataPath,"./_input_data/CrossValidate/cvTmp/cv_training_data_"+i+".txt");
 				copyData(cvTestDataPath,"./_input_data/CrossValidate/cvTmp/cv_test_data_"+i+".txt");
 				
-				/*製造noise給trainingData*/
+				//製造noise給trainingData
 				//addNoise("./_input_data/CrossValidate/cvTmp/cv_training_data_"+i+".txt",cvTrainingDataPath);
 				
 				ArrayList<Map <String,ExpResult>> kExpResultTmp=Epcieold.sysProc2(cvTestDataPath, cvTrainingDataPath,  "./_output_results/hga_testing_result_cv_"+i+".txt");
@@ -555,11 +552,11 @@ public class CrossValidate {
 		}
 
 		//wbResult(cvResultPath,HGAfinalResult,false);
-		
 		return HGAfinalResult;
-
 	}
+	*/
 	
+	/*
 	public static void main(String[] args)
     {
 		ArrayList<Map <String,ExpResult>> finalResult=null ;
@@ -581,4 +578,5 @@ public class CrossValidate {
 //
 //		cv.cvProcessForHga();
     }
+	*/
 }

@@ -87,12 +87,16 @@ public class Mchess extends Consumer implements Runnable {
 	
 	public static void main(String[] args) {
 		if (args.length < 1) {
-			System.out.println("please add the argument!\ne.g. [mchess] -run 3 or [mchess] -learn");
+			System.out.println("please add the argument!\ne.g. [mchess] -run or [mchess] -learn");
 			return; // Test necessary argument from input
 		}
 		
 		if(args[0].equals("-run")) {
 			System.out.println("===Running Mode===");
+			ercie = new Ercie("./_input_data/ercieInitilization.xml");  // New a epcie object and set threshold (args[0])
+			new Mchess(args[0]).run();          // New a M-CHESS object and start the thread
+			// Specify the training threshold in ercieXMLHandler
+			/*
 			if (args.length < 2) {
 				System.out.println("...using default training threshold: 3");
 				ercie = new Ercie("3");  // New a epcie object and set threshold (args[0])
@@ -102,6 +106,7 @@ public class Mchess extends Consumer implements Runnable {
 				ercie = new Ercie(args[1]);  // New a epcie object and set threshold (args[0])
 				new Mchess(args[0]).run();          // New a M-CHESS object and start the thread
 			}
+			*/
 		}
 		else if(args[0].equals("-learn")) {
 			System.err.println("===Learning Mode===");

@@ -799,7 +799,7 @@ public class ExpRecorder {
 				thermalAppList.add(app);
 					}
 		}
-		ThermalAgent ta= new ThermalAgent();
+		ThermalAgent ta= new ThermalAgent("./_input_data/thermalInitilization.xml");
 		
 		ArrayList<Double> rawPmvList= ta.getComfortArray(thermalRawList, gaInference);
 		ArrayList<Double> PmvList= ta.getComfortArray(thermalAppList, gaInference);

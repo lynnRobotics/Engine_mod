@@ -17,6 +17,8 @@ import IntelM2M.func.text2Arff;
 
 public class Ercie {
 
+	ErcieXMLHandler ercieXMLHandler;
+	
 	/* Some GA related information (I don't really understand)*/
 	public ArrayList<GaGenerator> GaGeneratorList;
 	public ArrayList<GaDbnClassifier> GaDbnList;
@@ -28,21 +30,26 @@ public class Ercie {
 	public ArrayList<String> currentActInferResultSet = new ArrayList<String>();
 	public ArrayList<String> previousActInferResultSet = new ArrayList<String>();
 	public ArrayList<String> previousActInferResultSetForReject = new ArrayList<String>();
-	public double duration;
-	public double threshold = 5;               // unit is second
+	
 	public Date startTime = new Date();
-	static final Boolean retrain = false;     // Retrain or not
-	static final int trainLevel = 3;          // Level of group activity
+	public double duration;				// used in Esdse
+	
+	/* modularize */
+	public double threshold = 5;        // used in Esdse       // unit is second 
+	static Boolean retrain = false;     // Retrain or not
+	static int trainLevel = 3;          // Level of group activity
+	String rawTrainingDataPath = "./_input_data/ercielInitilization.xml"; // For real-time usage
+	/* modularize */
 
-	/* For simulator usage */
-	// String rawTrainingDataPath = "./_input_data/simulator/simulator_trainingdata3.txt"; //using this
-	// String rawTrainingDataPath = "./_input_data/simulator/simulator_trainingdata4.txt";
-
-	/* For real-time usage */
-	String rawTrainingDataPath = "./_input_data/BL313/trainingData_test14.txt";
-
-	public Ercie(String threshold) {
-		this.threshold = Double.parseDouble(threshold);  // Set threshold
+	public Ercie(String ercieInitilizationPath) {
+		ercieXMLHandler = new ErcieXMLHandler(ercieInitilizationPath);
+		threshold = ercieXMLHandler.getThreshold();
+		retrain = ercieXMLHandler.getRetrain();
+		trainLevel = ercieXMLHandler.getTrainLevel();
+		rawTrainingDataPath = ercieXMLHandler.getRawTrainingDataPath();
+		
+		System.out.println("...using training threshold: "+Double.toString(threshold));
+		
 		GaGeneratorList = new ArrayList<GaGenerator>();  // Record GA structure 
 		GaDbnList = new ArrayList<GaDbnClassifier>();    // Record DBN for each GA 
 		GaEscList = new ArrayList<GaEscGenerator>();     // Record ERC for each GA 

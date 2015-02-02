@@ -32,11 +32,13 @@ public class ThermalAgent {
 	
 	ThermalXMLHandler thermalXMLHandler;
 	
+	/* modularize */
 	double initConstraint = 1.0;
-	// The weather is too cold or not  
-	boolean tooColdFlag = false;
-	final int iterateLimit = 20;
-	final double incrementConstraint = 0.1;
+	boolean tooColdFlag = false; // The weather is too cold or not
+	int iterateLimit = 20; //final int iterateLimit = 20; the number of iterations in getOptThermalListForOnline()
+	double incrementConstraint = 0.1; //final double incrementConstraint = 0.1; the increments in every iteration in thermalIterate()
+	/* modularize */
+	
 	ArrayList<Double> constraintList = null;
 	
 	private Map<String, Double> pmvEvaluationResult = new HashMap<String, Double>();
@@ -46,7 +48,10 @@ public class ThermalAgent {
 	
 	public ThermalAgent(String thermalInitilizationPath){
 		thermalXMLHandler = new ThermalXMLHandler(thermalInitilizationPath);
-		initConstraint = 
+		initConstraint = thermalXMLHandler.getInitConstraint();
+		tooColdFlag = thermalXMLHandler.getTooColdFlag();
+		iterateLimit = thermalXMLHandler.getIterateLimit();
+		incrementConstraint = thermalXMLHandler.getIncrementConstraint();
 	}
 
 	/* Get <activity, appList> */

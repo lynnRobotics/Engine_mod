@@ -1,7 +1,7 @@
-package IntelM2M.ucee.thermal;
+package IntelM2M.ercie;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,84 +9,83 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-public class ThermalXMLHandler {
+public class ErcieXMLHandler {
+	
+	File xml = new File("./_input_data/ercielInitilization.xml");
+	
+	public ErcieXMLHandler(String ercieXMLPath){
+		xml= new File(ercieXMLPath);
+	}
+	
+	public String getRawTrainingDataPath(){
+		String rawTrainingDataPath = "./_input_data/trainingData.txt";
+		try{
+  			SAXReader saxReader = new SAXReader();
+  			Document document = saxReader.read(xml);
+  			List list = document.selectNodes("/metaData/rawTrainingDataPath");
+  			Iterator iter = list.iterator();
+  			while(iter.hasNext()){
+  				Element curElement = (Element)iter.next();
+  				rawTrainingDataPath = curElement.element("value").getText();
+  			}
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		return rawTrainingDataPath;
+	}
 
-	File xml = new File("./_input_data/thermalInitilization.xml");
-	
-	public ThermalXMLHandler(String thermalXMLPath){
-		xml= new File(thermalXMLPath);
-	}
-	
-	public double getInitConstraint(){
-		double initConstraint = 1.0;
+	public double getThreshold(){
+		double threshold = 0.1;
 		try{
   			SAXReader saxReader = new SAXReader();
   			Document document = saxReader.read(xml);
-  			List list = document.selectNodes("/metaData/initConstraint");
+  			List list = document.selectNodes("/metaData/threshold");
   			Iterator iter = list.iterator();
   			while(iter.hasNext()){
   				Element curElement = (Element)iter.next();
   				String curString = curElement.element("value").getText();
-  				initConstraint = Double.parseDouble(curString);
+  				threshold = Double.parseDouble(curString);
   			}
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-		return initConstraint;
+		return threshold;
 	}
 	
-	public boolean getTooColdFlag(){
-		boolean tooColdFlag = false;
+	public Boolean getRetrain(){
+		Boolean retrain = false;
 		try{
   			SAXReader saxReader = new SAXReader();
   			Document document = saxReader.read(xml);
-  			List list = document.selectNodes("/metaData/tooColdFlag");
+  			List list = document.selectNodes("/metaData/retrain");
   			Iterator iter = list.iterator();
   			while(iter.hasNext()){
   				Element curElement = (Element)iter.next();
   				String curString = curElement.element("value").getText();
-  				tooColdFlag = Boolean.parseBoolean(curString);
+  				retrain = Boolean.parseBoolean(curString);
   			}
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-		return tooColdFlag;
+		return retrain;
 	}
 	
-	public int getIterateLimit(){
-		int iterateLimit = 20;
+	public int getTrainLevel(){
+		int trainLevel = 20;
 		try{
   			SAXReader saxReader = new SAXReader();
   			Document document = saxReader.read(xml);
-  			List list = document.selectNodes("/metaData/iterateLimit");
+  			List list = document.selectNodes("/metaData/trainLevel");
   			Iterator iter = list.iterator();
   			while(iter.hasNext()){
   				Element curElement = (Element)iter.next();
   				String curString = curElement.element("value").getText();
-  				iterateLimit = Integer.parseInt(curString);
+  				trainLevel = Integer.parseInt(curString);
   			}
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-		return iterateLimit;
-	}
-	
-	public double getIncrementConstraint(){
-		double incrementConstraint = 0.1;
-		try{
-  			SAXReader saxReader = new SAXReader();
-  			Document document = saxReader.read(xml);
-  			List list = document.selectNodes("/metaData/incrementConstraint");
-  			Iterator iter = list.iterator();
-  			while(iter.hasNext()){
-  				Element curElement = (Element)iter.next();
-  				String curString = curElement.element("value").getText();
-  				incrementConstraint = Double.parseDouble(curString);
-  			}
-		} catch(Exception e){
-			e.printStackTrace();
-		}
-		return incrementConstraint;
+		return trainLevel;
 	}
 	
 }
