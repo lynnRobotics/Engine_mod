@@ -1,5 +1,6 @@
 package IntelM2M.ucee.thermal;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,6 +29,9 @@ import IntelM2M.mq.Producer;
  */
 
 public class ThermalAgent {
+	
+	ThermalXMLHandler thermalXMLHandler;
+	
 	double initConstraint = 1.0;
 	// The weather is too cold or not  
 	boolean tooColdFlag = false;
@@ -40,7 +44,9 @@ public class ThermalAgent {
 	private Map<String, Integer> optimalTempBedroom = new HashMap<String, Integer>();
 	private Map<String, String> locationActivity = new HashMap<String, String>(); // ex:<livingroom, WatchingTV>
 	
-	public ThermalAgent(){
+	public ThermalAgent(String thermalInitilizationPath){
+		thermalXMLHandler = new ThermalXMLHandler(thermalInitilizationPath);
+		initConstraint = 
 	}
 
 	/* Get <activity, appList> */
@@ -217,12 +223,12 @@ public class ThermalAgent {
 		return Esdse.temperatureReading.get(location);
 	}
 	
-	/* Get humidity from enviroment */
+	/* Get humidity from environment */
 	public double getHumidity(String location) {
 		return Esdse.humidityReading.get(location);
 	}
 
-	/* Get velocity according to appliance and enviroment */
+	/* Get velocity according to appliance and environment */
 	public double getVelFromAppList(ArrayList<AppNode> appList) {
 		String fanStatus = "";
 
@@ -392,27 +398,6 @@ public class ThermalAgent {
 			}
 			
 			return optThermalList;
-			// Old version of optimizing
-			// 從eusList中和thermal有關的電氣，找出所有的狀態排列組合
-			/*Optimizer op = new Optimizer();
-			ArrayList<String> candidateList = op.buildCandidateList(thermalAppList);
-			
-			int iterateCounter = 0;
-			ArrayList<AppNode> bestAnswer = null;
-			while((bestAnswer == null || bestAnswer.size() == 0) && iterateCounter < iterateLimit) {
-				bestAnswer = thermalIterate(candidateList, thermalAppList, thermalRawList, gaInference, iterateCounter);
-				iterateCounter++;
-			}*/
-			
-			// If there is no optimal solution return thermalRawList
-			// else return bestAnswer
-			/*if (bestAnswer.size() == 0) {
-				System.err.println("No best answer found for thermal control!");
-				return thermalRawList;
-			}
-			else {
-				return bestAnswer;
-			}*/
 		}
 	}
 	
@@ -433,7 +418,7 @@ public class ThermalAgent {
 		if (thermalAppList.size() == 0) {
 			return new ArrayList<AppNode>();
 		} else {
-			/* 從eusList中和thermal有關的電氣，找出所有的狀態排列組合 */
+			/* 從eusList中和thermal有關的電器，找出所有的狀態排列組合 */
 			Optimizer op = new Optimizer();
 			/* thermal App list有可能是空的 */
 			ArrayList<String> candidateList = op.buildCandidateList(thermalAppList);
@@ -457,7 +442,7 @@ public class ThermalAgent {
 	
 	/* Calculate PMV according to each activity and record <location_activity, pmv> 
 	 * According to PMV calculate optimal temperature for activity in openspace and bedroom 
-	 * */
+	 */
 	public void computePmvForEachLocation(ArrayList<AppNode> thermalRawList, GAinference gaInference) {
 		Map<String, ArrayList<AppNode>> actAppList = getActAppList(thermalRawList, gaInference);
 		
@@ -601,25 +586,6 @@ public class ThermalAgent {
 	}
 	
 	private void setActivityPriority(Map<String, Integer> priorityList) {
-		/* Simulator */
-//		priorityList.put("GoOut", 17);
-//		priorityList.put("ComeBack", 16);
-//		priorityList.put("WatchingTV", 3);
-//		priorityList.put("PlayingKinect", 6);
-//		priorityList.put("Chatting", 5);
-//		priorityList.put("ReadingBook", 4);
-//		priorityList.put("Cleaning", 10);
-//		priorityList.put("Cooking", 13);
-//		priorityList.put("WashingDishes", 9);
-//		priorityList.put("Laundering", 15);
-//		priorityList.put("Studying", 7);
-//		priorityList.put("Sleeping", 1);
-//		priorityList.put("ListeningMusic", 8);
-//		priorityList.put("UsingPC", 2);
-//		priorityList.put("TakingBath", 14);
-//		priorityList.put("UsingRestroom", 12);
-//		priorityList.put("BrushingTooth", 11);
-		
 		/* BL313 */
 		priorityList.put("GoOut", 10);
 		priorityList.put("ComeBack", 9);

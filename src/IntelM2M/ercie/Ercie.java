@@ -10,7 +10,7 @@ import IntelM2M.ercie.erc.GaEscGenerator;
 import IntelM2M.func.text2Arff;
 
 /**
- * EPCIE
+ * ERCIE (originally EPCIE)
  * 
  * @author Mao (2012.06)
  */

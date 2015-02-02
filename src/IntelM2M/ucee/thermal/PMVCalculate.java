@@ -1,7 +1,10 @@
 package IntelM2M.ucee.thermal;
 
-
 import java.util.Calendar;
+
+/**
+ * Revised by Guan-Lin 2015/1/28
+ */
 
 public class PMVCalculate {
 	double m; // activity, W/m^2
@@ -20,159 +23,111 @@ public class PMVCalculate {
 
 	/* default */
 	public PMVCalculate(){
-		java.util.Date date = new java.util.Date();
-		m = 58; 
-		w = 0;
-		rh = 50;
-		t_a = 26;
-		
-		int month = Calendar.getInstance().get(Calendar.MONTH);
-		if(month >= 2 && month <= 3)
-			i_cl = 0.7;
-		else if(month >= 4 && month <= 7)
-			i_cl = 0.5;
-		else if(month >= 8 && month <= 9)
-			i_cl = 1.0;
-		else
-			i_cl = 1.5;
-		
-		t_r = t_a;
-		v_ar = 0.5;
+		setM(58); 
+		setW(0);
+		setRh(50);
+		setTa(26);
+		setInitialIcl();
+		setTcl(30);
+		setTr(t_a);
+		setVar(0.5);
 		setFcl(i_cl); // set Fcl and convert Icl unit
-		setInitialTclHc(30,30);
+		setHc(30);
 	}
 	
+	/* given activity intensity, temperature, wind velocity */
 	public PMVCalculate(double intensity,double temp, double vel){
-		java.util.Date date = new java.util.Date();
-		m = intensity; 
-		w = 0;
-		rh = 50;
-		t_a = temp;
-		int month = Calendar.getInstance().get(Calendar.MONTH);
-		if(month >= 2 && month <= 3)
-			i_cl = 0.7;
-		else if(month >= 4 && month <= 7)
-			i_cl = 0.5;
-		else if(month >= 8 && month <= 9)
-			i_cl = 1.0;
-		else
-			i_cl = 1.5;
-		
-		t_r = t_a;
-		v_ar = vel;
+		setM(intensity); 
+		setW(0);
+		setRh(50);
+		setTa(temp);
+		setInitialIcl();
+		setTcl(30);
+		setTr(t_a);
+		setVar(vel);
 		setFcl(i_cl); // set Fcl and convert Icl unit
-		setInitialTclHc(30,30);
+		setHc(30);
 	}
 
+	/* given activity intensity, temperature, wind velocity, humidity */
+	public PMVCalculate (double intensity, double humidity, double temp, double vel){
+		setM(intensity); 
+		setW(0);
+		setRh(humidity);
+		setTa(temp);
+		setInitialIcl();
+		setTcl(30);
+		setTr(t_a - 3);
+		setVar(vel);
+		setFcl(i_cl); // set Fcl and convert Icl unit
+		setHc(30);
+	}
+	
+	/* given activity intensity, humidity, temperature, clothing index, radial temperature, wind velocity */
 	public PMVCalculate(double[] args){ // args = M, RH, Ta, Icl, Tr, Var
 		m = args[0];
 		rh = args[1];
 		t_a = args[2];
 		i_cl = args[3];
+		setTcl(30);
 		t_r = args[4];
 		v_ar = args[5];
 		setFcl(i_cl); // set Fcl and convert Icl unit
-		setInitialTclHc(30,30);
+		setHc(30);
 	}
 	
-	public PMVCalculate (double intensity, double temp, double vel, double humidity) {
-		m = intensity; 
-		w = 0;
-		rh = humidity;
-		t_a = temp;
+	private void setInitialIcl(){
+		//java.util.Date date = new java.util.Date();
+		
 		int month = Calendar.getInstance().get(Calendar.MONTH);
-		if(month >= 2 && month <= 3)
+		// Feb and Mar, spring
+		if(month >= 2 && month <= 3) 
 			i_cl = 0.7;
+		// Apr to July, spring/summer
 		else if(month >= 4 && month <= 7)
 			i_cl = 0.5;
+		// Aug and Sep, summer
 		else if(month >= 8 && month <= 9)
 			i_cl = 1.0;
+		// Sep to Jan, fall/winter
 		else
 			i_cl = 1.5;
-		
-		t_r = t_a - 3;
-		v_ar = vel;
-		setFcl(i_cl); // set Fcl and convert Icl unit
-		setInitialTclHc(30,30);
 	}
 	
-	public void setInitialTclHc(double tcl, double hc) {
-		t_cl = tcl;
-		h_c = hc;
-	}
-	
-	public void setM(double a) {	// set Activity factor
+	private void setM(double a) {	// set Activity factor
 		m = a;
 	}
-
-	public void setTa(double t) {
-		t_a = t;
+	
+	private void setW(double a){
+		w = a;
 	}
-
-	public void setRh(double h) {
+	
+	private void setRh(double h) {
 		rh = h;
 	}
 	
-	public void setIcl(double icl) {
+	private void setTa(double t) {
+		t_a = t;
+	}
+	
+	private void setIcl(double icl) {
 		i_cl = icl; // unit : clo
 		setFcl(i_cl); // set Fcl and convert Icl unit
 	}
-
-	public void setTr(double tr) {
+	
+	private void setTcl(double tcl) {
+		t_cl = tcl;
+	}
+	
+	private void setTr(double tr) {
 		t_r = tr;
 	}
-
-	public void setVar(double var) {
+	
+	private void setVar(double var) {
 		v_ar = var;
 	}
 
-	public double[] getPMVandPPD() {
-		double[] PMV_PPD = new double[2];
-		double[] q = {t_cl,h_c};
-
-		setPa();
-		findMinVec(q);
-		// calculate PMV
-		PMV_PPD[0] = (0.303 * Math.exp(-0.036 * m) + 0.028);
-		PMV_PPD[0] *= m - (3.05e-3 * (5733 - 6.99 * m - pa)) -
-			0.42 * (m - 58.15) - 1.7e-5 * m * (5867 - pa) -
-			0.0014 * m * (34 - t_a) - 3.96 * Math.pow(10, -8) * f_cl *
-			(Math.pow(t_cl + 273, 4) - Math.pow(t_r + 273, 4)) -
-			f_cl * h_c * (t_cl - t_a);
-
-		// calculate PPD
-		PMV_PPD[1] = 100 - 95 * Math.exp(-0.03353 * Math.pow(PMV_PPD[0],4) - 0.2179 * Math.pow(PMV_PPD[0], 2));
-		pmv = PMV_PPD[0];
-		ppd = PMV_PPD[1];
-		return PMV_PPD;
-	}
-
-	/* to get the t_a which can make the consequent pmv = 0 
-	 * use 1% to gradually approach target value 
-	 * (experimental result with quite good speed and accuracy) */
-	public synchronized double getMostFitTemp(double targetPMV) {
-		if(Math.abs(pmv - targetPMV) < 0.001) {
-			return t_a;
-		}
-		if(pmv > targetPMV) {
-			t_a *= 0.99;
-			getPMVandPPD();
-			getMostFitTemp(targetPMV);
-		}
-		else {
-			t_a *= 1.01;
-			getPMVandPPD();
-			getMostFitTemp(targetPMV);
-		}
-		return t_a;
-	}	
-
-	/* RH = relative humidity , Ta = temp */
-	public void setPa() {
-		pa = rh * 10 * Math.exp(16.6536 - (4030.183 / (t_a + 235)));
-	}
-
-	public void setFcl(double icl) {
+	private void setFcl(double icl) {
 		icl *= 0.155;
 		if(icl <= 0.078)
 			f_cl = 1 + 1.29 * icl;
@@ -180,8 +135,17 @@ public class PMVCalculate {
 			f_cl = 1.05 + 0.645 * icl;
 		i_cl = icl;
 	}
+	
+	private void setHc(double hc){
+		h_c = hc;
+	}
 
-	public double pmvEQF(double q[]) { // q[0] = Tcl, q[1] = Hc
+	/* RH = relative humidity , Ta = temp */
+	private void setPa() {
+		pa = rh * 10 * Math.exp(16.6536 - (4030.183 / (t_a + 235)));
+	}
+
+	private double pmvEQF(double q[]) { // q[0] = Tcl, q[1] = Hc
 		double q1,q2;
 
 		/*q1=tcl*/
@@ -197,7 +161,7 @@ public class PMVCalculate {
 	}
 
 	/* x0 = [Tcl, Hc] */
-	public void findMinVec(double[] x0) {
+	private void findMinVec(double[] x0) {
 		double[] x1 = new double[2];
 		double[] x2 = new double[2];
 		double[] m = new double[2];
@@ -310,6 +274,47 @@ public class PMVCalculate {
 			}
 		}
 	}
+
+	public double[] getPMVandPPD() {
+		double[] PMV_PPD = new double[2];
+		double[] q = {t_cl,h_c};
+
+		setPa();
+		findMinVec(q);
+		// calculate PMV
+		PMV_PPD[0] = (0.303 * Math.exp(-0.036 * m) + 0.028);
+		PMV_PPD[0] *= m - (3.05e-3 * (5733 - 6.99 * m - pa)) -
+			0.42 * (m - 58.15) - 1.7e-5 * m * (5867 - pa) -
+			0.0014 * m * (34 - t_a) - 3.96 * Math.pow(10, -8) * f_cl *
+			(Math.pow(t_cl + 273, 4) - Math.pow(t_r + 273, 4)) -
+			f_cl * h_c * (t_cl - t_a);
+
+		// calculate PPD
+		PMV_PPD[1] = 100 - 95 * Math.exp(-0.03353 * Math.pow(PMV_PPD[0],4) - 0.2179 * Math.pow(PMV_PPD[0], 2));
+		pmv = PMV_PPD[0];
+		ppd = PMV_PPD[1];
+		return PMV_PPD;
+	}
+
+	/* to get the t_a which can make the consequent pmv = 0 
+	 * use 1% to gradually approach target value 
+	 * (experimental result with quite good speed and accuracy) */
+	public synchronized double getMostFitTemp(double targetPMV) {
+		if(Math.abs(pmv - targetPMV) < 0.001) {
+			return t_a;
+		}
+		if(pmv > targetPMV) {
+			t_a *= 0.99;
+			getPMVandPPD();
+			getMostFitTemp(targetPMV);
+		}
+		else {
+			t_a *= 1.01;
+			getPMVandPPD();
+			getMostFitTemp(targetPMV);
+		}
+		return t_a;
+	}	
 }
 
 

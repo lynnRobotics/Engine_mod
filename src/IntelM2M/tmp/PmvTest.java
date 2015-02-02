@@ -6,7 +6,6 @@ import IntelM2M.ucee.thermal.PMVCalculate;
 
 public class PmvTest {
     public static void main(String[] args) throws Exception {
-
     	double intensity=80;
     	double temp=32;
     	double vel=3;
