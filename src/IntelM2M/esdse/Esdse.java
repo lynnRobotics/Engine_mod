@@ -54,13 +54,6 @@ public class Esdse {
 	private PreferenceAgent pr = new PreferenceAgent();
 	public ControlAgent controlAgent = new ControlAgent(producer);
 	
-	/* Different kinds of reading */
-	public static Map<String, String> sensorReading = new LinkedHashMap<String, String>();
-	public static Map<String, Double> ezMeterAmpereReading = new LinkedHashMap<String, Double>();
-	public static Map<String, Double> temperatureReading = new LinkedHashMap<String, Double>();
-	public static Map<String, Double> humidityReading = new LinkedHashMap<String, Double>();
-	public static Map<String, Double> illuminationReading = new LinkedHashMap<String, Double>();
-	
 	/* Maintain AC temperature */
 	public static int acTemperature_livingroom = 20;
 	public static int acTemperature_bedroom = 20;
@@ -153,23 +146,23 @@ public class Esdse {
 		int i = 0;
 		for (String sensorName : sensorNameArray) {
 			if (i == 7 || i == 9 || i == 13 || i == 14 || i == 15 || i == 17) {
-				sensorReading.put(sensorName, "standby");
+				Mchess.sensorReading.put(sensorName, "standby");
 			} else {
-				sensorReading.put(sensorName, "off");
+				Mchess.sensorReading.put(sensorName, "off");
 			}
 			i++;
 		}
 		
 		// Initialization of comfort sensor reading according to location
 		for (String location : EnvStructure.roomList) {
-			temperatureReading.put(location, null);
-			humidityReading.put(location, null);
-			illuminationReading.put(location, null);
+			Mchess.temperatureReading.put(location, null);
+			Mchess.humidityReading.put(location, null);
+			Mchess.illuminationReading.put(location, null);
 		}
 		
 		// Initialization of ezmeter reading of each appliance
 		for (String appliance : EnvStructure.applianceNameList) {
-			ezMeterAmpereReading.put(appliance, -1.0);
+			Mchess.ezMeterAmpereReading.put(appliance, -1.0);
 		}
 		
 		// Initialization of each calorie value to zero in the time window 
@@ -517,9 +510,9 @@ public class Esdse {
 		
 		// Compute human number
 		int humanNumber = 0;
-		for (String sensorName : sensorReading.keySet()) {
-			if (sensorName.contains("people") && sensorReading.get(sensorName).startsWith("on")) {
-				humanNumber += Integer.parseInt(sensorReading.get(sensorName).split("_")[1]);
+		for (String sensorName : Mchess.sensorReading.keySet()) {
+			if (sensorName.contains("people") && Mchess.sensorReading.get(sensorName).startsWith("on")) {
+				humanNumber += Integer.parseInt(Mchess.sensorReading.get(sensorName).split("_")[1]);
 			}
 		}
 		NumOfPeople = humanNumber;
@@ -541,7 +534,7 @@ public class Esdse {
 		checkComeBackAndGoOut(sensorNode);
 		
 		// Update sensor reading
-		sensorReading.put(sensorNode.name, sensorNode.discreteValue);
+		Mchess.sensorReading.put(sensorNode.name, sensorNode.discreteValue);
 		// If this sensor hasn't shown at this round then add to updatedSensorList
 		if (!updatedSensorList.contains(sensorNode.name)) {
 			updatedSensorList.add(sensorNode.name);
@@ -572,7 +565,7 @@ public class Esdse {
 		
 		if(ercie == null) { // jump out if it is in a learning mode
 			for (String sensorName : sensorNameArray) {
-				String featureString = sensorReading.get(sensorName).split("_")[0];
+				String featureString = Mchess.sensorReading.get(sensorName).split("_")[0];
 				System.out.print(featureString + " ");
 			}
 			/////
@@ -586,16 +579,16 @@ public class Esdse {
 		System.out.println(); // start with "@" for logging
 		System.out.print("@"); // start with "@" for logging
 		for (String sensorName : sensorNameArray) {
-			System.out.print(sensorName + ":" + sensorReading.get(sensorName) + ",");
+			System.out.print(sensorName + ":" + Mchess.sensorReading.get(sensorName) + ",");
 		}
 		System.out.println();
 		
 		// Show comfort sensor readings according to each location
 		System.out.print("@@"); // start with "@" for logging
 		for (String location : EnvStructure.roomList) {
-			System.out.print(location + ":" + temperatureReading.get(location) + " C,");
-			System.out.print(location + ":" + humidityReading.get(location) + " %,");
-			System.out.print(location + ":" + illuminationReading.get(location) + " Lux,");
+			System.out.print(location + ":" + Mchess.temperatureReading.get(location) + " C,");
+			System.out.print(location + ":" + Mchess.humidityReading.get(location) + " %,");
+			System.out.print(location + ":" + Mchess.illuminationReading.get(location) + " Lux,");
 		}
 		System.out.println();
 		
@@ -603,7 +596,7 @@ public class Esdse {
 		System.out.println("#humanNumer = " + humanNumber);
 		
 		// Infer GA
-		ercie.gaInferenceForRealTime_new(sensorReading, humanNumber);
+		ercie.gaInferenceForRealTime_new(Mchess.sensorReading, humanNumber);
 		
 		// Eliminate some impossible activities
 		activityPostProcessing(ercie);
@@ -723,12 +716,12 @@ public class Esdse {
 		// Optimization step
 		// Inferred result set might be empty
 		if(ercie.gaInference.actInferResultSet.size() == 0){
-			eusList = eusAggregationForRealTime(ercie.gaInference, sensorReading);
+			eusList = eusAggregationForRealTime(ercie.gaInference, Mchess.sensorReading);
 			decisionList = eusList;
 		} 
 		else {
 			// 1.EUS aggregation
-			eusList = eusAggregationForRealTime(ercie.gaInference, sensorReading);
+			eusList = eusAggregationForRealTime(ercie.gaInference, Mchess.sensorReading);
 			// 2.EUS dispatch
 			eusDispatch_new(eusList, ercie.gaInference); 
 			// 3.Optimization
@@ -864,7 +857,7 @@ public class Esdse {
 				// Get corresponding appliance name according to ezMeter id
 				String applianceName = EnvStructure.applianceList.get(type + "_" + id).name;
 				// Put newest ampere info into ezMete reading
-				ezMeterAmpereReading.put(applianceName, ampere_value);
+				Mchess.ezMeterAmpereReading.put(applianceName, ampere_value);
 			}
 
 			// If id = 20 (AC_bedroom), set temperature of bedroom 
@@ -882,14 +875,14 @@ public class Esdse {
 			// Because zeMeter is the slowest sensor node during info retrieval
 			if(initialization){
 				// Dump those not ready ezMeters
-				Set<String> keySet = ezMeterAmpereReading.keySet();
+				Set<String> keySet = Mchess.ezMeterAmpereReading.keySet();
 				for(String ezMeter : keySet){
-					if(ezMeterAmpereReading.get(ezMeter).equals(-1.0)){
+					if(Mchess.ezMeterAmpereReading.get(ezMeter).equals(-1.0)){
 						System.err.print(ezMeter + ", ");
 					}
 				}
 				System.out.println();
-				if (!ezMeterAmpereReading.containsValue(-1.0)) {
+				if (!Mchess.ezMeterAmpereReading.containsValue(-1.0)) {
 					initialization = false;
 					producer.sendOut(json.add("subject", "signal").add("initialization", "end").toJson(), "ssh.CONTEXT");
 				}
@@ -899,14 +892,14 @@ public class Esdse {
 		else if (subject.equals("people")) {
 			SensorNode sensorNode = GaDbnClassifier.getSensorNode(message);
 			if (sensorNode != null) {
-				sensorReading.put(sensorNode.name, sensorNode.discreteValue);
+				Mchess.sensorReading.put(sensorNode.name, sensorNode.discreteValue);
 			}
 			return;
 	    }
 		else if (subject.equals("current")){
 	    	SensorNode sensorNode = GaDbnClassifier.getSensorNode(message);
 			if(sensorNode != null){
-				sensorReading.put(sensorNode.name, sensorNode.discreteValue);
+				Mchess.sensorReading.put(sensorNode.name, sensorNode.discreteValue);
 			}
 		} 
 		// For playKinet to accumulate calorie
@@ -1004,15 +997,15 @@ public class Esdse {
 		if(ercie.gaInference.actInferResultSet.contains("WatchingTV") && ercie.gaInference.actInferResultSet.contains("PlayingKinect")){
 			ercie.gaInference.actInferResultSet.remove("WatchingTV");
 		}
-		if(ercie.gaInference.actInferResultSet.contains("Reading") && !sensorReading.get("current_lamp_livingroom").startsWith("on")){
+		if(ercie.gaInference.actInferResultSet.contains("Reading") && !Mchess.sensorReading.get("current_lamp_livingroom").startsWith("on")){
 			ercie.gaInference.actInferResultSet.remove("Reading");
 		}
 		// PlayingKinect but XOBX is not on
-		if(ercie.gaInference.actInferResultSet.contains("PlayingKinect") && (!sensorReading.get("current_xbox_livingroom").startsWith("on") || !sensorReading.get("current_TV_livingroom").startsWith("on"))){
+		if(ercie.gaInference.actInferResultSet.contains("PlayingKinect") && (!Mchess.sensorReading.get("current_xbox_livingroom").startsWith("on") || !Mchess.sensorReading.get("current_TV_livingroom").startsWith("on"))){
 			ercie.gaInference.actInferResultSet.remove("PlayingKinect");
 		}
 		// WatchingTV but TV is not on
-		if(ercie.gaInference.actInferResultSet.contains("WatchingTV") && !sensorReading.get("current_TV_livingroom").startsWith("on")){
+		if(ercie.gaInference.actInferResultSet.contains("WatchingTV") && !Mchess.sensorReading.get("current_TV_livingroom").startsWith("on")){
 			ercie.gaInference.actInferResultSet.remove("WatchingTV");
 		}
 		// AllSleeping and Sleeping, We want AllSleeping
@@ -1032,7 +1025,7 @@ public class Esdse {
 			//controlAgent.sendControlStartSignal();
 			// If door's open and illumination isn't enough then turn on hallway light
 			// TODO: Do we really need to check doorOpen?
-			if((illuminationReading.get("hallway") < hallwayLightLuxTreshold) && doorOpen){
+			if((Mchess.illuminationReading.get("hallway") < hallwayLightLuxTreshold) && doorOpen){
 				json.reset();
 				producer.sendOut(json.add("value", "DOOR-LIGHT_ON").toJson(), "ssh.COMMAND");
 		    }
@@ -1105,7 +1098,7 @@ public class Esdse {
 		sensorDataVector = "";
 		String[] sensorNameArray = (String[]) sensorStatus.keySet().toArray(new String[0]);
 		for (String sensorName : sensorNameArray) {
-			sensorDataVector = sensorDataVector.concat(sensorReading.get(sensorName) + " ");
+			sensorDataVector = sensorDataVector.concat(Mchess.sensorReading.get(sensorName) + " ");
 		}
 		sensorDataVector = sensorDataVector.concat("#");
 		if (ercie.gaInference.actInferResultSet.size() != 0) {

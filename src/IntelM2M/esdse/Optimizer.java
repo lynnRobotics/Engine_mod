@@ -149,7 +149,7 @@ public class Optimizer {
 		}*/
 
 		// Thermal evaluation
-		ThermalAgent ta = new ThermalAgent("./_input_data/thermalInitilization.xml");
+		ThermalAgent ta = new ThermalAgent();
 		ArrayList<AppNode> thermalList = ta.getOptThermalList(eusList, gaInference, producer);
 		System.out.println("getOptThermalList done! thermalList = " + thermalList.size());
 		// Visual evaluation
@@ -184,7 +184,7 @@ public class Optimizer {
 		}
 
 		/* thermal evaluation */
-		ThermalAgent ta = new ThermalAgent("./_input_data/thermalInitilization.xml");
+		ThermalAgent ta = new ThermalAgent();
 		ArrayList<AppNode> thermalList = ta.getOptThermalListForOnline(eusList, gaInference);
 		System.out.println("getOptThermalList done! thermalList = " + thermalList.size());
 		/* visual evaluation */

@@ -24,6 +24,7 @@ import weka.classifiers.bayes.net.MarginCalculator;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 import weka.core.Utils;
+
 import IntelM2M.algo.Classifier;
 import IntelM2M.algo.Prior;
 import IntelM2M.datastructure.EnvStructure;
@@ -31,6 +32,7 @@ import IntelM2M.datastructure.ExpResult;
 import IntelM2M.datastructure.SensorNode;
 import IntelM2M.ercie.GaGenerator;
 import IntelM2M.esdse.Esdse;
+import IntelM2M.mchess.Mchess;
 
 public class GaDbnClassifier implements Classifier {
 	public EditableBayesNet[] classifier;
@@ -574,7 +576,7 @@ public class GaDbnClassifier implements Classifier {
 		if(s.type.equals("current")){
 			s.discreteValue = extractValue(message, "value");
 			try{
-				s.rawValue = Esdse.ezMeterAmpereReading.get(sensorList.get(s.type + "_" + s.id).name);
+				s.rawValue = Mchess.ezMeterAmpereReading.get(sensorList.get(s.type + "_" + s.id).name);
 			}catch (Exception e){
 				return null;
 			}
@@ -592,9 +594,9 @@ public class GaDbnClassifier implements Classifier {
 		else if(s.type.equals("comfort_sensor")){
 			String location = sensorList.get("light_" + s.id).name.split("_")[1];  // e.g., light_livingroom
 			// Update comfort value according to different location
-			Esdse.temperatureReading.put(location, Double.parseDouble(extractValue(message, "temperature")));
-			Esdse.humidityReading.put(location, Double.parseDouble(extractValue(message, "humidity")));
-			Esdse.illuminationReading.put(location, Double.parseDouble(extractValue(message, "lux")));
+			Mchess.temperatureReading.put(location, Double.parseDouble(extractValue(message, "temperature")));
+			Mchess.humidityReading.put(location, Double.parseDouble(extractValue(message, "humidity")));
+			Mchess.illuminationReading.put(location, Double.parseDouble(extractValue(message, "lux")));
 			// We deal with light_hallway separately
 			if(location.equals("hallway")){
 				s.type = "light";
@@ -668,7 +670,7 @@ public class GaDbnClassifier implements Classifier {
 				// We deal with hallway and other place separately
 				if(s.name.equals("light_hallway")){
 					// If lamp in livingroom is open, bias will be used
-					if(Esdse.sensorReading.get("current_lamp_livingroom").equals("on_1")){
+					if(Mchess.sensorReading.get("current_lamp_livingroom").equals("on_1")){
 						bias = 60;
 					}
 					// Find Switch-level according to Switch-lux

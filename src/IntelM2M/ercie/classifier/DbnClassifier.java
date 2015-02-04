@@ -223,6 +223,7 @@ public class DbnClassifier implements Classifier  {
     	
     }
     
+    /* Default off */
     public String setDefaultValue(int index, int iNode, String nodeName)
     {
     	Map<String, String> sensorState=EnvStructure.sensorState;

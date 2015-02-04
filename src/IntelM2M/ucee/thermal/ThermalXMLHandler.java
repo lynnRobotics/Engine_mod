@@ -9,12 +9,14 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import IntelM2M.mchess.Mchess;
+
 public class ThermalXMLHandler {
 
 	File xml = new File("./_input_data/thermalInitilization.xml");
 	
-	public ThermalXMLHandler(String thermalXMLPath){
-		xml= new File(thermalXMLPath);
+	public ThermalXMLHandler(){
+		xml= new File(Mchess.thermalInitializationPath);
 	}
 	
 	public double getInitConstraint(){

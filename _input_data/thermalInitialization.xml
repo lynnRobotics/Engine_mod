@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metaData>
-
+	<initConstraint>
+		<value>1.0</value>
+	</initConstraint>
+	<tooColdFlag>
+		<value>false</value>
+	</tooColdFlag>
+	<iterateLimit>
+		<value>20</value>
+	</iterateLimit>
+	<incrementConstraint>
+		<value>0.1</value>
+	</incrementConstraint>
 </metaData>

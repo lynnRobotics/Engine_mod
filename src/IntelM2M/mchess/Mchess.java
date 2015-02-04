@@ -1,5 +1,8 @@
 package IntelM2M.mchess;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 
 import s2h.platform.support.MessageUtils;
@@ -11,6 +14,7 @@ import IntelM2M.ercie.GaGenerator;
 import IntelM2M.esdse.Esdse;
 import IntelM2M.mq.Consumer;
 import IntelM2M.test.SimulatorTest;
+import IntelM2M.ucee.thermal.ThermalXMLHandler;
 
 /**
  * MCHESS
@@ -20,11 +24,20 @@ import IntelM2M.test.SimulatorTest;
 
 public class Mchess extends Consumer implements Runnable {
 
+	public static String ercieInitializationPath = "./_input_data/ercieInitilization.xml";
+	public static String thermalInitializationPath = "./_input_data/thermalInitilization.xml";
+	
 	/* Two main engine */
 	static Ercie ercie = null;
 	static Esdse esdse;
 	
-	static String ercieInitializationPath;
+	/* Different kinds of reading */ // Were in ESDSE, but UCEE and ESDSE both need it
+	public static Map<String, String> sensorReading = new LinkedHashMap<String, String>();
+	public static Map<String, Double> ezMeterAmpereReading = new LinkedHashMap<String, Double>();
+	public static Map<String, Double> temperatureReading = new LinkedHashMap<String, Double>();
+	public static Map<String, Double> humidityReading = new LinkedHashMap<String, Double>();
+	public static Map<String, Double> illuminationReading = new LinkedHashMap<String, Double>();
+	
 	
 	s2h.platform.support.JsonBuilder json = MessageUtils.jsonBuilder();
 	//private Logger log = Logger.getLogger(Mchess.class.getName());
@@ -90,8 +103,6 @@ public class Mchess extends Consumer implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-		ErcieXMLHandler.ercieInitializationPath = "./_input_data/ercieInitilization.xml";
-		
 		
 		if (args.length < 1) {
 			System.out.println("please add the argument!\ne.g. [mchess] -run or [mchess] -learn");

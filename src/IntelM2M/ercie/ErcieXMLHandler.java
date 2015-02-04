@@ -12,6 +12,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import IntelM2M.datastructure.GroupActivity;
+import IntelM2M.mchess.Mchess;
 
 public class ErcieXMLHandler {
 	
@@ -19,7 +20,7 @@ public class ErcieXMLHandler {
 	File xml = new File("./_input_data/ercielInitilization.xml");
 	
 	public ErcieXMLHandler(){
-		xml= new File(ercieInitializationPath);
+		xml= new File(Mchess.ercieInitializationPath);
 	}
 	
 	public String getRawTrainingDataPath(){
@@ -98,7 +99,7 @@ public class ErcieXMLHandler {
 		try{
   			SAXReader saxReader = new SAXReader();
   			Document document = saxReader.read(xml);
-  			List list = document.selectNodes("/metaData/gaList");
+  			List list = document.selectNodes("/metaData/gaList/ga");
   			Iterator iter = list.iterator();
   			while(iter.hasNext()){
   				Element curElement = (Element)iter.next();

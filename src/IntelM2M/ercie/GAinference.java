@@ -504,9 +504,7 @@ public class GAinference {
 				}
 			}
 		}
-		
 		return gaName;
-		
 	}
 	
 	 private Boolean checkMemberRepeat(ArrayList<String> memberList,ArrayList<String> higherMemberList){

@@ -21,6 +21,7 @@ import IntelM2M.esdse.Optimizer;
 import IntelM2M.exp.ExpRecorder;
 import IntelM2M.mq.Producer;
 import IntelM2M.ucee.thermal.PMVCalculate;
+import IntelM2M.mchess.Mchess;
 
 public class VisualAgent {
 
@@ -202,7 +203,7 @@ public class VisualAgent {
 			//VisualComfortTable vct = EnvStructure.visualComfortTableList.get(location);
 			//ArrayList<AppNode> appList = actAppList.get(act);
 			// Get lux from sensor reading of that location
-			double lux = Esdse.illuminationReading.get(location);
+			double lux = Mchess.illuminationReading.get(location);
 			// get real lux level
 			double realLuxLevel = LuxLevel.transformLuxLevel(lux);
 			// get ideal lux level
@@ -291,7 +292,7 @@ public class VisualAgent {
 				// ILL donesn't fulfills the constraint
 				if(marginIdealLux.get(location) != -1){	
 					// Get lux from light sensor
-					double lightSensorReading = Esdse.illuminationReading.get(location);
+					double lightSensorReading = Mchess.illuminationReading.get(location);
 					double lightStatusLux = 0;
 					// Calculate lux provided by light
 					if(appNode.envContext.contains("on")){
@@ -423,7 +424,7 @@ public class VisualAgent {
 			// 燈光的搭配組合取得lux
 			//double lux = vct.getLuxFromTable(appList);
 			// Get lux from sensor reading of that location
-			double lux = Esdse.illuminationReading.get(location);
+			double lux = Mchess.illuminationReading.get(location);
 			// get real lux level
 			double realLuxLevel = LuxLevel.transformLuxLevel(lux);
 			// get ideal lux level
@@ -448,7 +449,7 @@ public class VisualAgent {
 				else if (location.equals("study")) act = "Studying";
 				ArrayList<AppNode> appList = actAppList.get(act);
 				
-				double lux = Esdse.illuminationReading.get(location);
+				double lux = Mchess.illuminationReading.get(location);
 				// get real lux level
 				double realLuxLevel = LuxLevel.transformLuxLevel(lux);
 				// get ideal lux level
@@ -473,7 +474,7 @@ public class VisualAgent {
 			//VisualComfortTable vct = EnvStructure.visualComfortTableList.get(location);
 			//ArrayList<AppNode> appList = actAppList.get(act);
 			// Get lux from sensor reading of that location
-			double lux = Esdse.illuminationReading.get(location);
+			double lux = Mchess.illuminationReading.get(location);
 			// get real lux level
 			double realLuxLevel = LuxLevel.transformLuxLevel(lux);
 			// get ideal lux level

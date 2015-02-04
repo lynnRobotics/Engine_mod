@@ -1,6 +1,5 @@
 package IntelM2M.ucee.thermal;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,6 +21,7 @@ import IntelM2M.ercie.GaGenerator;
 import IntelM2M.esdse.Esdse;
 import IntelM2M.esdse.Optimizer;
 import IntelM2M.exp.ExpRecorder;
+import IntelM2M.mchess.Mchess;
 import IntelM2M.mq.Producer;
 
 /**
@@ -46,8 +46,8 @@ public class ThermalAgent {
 	private Map<String, Integer> optimalTempBedroom = new HashMap<String, Integer>();
 	private Map<String, String> locationActivity = new HashMap<String, String>(); // ex:<livingroom, WatchingTV>
 	
-	public ThermalAgent(String thermalInitilizationPath){
-		thermalXMLHandler = new ThermalXMLHandler(thermalInitilizationPath);
+	public ThermalAgent(){
+		thermalXMLHandler = new ThermalXMLHandler();
 		initConstraint = thermalXMLHandler.getInitConstraint();
 		tooColdFlag = thermalXMLHandler.getTooColdFlag();
 		iterateLimit = thermalXMLHandler.getIterateLimit();
@@ -134,11 +134,16 @@ public class ThermalAgent {
 
 			// Get intensity, temperature, vel, humidity
 			double intensity = intensityList.get(i);
-			// If air condition haven't been turned on, we get temp from environment
+			// Guan-Lin: Get temp from the environment anyway. Do not get temp from airconditioner
+			double temp = getTemperature(location);
+			/*
+			// Shu-Fan: If air condition haven't been turned on, we get temp from environment
 			double temp = getTempFromAppList(appList, location);
 			if (temp == 0) {
 				temp = getTemperature(location);
 			}
+			*/
+			
 			double vel = getVelFromAppList(appList);
 			double humidity = getHumidity(location);
 
@@ -203,11 +208,11 @@ public class ThermalAgent {
 		return intensityList;
 	}
 
-	/* Revised by Shu-Fan 2013/11/14
+	/* Revised by Shu-Fan 2013/11/14, Not used by Guan-Lin 2015/2/4
 	 * 1. Livingroom & studyroom & kitchen are all affected by current_AC_livingroom
 	 * 2. Bedroom is affected by current_AC_bedroom
 	 * 3. Return 0 if air condition haven't been turned on
-	 */
+	 
 	public double getTempFromAppList(ArrayList<AppNode> appList, String location) {
 		double temp = 0;
 		for (AppNode app : appList) {
@@ -222,25 +227,23 @@ public class ThermalAgent {
 		}
 		return temp;
 	}
+	*/
 	
 	/* Get temperature from environment */
 	public double getTemperature(String location) {
-		return Esdse.temperatureReading.get(location);
+		return Mchess.temperatureReading.get(location);
 	}
 	
 	/* Get humidity from environment */
 	public double getHumidity(String location) {
-		return Esdse.humidityReading.get(location);
+		return Mchess.humidityReading.get(location);
 	}
 
 	/* Get velocity according to appliance and environment */
 	public double getVelFromAppList(ArrayList<AppNode> appList) {
 		String fanStatus = "";
-
 		for (AppNode app : appList) {
 			/* 這邊沒有彈性 */
-			//if (!app.appName.equals("current_AC_livingroom")) {
-			//if (app.appName.equals("current_fan_livingroom")) {
 			if (app.appName.equals("current_watercoldfan_livingroom")) {
 				if (app.envContext.split("_").length > 1) {
 					fanStatus = app.envContext.split("_")[1];
@@ -248,7 +251,6 @@ public class ThermalAgent {
 					fanStatus = app.envContext.split("_")[0];
 				}
 			}
-
 		}
 		double vel;
 		if (fanStatus.equals("1")) {
@@ -262,9 +264,7 @@ public class ThermalAgent {
 		} else {
 			vel = 0.2;
 		}
-
 		return vel;
-
 	}
 
 	/* Get final pmvList according to context from appList */
