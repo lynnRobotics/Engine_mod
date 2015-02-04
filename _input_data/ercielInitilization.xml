@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metaData>
+	<rawTrainingDataPath>
+		<value>./_input_data/trainingData.txt</value>
+	</rawTrainingDataPath>
+	<threshold>
+		<value>0.1</value>
+	</threshold>
+	<retrain>
+		<value>false</value>
+	</retrain>
+	<trainLevel>
+		<value>20</value>
+	</trainLevel>
+	<gaList id="1">
+		<activityName>WatchingTV</activityName>
+	</gaList>
+	<gaList id="2">
+		<activityName>PlayingKinect</activityName>
+	</gaList>
+	<gaList id="3">
+		<activityName>Chatting</activityName>
+	</gaList>
+	<gaList id="4">
+		<activityName>Reading</activityName>
+	</gaList>
+	<gaList id="5">
+		<activityName>UsingPC</activityName>
+	</gaList>
+	<gaList id="6">
+		<activityName>ComeBack</activityName>
+	</gaList>
+	<gaList id="7">
+		<activityName>GoOut</activityName>
+	</gaList>
+	<gaList id="8">
+		<activityName>PreparingFood</activityName>
+	</gaList>
+	<gaList id="9">
+		<activityName>Sleeping</activityName>
+	</gaList>
+	<gaList id="10">
+		<activityName>AllSleeping</activityName>
+	</gaList>
+
+</metaData>
