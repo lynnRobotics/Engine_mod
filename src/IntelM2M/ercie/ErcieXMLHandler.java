@@ -3,18 +3,23 @@ package IntelM2M.ercie;
 import java.io.File;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import IntelM2M.datastructure.GroupActivity;
+
 public class ErcieXMLHandler {
 	
+	static public String ercieInitializationPath;
 	File xml = new File("./_input_data/ercielInitilization.xml");
 	
-	public ErcieXMLHandler(String ercieXMLPath){
-		xml= new File(ercieXMLPath);
+	public ErcieXMLHandler(){
+		xml= new File(ercieInitializationPath);
 	}
 	
 	public String getRawTrainingDataPath(){
@@ -86,6 +91,27 @@ public class ErcieXMLHandler {
 			e.printStackTrace();
 		}
 		return trainLevel;
+	}
+	
+	public Map<String, GroupActivity> getBuildGaList(){
+		Map<String, GroupActivity> gaList = new LinkedHashMap<String, GroupActivity>();
+		try{
+  			SAXReader saxReader = new SAXReader();
+  			Document document = saxReader.read(xml);
+  			List list = document.selectNodes("/metaData/gaList");
+  			Iterator iter = list.iterator();
+  			while(iter.hasNext()){
+  				Element curElement = (Element)iter.next();
+  				String id = curElement.attributeValue("id");
+  				String activityName = curElement.element("activityName").getText();
+  				GroupActivity ga = new GroupActivity(id);
+  				ga.actMemberList.add(activityName);
+  				gaList.put(ga.GID, ga);
+  			}
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		return gaList;
 	}
 	
 }

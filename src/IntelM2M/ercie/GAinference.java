@@ -32,7 +32,6 @@ public class GAinference {
 	public Set<String> rawActInferResultSet;
 	
 	private void buildActInferResultSet(){
-		
 		actInferResultSet= new HashSet<String>();
 		for(String str:gaInferResultList){
 			for(GaGenerator gaGenerator: GaGeneratorList){
@@ -82,8 +81,6 @@ public class GAinference {
 			}
 		}
 	}
-
-
 	
 	public GAinference(ArrayList<GaGenerator> in1,ArrayList<GaDbnClassifier> in2,ArrayList<GaEscGenerator> in3,String in4){
 		GaGeneratorList=in1;
@@ -263,9 +260,6 @@ public class GAinference {
 				GAinferResult.put(gaList.get(i), false);
 				GAgroundTruth.put(gaList.get(i), false);
 			}
-			//
-			//String[] split = read.split("#");
-			//String []sensorContext=split[0].split(" ");
 			
 			JsonBuilder json = MessageUtils.jsonBuilder();
 			SensorNode s = GaDBN.getSensorAttribute(message);
@@ -275,10 +269,6 @@ public class GAinference {
 			Map<String,String> probDBN = new LinkedHashMap<String,String>();
 			/*infer GA*/
 			rawFromDBN = GaDBN.GaDBNInference(GA,s.name, s.discreteValue);
-//			for(int i=0 ;i<sensorContext.length;i++){
-//				SensorNode s= new SensorNode(sensorName[i],sensorContext[i]);
-//				rawFromDBN = GaDBN.GaDBNInference(GA,s.name, s.discreteValue);
-//			}
 			Map <String,String> allGaProb=GaDBN.allGaProb;
 
 			//int humanNumber= split[1].split(" ").length;
@@ -292,40 +282,10 @@ public class GAinference {
 				inferDBN.add(splitActPb[0]);
 				probDBN.put(splitActPb[0], splitActPb[1]);
 			}
-			//
-		
 			/*record result*/
 			for(String str:inferDBN){
 				GAinferResult.put(str, true);
 			}
-			//
-
-			/*record ground truth*/
-//			String []truth=split[1].split(" ");
-//			/*去掉NO*/
-//			ArrayList<String>tmpArr= new ArrayList<String>();
-//			for(String str:truth){
-//				if(!str.equals("NO")){
-//					tmpArr.add(str);
-//				}
-//			}
-//			truth=(String[])tmpArr.toArray(new String[0]);
-//										
-//
-//			for(String str:truth){
-//				groundTruth.put(str, true);
-//			}
-//			//
-//			
-//			/*record ground truth for GA*/			
-//			for(String str:truth){
-//				//String gid=GA.getGID(str);
-//				ArrayList<String> gidArr=GA.getGID(str);
-//				for(String GID:gidArr){
-//					GAgroundTruth.put(GID, true);
-//				}								
-//			}							
-
 			GAinferResultList.add(GAinferResult);
 		}
 		/*for experiment we record gaInferResult*/
@@ -339,25 +299,20 @@ public class GAinference {
 			}
 		}
 		buildRawActInferResultSet();
-		
-		
 		/*GA selection*/
 		ArrayList<String> selectedGA=GAselection(GAinferResultList);
 		for(String GA : selectedGA) {
 			System.out.println(GA);
 		}
+		
 		this.gaInferResultList=selectedGA;
 		buildActInferResultSet();
-	
-		
-
 	}
 	
 	public void buildInferResultForRealTime_New(Map<String, String> sensorReading){
 		ArrayList<Map <String,Boolean>> GAinferResultList= new ArrayList<Map <String,Boolean> >();
 		Boolean continueFlag=true;
 		Map<String, ArrayList<String>> sensorStatus=EnvStructure.sensorStatus;
-		
 		
 		/*k層有k個gaList*/
 		ArrayList<ArrayList<String>> kGaList=new ArrayList<ArrayList<String>>();
@@ -371,12 +326,11 @@ public class GAinference {
 	   		kGaList.add(gaList);	   
 		}
 		
-		
 		for(int k=0;k<GaGeneratorList.size()&&continueFlag;k++){
 			ArrayList<String> gaList=kGaList.get(k);
 			GaGenerator GA=GaGeneratorList.get(k);
 			GaDbnClassifier GaDBN=GaDbnList.get(k);
-			
+	
 			String [] sensorName=(String[])sensorStatus.keySet().toArray(new String[0]);
 			/*initial */
 			Map <String,Boolean> GAinferResult=new LinkedHashMap<String,Boolean>();
@@ -391,9 +345,6 @@ public class GAinference {
 				GAinferResult.put(gaList.get(i), false);
 				GAgroundTruth.put(gaList.get(i), false);
 			}
-			//
-			//String[] split = read.split("#");
-			//String []sensorContext=split[0].split(" ");
 			
 			ArrayList<String> rawFromDBN = new ArrayList<String>();
 			ArrayList<String> inferDBN = new ArrayList<String>();
@@ -405,7 +356,6 @@ public class GAinference {
 			}
 			Map <String,String> allGaProb=GaDBN.allGaProb;
 
-			//int humanNumber= split[1].split(" ").length;
 			if(rawFromDBN.size()!=0){
 				/*prior Knowledge 處理*/
 				//rawFromDBN= Prior.priorForInferenceGA(rawFromDBN,humanNumber,GA);
@@ -424,33 +374,6 @@ public class GAinference {
 			for(String str:inferDBN){
 				GAinferResult.put(str, true);
 			}
-			//
-
-			/*record ground truth*/
-//			String []truth=split[1].split(" ");
-//			/*去掉NO*/
-//			ArrayList<String>tmpArr= new ArrayList<String>();
-//			for(String str:truth){
-//				if(!str.equals("NO")){
-//					tmpArr.add(str);
-//				}
-//			}
-//			truth=(String[])tmpArr.toArray(new String[0]);
-//										
-//
-//			for(String str:truth){
-//				groundTruth.put(str, true);
-//			}
-//			//
-//			
-//			/*record ground truth for GA*/			
-//			for(String str:truth){
-//				//String gid=GA.getGID(str);
-//				ArrayList<String> gidArr=GA.getGID(str);
-//				for(String GID:gidArr){
-//					GAgroundTruth.put(GID, true);
-//				}								
-//			}							
 
 			GAinferResultList.add(GAinferResult);
 		}
@@ -468,7 +391,6 @@ public class GAinference {
 		
 		
 		/*GA selection*/
-		//ArrayList<String> selectedGA=GAselection(GAinferResultList);
 		ArrayList<String> selectedGA=GAselection(GAinferResultList, sensorReading);
 		// TODO System.out
 		for(String GA : selectedGA) {
@@ -476,7 +398,6 @@ public class GAinference {
 		}
 		this.gaInferResultList=selectedGA;
 		buildActInferResultSet();
-		//buildActInferResultSet(sensorReading);
 	}
 	
 	private ArrayList<String> GAselection(ArrayList<Map <String,Boolean>> rawInferData){	
@@ -509,12 +430,9 @@ public class GAinference {
 		}
 		
 		ArrayList<String> selectedGA=getGAname(rawInferData);
-		//String []split1=read.split("#");
-		//int humanNumber =split1[1].split(" ").length;
 		while(selectedGA.size()>humanNumber){
 			selectedGA.remove(selectedGA.size()-1);
 		}
-		//this.selectedGA=selectedGA;
 	
 		return selectedGA;
 	}
@@ -554,8 +472,6 @@ public class GAinference {
 		for (String room : EnvStructure.roomList) {
 			GANumber.put(room, 0);
 		}
-		//String []split1=read.split("#");
-		//int humanNumber =split1[1].split(" ").length;
 		for (String location : EnvStructure.roomList) {
 			int cameraReading = (sensorReading.get("people_" + location).equals("off")) ? 0 : Integer.parseInt(sensorReading.get("people_" + location).split("_")[1]);
 			for (String GA : selectedGA) {
@@ -576,12 +492,6 @@ public class GAinference {
 				}
 			}
 		}
-//		while(selectedGA.size()>humanNumber){
-//			selectedGA.remove(selectedGA.size()-1);
-//		}
-//		//this.selectedGA=selectedGA;
-//	
-//		return selectedGA;
 		return selectedGAbyHumanNumber;
 	}
 

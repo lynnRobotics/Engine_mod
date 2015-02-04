@@ -279,9 +279,6 @@ public class GaEscGenerator {
 			setImplictFeature( actInsts,"off",allLength,etcListKey);
 			setImplictFeature( actInsts,"standby",allLength,etcListKey);
 
-
-
-
 		}catch(IOException e){e.printStackTrace();}
 	}
 
@@ -312,9 +309,6 @@ public class GaEscGenerator {
 					actAppList.get(etcListKey).appList.get(j).escType = "implicit";
 					actAppList.get(etcListKey).appList.get(j).state = status;
 					actAppList.get(etcListKey).appList.get(j).confidence = roundTwoDecimals((double)mutualLengthForON[i]/(double)allLength);
-
-					//actAppList.get(etcListKey).setAppPower(j,status);
-					
 				}
 			}
 		}

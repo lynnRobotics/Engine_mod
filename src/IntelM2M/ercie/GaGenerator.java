@@ -26,12 +26,15 @@ import IntelM2M.func.CrossValidate;
 
 public class GaGenerator {
 
+	ErcieXMLHandler ercieXMLHandler;
+	
 	public Map<String, GroupActivity> gaList = new LinkedHashMap<String, GroupActivity>();
 	public Instances insts;
 	public int level;
 
 	public GaGenerator() {
 		try {
+			ercieXMLHandler = new ErcieXMLHandler();
 			File dir = new File("./_weka_training_data");
 			insts = new Instances(new FileReader("./_weka_training_data/"
 					+ dir.list()[0]));
@@ -41,6 +44,7 @@ public class GaGenerator {
 
 	public GaGenerator(int level) {
 		try {
+			ercieXMLHandler = new ErcieXMLHandler();
 			File dir = new File("./_weka_training_data");
 			insts = new Instances(new FileReader("./_weka_training_data/"
 		    			+ dir.list()[0]));
@@ -63,92 +67,8 @@ public class GaGenerator {
 	}
 
 	public void buildGaList() {
-
-		// GroupActivity ga1=new GroupActivity("1");
-		// GroupActivity ga2=new GroupActivity("2");
-		// GroupActivity ga3=new GroupActivity("3");
-		// GroupActivity ga4=new GroupActivity("4");
-		// GroupActivity ga5=new GroupActivity("5");
-		// GroupActivity ga6=new GroupActivity("6");
-		// GroupActivity ga7=new GroupActivity("7");
-		// GroupActivity ga8=new GroupActivity("8");
-		//
-		// ga1.actMemberList.add("WatchingTV");
-		// ga1.actMemberList.add("PlayingKinect");
-		//
-		// ga2.actMemberList.add("PreparingFood");
-		//
-		// ga3.actMemberList.add("GoOut");
-		// ga3.actMemberList.add("AllSleeping");
-		//
-		// ga4.actMemberList.add("UsingPC");
-		// ga5.actMemberList.add("ComeBack");
-		// ga6.actMemberList.add("Reading");
-		// ga7.actMemberList.add("Sleeping");
-		// ga8.actMemberList.add("Chatting");
-		//
-		// gaList.put(ga1.GID, ga1);
-		// gaList.put(ga2.GID, ga2);
-		// gaList.put(ga3.GID, ga3);
-		// gaList.put(ga4.GID, ga4);
-		// gaList.put(ga5.GID, ga5);
-		// gaList.put(ga6.GID, ga6);
-		// gaList.put(ga7.GID, ga7);
-		// gaList.put(ga8.GID, ga8);
-
-		GroupActivity ga1 = new GroupActivity("1");
-		GroupActivity ga2 = new GroupActivity("2");
-		GroupActivity ga3 = new GroupActivity("3");
-		GroupActivity ga4 = new GroupActivity("4");
-		GroupActivity ga5 = new GroupActivity("5");
-		GroupActivity ga6 = new GroupActivity("6");
-		GroupActivity ga7 = new GroupActivity("7");
-		GroupActivity ga8 = new GroupActivity("8");
-		GroupActivity ga9 = new GroupActivity("9");
-		GroupActivity ga10 = new GroupActivity("10");
-		ga1.actMemberList.add("WatchingTV");
-		ga2.actMemberList.add("PlayingKinect");
-		ga3.actMemberList.add("Chatting");
-		ga4.actMemberList.add("Reading");
-		ga5.actMemberList.add("UsingPC");
-		ga6.actMemberList.add("ComeBack");
-		ga7.actMemberList.add("GoOut");
-		ga8.actMemberList.add("PreparingFood");
-		ga9.actMemberList.add("Sleeping");
-		ga10.actMemberList.add("AllSleeping");
-		gaList.put(ga1.GID, ga1);
-		gaList.put(ga2.GID, ga2);
-		gaList.put(ga3.GID, ga3);
-		gaList.put(ga4.GID, ga4);
-		gaList.put(ga5.GID, ga5);
-		gaList.put(ga6.GID, ga6);
-		gaList.put(ga7.GID, ga7);
-		gaList.put(ga8.GID, ga8);
-		gaList.put(ga9.GID, ga9);
-		gaList.put(ga10.GID, ga10);
-
+		gaList = ercieXMLHandler.getBuildGaList();
 	}
-
-	// public void buildGaList(int n){
-	// gaList.clear();
-	// NewKmCluster KM = new NewKmCluster();
-	// ArrayList<clusterNode> cArr=KM.runClustering(n);
-	// for(int i=0;i<cArr.size();i++){
-	// GroupActivity ga=new GroupActivity(Integer.toString(i));
-	// for(String actStr : cArr.get(i).clusterMember){
-	// Boolean same=false;
-	// for(String str:ga.actMemberList){
-	// if(str.equals(actStr)){
-	// same=true;
-	// }
-	// }
-	// if(!same){
-	// ga.actMemberList.add(actStr);
-	// }
-	// }
-	// gaList.put(ga.GID, ga);
-	// }
-	// }
 
 	public double[] findsMatrixMin(String[] lastActivityList, double[][] sMatrix) {
 		double min = 9999;
@@ -187,107 +107,7 @@ public class GaGenerator {
 
 	}
 
-	// public Boolean buildHGA2(Classifier DBN,GaGenerator lastGA){
-	// /*找出上一個gaList*/
-	// Set<String> keys = lastGA.gaList.keySet();
-	// String []lastGAList= (String[])keys.toArray(new String[0]);
-	// /*根據 classifiers來算smatrix*/
-	// int round=CrossValidate.cvRound;
-	// double sMatrix
-	// [][]=buildSMatrix("./_output_results/sMatrix/round"+round+"_sMatrix_"+(level-1)+".txt",DBN,lastGAList);
-	//
-	//
-	// /*根據smatrix來build gaList*/
-	// int gaIndex=0;/*第n個ga*/
-	// double lastMin=999;
-	// double parameter1=1.5;
-	// double minThreshold=4;
-	//
-	// while(true){
-	// double []minArr=findsMatrixMin(lastGAList,sMatrix);
-	// double min=minArr[0];
-	// double max=findsMatrixMax(lastGAList,sMatrix);
-	// if( ( gaIndex==0 && min<minThreshold ) || ( min< (max/2) &&
-	// min<minThreshold) ){
-	// for(int i=0;i<lastGAList.length;i++){
-	// for(int j=0;j<lastGAList.length;j++)
-	// {
-	// if(sMatrix[i][j]==min ){
-	// GroupActivity ga=new
-	// GroupActivity("g"+Integer.toString(level)+"-"+Integer.toString(gaIndex+1));
-	//
-	// /*第二層才開始合併*/
-	// if(level==1){
-	//
-	// }else {
-	// ArrayList<String>memberList1=lastGA.getGroupMember(lastGAList[i]);
-	// ArrayList<String>memberList2=lastGA.getGroupMember(lastGAList[j]);
-	// for(String str:memberList1){
-	// /*加入合併前該ga所有的 activity*/
-	//
-	// if(!ga.actMemberList.contains(str)){
-	// ga.actMemberList.add(str);
-	// }
-	// }
-	// for(String str:memberList2){
-	// if(!ga.actMemberList.contains(str)){
-	// ga.actMemberList.add(str);
-	// }
-	// }
-	// gaList.put(ga.GID, ga);
-	// }
-	// // /*方法一 同一個活動只會屬於一個cluster*/
-	// // for(int k=0;k< lastGAList.length;k++){
-	// // sMatrix[i][k]=0;
-	// // sMatrix[j][k]=0;
-	// // sMatrix[k][i]=0;
-	// // sMatrix[k][j]=0;
-	// // }
-	// /*登記加過的activity*/
-	// sMatrix[i][i]=-1;
-	// sMatrix[j][j]=-1;
-	// //
-	// sMatrix[i][j]=0;
-	// sMatrix[j][i]=0;
-	// gaIndex+=1;
-	// }
-	//
-	// }
-	// }
-	// lastMin=min;
-	// }else {
-	// break;
-	// }
-	// }
-	// /*沒有任何相似的activity*/
-	// if(gaList.size()==0){
-	// return false;
-	// }else{
-	// /*沒被group到的也加入ga_list*/
-	// for(int i=0;i<lastGAList.length;i++){
-	// Boolean existInGroup=false;
-	// for(int j=0;j<lastGAList.length;j++)
-	// {
-	// if(i==j && sMatrix[i][j]<0){
-	// existInGroup=true;
-	// }
-	// }
-	// if(!existInGroup){
-	// GroupActivity ga=new
-	// GroupActivity("g"+Integer.toString(level)+"-"+Integer.toString(gaIndex+1));
-	// ArrayList<String>memberList1=lastGA.getGroupMember(lastGAList[i]);
-	// for(String str:memberList1){
-	// if(!ga.actMemberList.contains(str)){
-	// ga.actMemberList.add(str);
-	// }
-	// }
-	// gaList.put(ga.GID, ga);
-	// gaIndex+=1;
-	// }
-	// }
-	// return true;
-	// }
-	// }
+	
 
 	public Boolean checkSameService(String gaName1, String gaName2,
 			Map<String, RelationTable> actAppList) {
@@ -622,21 +442,4 @@ public class GaGenerator {
 		return null;
 	}
 
-	// public void buildGaModel(String rawDataPath,String gaTrainingDataPath){
-	// try {
-	// BufferedReader reader = new BufferedReader(new FileReader(
-	// rawDataPath));
-	// FileWriter writer = new FileWriter(new File(gaTrainingDataPath));
-	// String read="";
-	// while((read = reader.readLine()) != null){
-	// String []split=read.split("#");
-	// String GID=getGID(split[1]);
-	// writer.write(split[0]+" #"+GID+"\r\n");
-	// writer.flush();
-	//
-	// }
-	// } catch (Exception e) {
-	// // TODO: handle exception
-	// }
-	// }
 }

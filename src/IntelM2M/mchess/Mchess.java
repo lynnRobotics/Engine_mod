@@ -6,6 +6,8 @@ import s2h.platform.support.MessageUtils;
 
 /* Import necessary package */
 import IntelM2M.ercie.Ercie;
+import IntelM2M.ercie.ErcieXMLHandler;
+import IntelM2M.ercie.GaGenerator;
 import IntelM2M.esdse.Esdse;
 import IntelM2M.mq.Consumer;
 import IntelM2M.test.SimulatorTest;
@@ -21,6 +23,8 @@ public class Mchess extends Consumer implements Runnable {
 	/* Two main engine */
 	static Ercie ercie = null;
 	static Esdse esdse;
+	
+	static String ercieInitializationPath;
 	
 	s2h.platform.support.JsonBuilder json = MessageUtils.jsonBuilder();
 	//private Logger log = Logger.getLogger(Mchess.class.getName());
@@ -86,6 +90,9 @@ public class Mchess extends Consumer implements Runnable {
 	}
 	
 	public static void main(String[] args) {
+		ErcieXMLHandler.ercieInitializationPath = "./_input_data/ercieInitilization.xml";
+		
+		
 		if (args.length < 1) {
 			System.out.println("please add the argument!\ne.g. [mchess] -run or [mchess] -learn");
 			return; // Test necessary argument from input
@@ -93,20 +100,8 @@ public class Mchess extends Consumer implements Runnable {
 		
 		if(args[0].equals("-run")) {
 			System.out.println("===Running Mode===");
-			ercie = new Ercie("./_input_data/ercieInitilization.xml");  // New a epcie object and set threshold (args[0])
+			ercie = new Ercie();  // New a ercie object // training threshold is initialized in ercieXMLHandler.xml
 			new Mchess(args[0]).run();          // New a M-CHESS object and start the thread
-			// Specify the training threshold in ercieXMLHandler
-			/*
-			if (args.length < 2) {
-				System.out.println("...using default training threshold: 3");
-				ercie = new Ercie("3");  // New a epcie object and set threshold (args[0])
-				new Mchess(args[0]).run();          // New a M-CHESS object and start the thread
-			}
-			else {
-				ercie = new Ercie(args[1]);  // New a epcie object and set threshold (args[0])
-				new Mchess(args[0]).run();          // New a M-CHESS object and start the thread
-			}
-			*/
 		}
 		else if(args[0].equals("-learn")) {
 			System.err.println("===Learning Mode===");

@@ -41,8 +41,8 @@ public class Ercie {
 	String rawTrainingDataPath = "./_input_data/ercielInitilization.xml"; // For real-time usage
 	/* modularize */
 
-	public Ercie(String ercieInitilizationPath) {
-		ercieXMLHandler = new ErcieXMLHandler(ercieInitilizationPath);
+	public Ercie() {
+		ercieXMLHandler = new ErcieXMLHandler();
 		threshold = ercieXMLHandler.getThreshold();
 		retrain = ercieXMLHandler.getRetrain();
 		trainLevel = ercieXMLHandler.getTrainLevel();

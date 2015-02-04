@@ -87,11 +87,6 @@ public class GaDbnClassifier implements Classifier {
 					writer.flush();
 					writer.close();
 				} else { // read models
-					/* read type 1 */
-					// attSelected = new Instances(new FileReader("./_weka_output_data/selected_" + gaList[index]+".arff"));
-					// attSelected.setClassIndex(attSelected.numAttributes() - 1);
-					// classifier[index] = new EditableBayesNet(attSelected);
-					// classifier[index].buildClassifier(attSelected);
 					/* read type 2 */
 					BIFReader br = new BIFReader();
 					br.processFile("./_weka_output_data/" + gaList[index] + ".xml");
@@ -110,9 +105,7 @@ public class GaDbnClassifier implements Classifier {
 		Instances insts;
 		EditableBayesNet[] classifier = null;
 		try {
-			// String []activityList=(String[])EnvStructure.activityList.toArray(new String[0]);
 			classifier = new EditableBayesNet[activityList.length];
-			// ETCGenerator etc= new ETCGenerator();
 			for (int index = 0; index < activityList.length; index++) {
 				if (retrain) {
 					insts = new Instances(new FileReader("./_weka_training_data/" + activityList[index] + ".arff"));
@@ -261,23 +254,6 @@ public class GaDbnClassifier implements Classifier {
 			String preRead = "";
 			try {
 				while ((read = reader.readLine()) != null) {
-
-					/* 兩種testing 方式 */
-					/* 第一種 */
-					// System.out.println();
-					// String []tmpStr=read.split("#");
-					// if(tmpStr[1].equals(preRead)){
-					// continue;
-					// }
-					// preRead=tmpStr[1];
-					/* 第二種 */
-					// if(read.equals(preRead)){
-					// continue;
-					// }
-					// preRead=read;
-
-					// allSetDefaultValue(false);
-
 					String[] sensorName = (String[]) sensorStatus.keySet().toArray(new String[0]);
 					/* initial */
 					Map<String, Boolean> GAinferResult = new LinkedHashMap<String, Boolean>();
@@ -366,8 +342,6 @@ public class GaDbnClassifier implements Classifier {
 							writer.write(" " + str + " " + truthProb);
 						}
 					}
-
-					// if(inferDBN.size()!=0){
 
 					/* record tp tn fp fn for GA */
 					for (String str : gaList) {
@@ -460,59 +434,7 @@ public class GaDbnClassifier implements Classifier {
 					actPreState[actIndex] = false;
 				}
 				allGaProb.put(activity, Double.toString(result[1]));
-				// if(activity.equals("2")){
-				// //System.out.println("Sensor:"+sensorName+" value"+sensorValue+" prob:"+Double.toString(result[1]));
-				// //System.out.println("G2~~~~~");
-				// for (int i = 0; i <classifier[actIndex].getNrOfNodes()-1 ; i ++)
-				// {
-				// String node=classifier[actIndex].getNodeName(i);
-				// //System.out.println(node);
-				// File dir = new File("./_weka_training_data");
-				// Instances insts = new Instances(new FileReader("./_weka_training_data/" + dir.list()[0]));
-				// int stateNum = insts.attribute(node).numValues();
-				//
-				// int index = -1;
-				// double max_pe = 0.0, pe = 0.0;
-				// for(int j = 0; j < stateNum; j ++)
-				// {
-				// pe = classifier[actIndex].getProbability(i, 1, j);
-				// if((j == 0) || (pe > max_pe))
-				// {
-				// max_pe = pe;
-				// index = j;
-				// }
-				// }
-				// //String nodeValue = classifier[actIndex].getNodeValue(i, index);
-				// //System.out.println(nodeValue+" "+max_pe);
-				// }
-				//
-				//
-				// }
 			}
-			/* 如果沒有infer任何東西，將低threshold在infer一次 */
-			// if(strArray.size()==0){
-			// for(int actIndex = 0; actIndex < gaList.length; actIndex ++)
-			// {
-			// String activity = gaList[actIndex].substring(0, gaList[actIndex].length() );
-			// result = classifier[actIndex].getMargin(classifier[actIndex].getNode("class"));
-			//
-			// /*加上 Prior Knowledge*/
-			//
-			// if(result[1] >= inferThreshold-0.3) //activity exist
-			// {
-			//
-			// String prob=Double.toString(result[1]);
-			// actPreState[actIndex] = true;
-			// strArray.add(activity+" "+prob);
-			// //getSender().send(json.add("subject","activity").add("value",activity ).add("prob",prob).toJson(), PlatformTopic.CONTEXT);
-			// }
-			// else if(result[1] < inferThreshold-0.3)
-			// {
-			// actPreState[actIndex] = false;
-			// }
-			// allGaProb.put(activity, Double.toString(result[1]));
-			// }
-			// }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -575,9 +497,6 @@ public class GaDbnClassifier implements Classifier {
 			MarginCalculator mc = new MarginCalculator();
 			mc.calcMargins(bayesNet);
 
-			// SerializedObject so = new SerializedObject(mc);
-			// MarginCalculator mcWithEvidence = (MarginCalculator) so.getObject();
-
 			for (int iNode = 0; iNode < bayesNet.getNrOfNodes(); iNode++) {
 
 				if (bayesNet.getEvidence(iNode) >= 0) {
@@ -614,8 +533,6 @@ public class GaDbnClassifier implements Classifier {
 
 		/**/
 		if (sensorList.containsKey(s.type + "_" + s.id)) {
-			// double[] thre = sensorList.get(s.name).threshold;
-			// String[] status = sensorList.get(s.name).status;
 			double[] thre = sensorList.get(s.type + "_" + s.id).threshold;
 			String[] status = sensorList.get(s.type + "_" + s.id).status;
 
@@ -825,31 +742,36 @@ public class GaDbnClassifier implements Classifier {
 				iValue = 1;
 			else if (sensorValue.equals("on") || sensorValue.equals("On"))
 				iValue = 2;
-		} else if (sensorName.contains("temperature") || sensorName.contains("humidity")) {
+		}
+		else if (sensorName.contains("temperature") || sensorName.contains("humidity")) {
 			if (sensorValue.equals("low") || sensorValue.equals("Low")) // higher temperature
 				iValue = 0;
 			else if (sensorValue.equals("high") || sensorValue.equals("High"))
 				iValue = 1;
-		} else if (sensorName.equals("accelerometer")) {
+		}
+		else if (sensorName.equals("accelerometer")) {
 			if (sensorValue.equals("low") || sensorValue.equals("Low"))
 				iValue = 0;
 			else if (sensorValue.equals("medium") || sensorValue.equals("Medium")) // higher temperature
 				iValue = 1;
 			else if (sensorValue.equals("high") || sensorValue.equals("High"))
 				iValue = 2;
-		} else if (sensorName.equals("audio_bathroom") || sensorName.equals("audio_kitchen")) {
+		}
+		else if (sensorName.equals("audio_bathroom") || sensorName.equals("audio_kitchen")) {
 			if (sensorValue.equals("off") || sensorValue.equals("Off"))
 				iValue = 0;
 			else if (sensorValue.equals("little") || sensorValue.equals("Little")) // higher temperature
 				iValue = 1;
 			else if (sensorValue.equals("loud") || sensorValue.equals("Loud"))
 				iValue = 2;
-		} else if (sensorName.contains("PIR") || sensorName.contains("camera") || sensorName.contains("light") || sensorName.contains("audio")) {
+		}
+		else if (sensorName.contains("PIR") || sensorName.contains("camera") || sensorName.contains("light") || sensorName.contains("audio")) {
 			if (sensorValue.equals("off") || sensorValue.equals("Off"))
 				iValue = 0;
 			else if (sensorValue.equals("on") || sensorValue.equals("On")) // higher temperature
 				iValue = 1;
-		} else if (sensorName.contains("switch")) {
+		}
+		else if (sensorName.contains("switch")) {
 			if (sensorValue.equals("off") || sensorValue.equals("Off"))
 				iValue = 1;
 			else if (sensorValue.equals("on") || sensorValue.equals("On")) // higher temperature

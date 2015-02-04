@@ -164,7 +164,6 @@ public class EtcGenerator
 			String node = classifier.getNodeName(i);
 			if(node.contains("light") || node.contains("current"))
 			{
-			
 				int stateNum = insts.attribute(node).numValues();
 			
 				int index = -1;
@@ -178,37 +177,24 @@ public class EtcGenerator
 						index = j;
 					}	
 				}
-
 				String nodeValue = classifier.getNodeValue(i, index);				
 				ArrayList<AppNode> appList=actAppList.get(etcListKey).appList;
-				
-				
 				for(int j = 0; j < appList.size(); j ++){
 					if(!node.equals(appList.get(j).appName)) //explicit
 					{
-
-						
 						
 					}else if(j < appList.size())
 					{
-						//ArrayList<AppNode> appList= actAppList.get(etcListKey).appList;
 						//set appList
 						if(max_pe > 0.4)
 							 appList.get(j).escType = "explicit";
 						else
 							 appList.get(j).escType = "other";
-							
 						 appList.get(j).state = nodeValue;
 						 appList.get(j).confidence = roundTwoDecimals(max_pe);
-						//actAppList.get(etcListKey).appList.get(j).power = Integer.parseInt(allAppActMap.findAppWatt(node, nodeValue));
-						//actAppList.get(etcListKey).setAppPower(j,nodeValue);
 						break;
 					}
-						
 				}
-
-				
-
 			}
 			else
 				continue;
