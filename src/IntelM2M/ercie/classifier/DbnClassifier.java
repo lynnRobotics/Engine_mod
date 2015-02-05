@@ -196,7 +196,6 @@ public class DbnClassifier implements Classifier  {
 					 String sensorName = classifier[i].getNodeName(j);
 					 String sensorValue = setDefaultValue(i, j, sensorName);
 					//System.out.println(sensorName+"     "+sensorValue);
-					
 				}
 			}
 			/*Print result*/
