@@ -129,98 +129,6 @@ public class GaGenerator {
 		return same;
 	}
 
-	/* No use */
-	public Boolean buildHGA(Classifier DBN, GaGenerator lastGA,
-			GaEtcGenerator lastGAETC, Boolean retrain) {
-		/* 找出上一個gaList */
-		Set<String> keys = lastGA.gaList.keySet();
-		String[] lastGAList = (String[]) keys.toArray(new String[0]);
-		/* 根據 classifiers來算smatrix */
-		int round = CrossValidate.cvRound;
-		double sMatrix[][] = buildSMatrix("./_output_results/sMatrix/round"
-				+ round + "_sMatrix_" + (level - 1) + ".txt", DBN, lastGAList,
-				retrain);
-		/* 根據smatrix來build gaList */
-		int gaIndex = 0;/* 第n個ga */
-
-		Boolean continueFlag = true;
-		while (continueFlag) {
-			double minArr[] = findsMatrixMin(lastGAList, sMatrix);
-			double min = minArr[0];
-			int i = (int) minArr[1];
-			int j = (int) minArr[2];
-			/* 檢查 i j是否有共同的 explicit/implict */
-			Map<String, RelationTable> actAppList = lastGAETC.actAppList;
-			String gaName1 = lastGAList[i];
-			String gaName2 = lastGAList[j];
-			Boolean sameService = checkSameService(gaName1, gaName2, actAppList);
-			/* 第二層才開始合併 */
-			if (level != 1 && min != 0) {
-				if (sameService) {
-					GroupActivity ga = new GroupActivity("g"
-							+ Integer.toString(level) + "-"
-							+ Integer.toString(gaIndex + 1));
-					ArrayList<String> memberList1 = lastGA
-							.getGroupMember(lastGAList[i]);
-					ArrayList<String> memberList2 = lastGA
-							.getGroupMember(lastGAList[j]);
-					for (String str : memberList1) {
-						/* 加入合併前該ga所有的 activity */
-						if (!ga.actMemberList.contains(str)) {
-							ga.actMemberList.add(str);
-						}
-					}
-					for (String str : memberList2) {
-						if (!ga.actMemberList.contains(str)) {
-							ga.actMemberList.add(str);
-						}
-					}
-					gaList.put(ga.GID, ga);
-					/* 登記加過的activity */
-					sMatrix[i][i] = -1;
-					sMatrix[j][j] = -1;
-					gaIndex += 1;
-					continueFlag = false;
-				}
-				sMatrix[i][j] = 0;
-				sMatrix[j][i] = 0;
-
-			} else if (level != 1 && min == 0) {
-				continueFlag = false;
-			}
-
-		}
-		/* 沒有任何相似的activity */
-		if (gaList.size() == 0) {
-			return false;
-		} else {
-			/* 沒被group到的也加入ga_list */
-			for (int i = 0; i < lastGAList.length; i++) {
-				Boolean existInGroup = false;
-				for (int j = 0; j < lastGAList.length; j++) {
-					if (i == j && sMatrix[i][j] < 0) {
-						existInGroup = true;
-					}
-				}
-				if (!existInGroup) {
-					GroupActivity ga = new GroupActivity("g"
-							+ Integer.toString(level) + "-"
-							+ Integer.toString(gaIndex + 1));
-					ArrayList<String> memberList1 = lastGA
-							.getGroupMember(lastGAList[i]);
-					for (String str : memberList1) {
-						if (!ga.actMemberList.contains(str)) {
-							ga.actMemberList.add(str);
-						}
-					}
-					gaList.put(ga.GID, ga);
-					gaIndex += 1;
-				}
-			}
-			return true;
-		}
-	}
-
 	public Boolean buildHGA(Classifier DBN, GaGenerator lastGA,
 			GaEscGenerator lastGAESC, Boolean retrain) {
 		/* 找出上一個gaList */
@@ -332,16 +240,12 @@ public class GaGenerator {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
 	}
 
 	public double[][] buildSMatrix(String smPath, Classifier DBN,
 			String[] activityList, Boolean retrain) {
 		EditableBayesNet[] classifiers = DBN.buildARModelwithAllFeature(
 				activityList, retrain);
-		// EditableBayesNet[]
-		// classifiers=DBN.buildARModelwithAllFeature((String[])EnvStructure.activityList.toArray(new
-		// String[0]));
 		double sMatrix[][] = new double[activityList.length][activityList.length];
 		for (int i = 0; i < activityList.length; i++) {
 			for (int i2 = 0; i2 < activityList.length; i2++) {

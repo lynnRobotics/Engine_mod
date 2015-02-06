@@ -37,6 +37,7 @@ public class ThermalAgent {
 	boolean tooColdFlag = false; // The weather is too cold or not
 	int iterateLimit = 20; //final int iterateLimit = 20; the number of iterations in getOptThermalListForOnline()
 	double incrementConstraint = 0.1; //final double incrementConstraint = 0.1; the increments in every iteration in thermalIterate()
+	Map<String, Integer> priorityList = new HashMap<String, Integer>();
 	/* modularize */
 	
 	ArrayList<Double> constraintList = null;
@@ -547,9 +548,8 @@ public class ThermalAgent {
 		}
 	}
 
+	/* Guan-Lin 20150206
 	private ArrayList<Double> relaxConstraint(Set<String> actInferResultSet, ArrayList<Double> constraintList, int counter) {
-		Map<String, Integer> priorityList = new HashMap<String, Integer>();
-		setActivityPriority(priorityList);
 
 		Map<String, Integer> inferPriorityList = new HashMap<String, Integer>();
 
@@ -589,22 +589,7 @@ public class ThermalAgent {
 
 		return constraintList;
 	}
-	
-	private void setActivityPriority(Map<String, Integer> priorityList) {
-		/* BL313 */
-		priorityList.put("GoOut", 10);
-		priorityList.put("ComeBack", 9);
-		priorityList.put("WatchingTV", 4);
-		priorityList.put("PlayingKinect", 7);
-		priorityList.put("Chatting", 6);
-		priorityList.put("Reading", 5);
-		priorityList.put("PreparingFood", 8);
-		priorityList.put("Sleeping", 2);
-		priorityList.put("AllSleeping", 1);
-		priorityList.put("UsingPC", 3);
-		priorityList.put("UsingNoteBook", 11);
-		priorityList.put("Studying", 12);
-	}
+	*/
 
 	/* Run through all combinations and try to find solution */
 	private ArrayList<AppNode> thermalIterate(ArrayList<String> candidateList, ArrayList<AppNode> thermalAppList, ArrayList<AppNode> thermalRawList, GAinference gaInference, int counter) {

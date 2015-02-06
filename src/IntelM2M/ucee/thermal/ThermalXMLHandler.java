@@ -2,8 +2,10 @@ package IntelM2M.ucee.thermal;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -89,6 +91,27 @@ public class ThermalXMLHandler {
 			e.printStackTrace();
 		}
 		return incrementConstraint;
+	}
+	
+	public Map<String, Integer> getActivityPriorityList(){
+		Map<String, Integer> priorityList = new HashMap<String, Integer>();
+		try{
+  			SAXReader saxReader = new SAXReader();
+  			Document document = saxReader.read(xml);
+  			List list = document.selectNodes("/metaData/activityPriorityList/activityPriority");
+  			Iterator iter = list.iterator();
+  			while(iter.hasNext()){
+  				Element curElement = (Element)iter.next();
+  				String activityName = curElement.element("activityName").getText();
+  				String priorityString = curElement.element("priority").getText();
+  				int priority = Integer.parseInt(priorityString);
+  				priorityList.put(activityName, priority);
+  			}
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return priorityList;
 	}
 	
 }

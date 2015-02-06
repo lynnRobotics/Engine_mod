@@ -12,4 +12,54 @@
 	<incrementConstraint>
 		<value>0.1</value>
 	</incrementConstraint>
+	<activityPriorityList>
+		<activityPriority>
+			<activityName>"AllSleeping"</activityName>
+			<priority>1</priority>
+		</activityPriority>	
+		<activityPriority>
+			<activityName>"Sleeping"</activityName>
+			<priority>2</priority>
+		</activityPriority>	
+		<activityPriority>
+			<activityName>"UsingPC"</activityName>
+			<priority>3</priority>
+		</activityPriority>	
+		<activityPriority>
+			<activityName>"WatchingTV"</activityName>
+			<priority>4</priority>
+		</activityPriority>	
+		<activityPriority>
+			<activityName>"Reading"</activityName>
+			<priority>5</priority>
+		</activityPriority>	
+		<activityPriority>0
+			<activityName>"Chatting"</activityName>
+			<priority>6</priority>
+		</activityPriority>	
+		<activityPriority>
+			<activityName>"PlayingKinect"</activityName>
+			<priority>7</priority>
+		</activityPriority>	
+		<activityPriority>
+			<activityName>"PreparingFood"</activityName>
+			<priority>8</priority>
+		</activityPriority>	
+		<activityPriority>
+			<activityName>"ComeBack"</activityName>
+			<priority>9</priority>
+		</activityPriority>	
+		<activityPriority>
+			<activityName>"GoOut"</activityName>
+			<priority>10</priority>
+		</activityPriority>	
+		<activityPriority>
+			<activityName>"UsingNoteBook"</activityName>
+			<priority>11</priority>
+		</activityPriority>	
+		<activityPriority>
+			<activityName>"Studying"</activityName>
+			<priority>12</priority>
+		</activityPriority>
+	</activityPriorityList>
 </metaData>

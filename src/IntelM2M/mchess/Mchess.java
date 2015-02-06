@@ -51,19 +51,9 @@ public class Mchess extends Consumer implements Runnable {
 		this.connect();
 		this.listen();
 		
-		//sysProcForSimulator();
-		
 		if(mode.equals("-run")) {
 			realTimeSysProc();     // Call build model function in epcie
 		}
-	}
-
-	/* For simulated usage */
-	public void sysProcForSimulator() {
-		ercie.buildModel();
-		// Simulate sensor data
-		SimulatorTest test = new SimulatorTest();
-		test.simulatorTesting(ercie, esdse);
 	}
 
 	/* For real-time usage */
