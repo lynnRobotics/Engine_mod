@@ -15,11 +15,12 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
+import IntelM2M.mchess.Mchess;
 import IntelM2M.ucee.visual.VisualComfortTable;
 
 /**
  * 
- * Revised by Shu-Fan 2013/11/19
+ * Revised by Shu-Fan 2013/11/19, Guan-Lin 2015/02/09
  * 
  */
 
@@ -28,9 +29,10 @@ public class XMLHandler {
 	/* Assign path of xml file 
 	 * BL313env_test7 is the newest version
 	 * */
-	File xml= new File("./_input_data/BL313/BL313env_test7.xml");
+	File xml= new File("./_input_data/environmentInitialization.xml");
 	
-	public void XMLHandler(){
+	public XMLHandler(){
+		xml= new File(Mchess.environmentInitializationPath);
 	}
 	
 	/* Get list of activity's name */
@@ -96,7 +98,7 @@ public class XMLHandler {
   				Element typeElement = (Element)iter.next();
   				// Get sensor type
   				String type = typeElement.attributeValue("id");
-  				// Iterator of sensor
+  				
   				List list2 = typeElement.selectNodes("sensor");
   				Iterator iter2 = list2.iterator();
   				while(iter2.hasNext()){
@@ -111,11 +113,10 @@ public class XMLHandler {
   		           	for(int i = 0; i < sensorThreshold.length; i ++) {
   		           		sensorThres[i] = Double.parseDouble(sensorThreshold[i]);
   		           	}
-  		           	
   		           	SensorNode tmp = null;
   		           	// Light sensor, get threshold and corresponding level
-  		           	if (sensorElement.element("switch") != null && sensorElement.element("switch_lux") != null) {
-  		           		String[] switchLevel = sensorElement.element("switch").getText().split(" ");
+  		           	if (sensorElement.element("switch_level") != null && sensorElement.element("switch_lux") != null) {
+  		           		String[] switchLevel = sensorElement.element("switch_level").getText().split(" ");
   		           		int[] switchLevelInteger = new int[switchLevel.length];
   		           		String[] switchLux = sensorElement.element("switch_lux").getText().split(" ");
   		           		double[] switchLuxDouble = new double[switchLux.length];
@@ -166,8 +167,8 @@ public class XMLHandler {
   	  					
   	  					// Put sensor status(on, off, standby) and corresponding ampere)
   	  					// If there is a switch tag, set realation between switch and switch_ampere
-  	  					if(sensorElement.element("switch") != null){ 
-  	  						String [] switchNum = sensorElement.element("switch").getText().split(" ");
+  	  					if(sensorElement.element("switch_level") != null){ 
+  	  						String [] switchLevel = sensorElement.element("switch_level").getText().split(" ");
   	  						String [] switchAmpere = sensorElement.element("switch_ampere").getText().split(" ");
   	  						// Put (off, ampere_0), (standby, ampere_1)
   	  						if(ampere.length == 2){
@@ -178,8 +179,8 @@ public class XMLHandler {
   	  	  						app.ampere.put("standby", Double.parseDouble(ampere[1]));
   	  						}
   	  						// Put (on_1, switch_ampere_1), (on_2, switch_ampere_2), ...
-  	  						for(int i = 0; i < switchNum.length;i++){
-  	  							app.ampere.put("on_" + switchNum[i], Double.parseDouble(switchAmpere[i]));
+  	  						for(int i = 0; i < switchLevel.length;i++){
+  	  							app.ampere.put("on_" + switchLevel[i], Double.parseDouble(switchAmpere[i]));
   	  						}	
   	  					} 
   	  					else{
@@ -207,25 +208,24 @@ public class XMLHandler {
 		    	String roomName = roomElement.attributeValue("id");
 		    	   
 		    	// If there's no appliance in this location
-		    	if (roomElement.element("appliance") == null) continue;
+		    	if (roomElement.element("appliance") != null){
+		    		// There's at least one appliance
+		    		Element appElement = roomElement.element("appliance");
+		    		String[] appliances = appElement.getText().split(" ");
 		    	   
-		    	// There's at least one appliance
-		    	Element appElement = roomElement.element("appliance");
-		    	String[] appliances = appElement.getText().split(" ");
-		    	   
-		    	// If the appliance is in global, location = "global", global = true
-		    	if(roomName.equals("global")){
-		    		for(String appliance : appliances){
-		    			appList.get(appliance).location = roomName;
-			    		appList.get(appliance).global = true;
-			    	}  
-		    	}
-		    	else{
-		    		for(String appliance : appliances){
-		    			AppNode app = appList.get(appliance);
-			    		app.location = roomName;
-			    		app.global = false;
-			    	}  
+		    		// If the appliance is in global, location = "global", global = true
+		    		if(roomName.equals("global")){
+		    			for(String appliance : appliances){
+		    				appList.get(appliance).location = roomName;
+		    				appList.get(appliance).global = true;
+		    			}  
+		    		}
+		    		else{
+		    			for(String appliance : appliances){
+		    				appList.get(appliance).location = roomName;
+		    				appList.get(appliance).global = false;
+		    			}  
+		    		}
 		    	}
 		    }
 		} catch(DocumentException e){
@@ -235,54 +235,71 @@ public class XMLHandler {
 		}
 		return appList;
     }
-
+  
     /* Get <location_activity, relationTable(All the AppNode and its intensity)> */
-	public Map<String, RelationTable>  getActAppList(){
-		 Map<String, RelationTable> tableList = new LinkedHashMap<String, RelationTable>();
-		 try {
+   	public Map<String, RelationTable>  getActAppList(){
+   		 Map<String, RelationTable> tableList = new LinkedHashMap<String, RelationTable>();
+   		 try {
+   			SAXReader saxReader = new SAXReader();
+   			Document document = saxReader.read(xml);
+   			List list = document.selectNodes("/metaData/relation/location");
+   			Iterator iter = list.iterator();
+   		    while(iter.hasNext()){
+   		    	Element roomElement = (Element)iter.next();
+   		        // Get location
+   		        String roomName = roomElement.attributeValue("id");
+   		        // Get activity 
+   		        Element actElement = roomElement.element("activity");
+   		              
+   		        // roomName != global
+   		        if(actElement != null){
+   		        	// Get all activities in activity tag
+   			        String[] activities = actElement.getText().split(" ");
+   			        for(String activity : activities){		            	   	            	 	            	   
+   			        	RelationTable table = new RelationTable();	
+   			        	// Copy all appNodes in appList to RelationTable
+   			        	Map<String,AppNode> appList = EnvStructure.appList;
+   			        	Set<String> sensorSet = appList.keySet();
+   			        	for(String sensor : sensorSet){
+   			        		AppNode app = appList.get(sensor);
+   			        		// Add app into table
+   			        		AppNode newApp = app.copyAppNode(app);
+   			        		table.appList.add(newApp);
+   			        	}
+   			        	// Get Intensity of activity and store in table
+   			        	Node node = document.selectSingleNode("/metaData/activityList/type[@id='" + activity + "']/intensity[1]");		            	 
+   			        	table.intensity = Double.parseDouble(node.getText());
+   			        	// Add table to tableList
+   			        	tableList.put(roomName + "_" + activity, table);      		            	   
+   			        }
+   		        } 
+   		    }   
+   		} catch (Exception e){
+   			e.printStackTrace();
+   		}
+   		return tableList;
+   	}
+   	
+   	/* Get <roomName>, Implemented by Shu-Fan, 2013/11/18 */
+	public HashSet<String> getRoomList(){
+		HashSet<String> tmpRoomList = new HashSet<String>();
+		try{	
 			SAXReader saxReader = new SAXReader();
 			Document document = saxReader.read(xml);
-			List list = document.selectNodes("/metaData/relation/location");
+			List list = document.selectNodes("/metaData/roomList/type");
 			Iterator iter = list.iterator();
-		    while(iter.hasNext()){
-		    	Element roomElement = (Element)iter.next();
-		        // Get location
-		        String roomName = roomElement.attributeValue("id");
-		        // Get activity 
-		        Element actElement = roomElement.element("activity");
-		              
-		        // roomName == global
-		        if(actElement == null){ 
-		        }
-		        else{
-		        	// Get all activities in activity tag
-			        String[] activities = actElement.getText().split(" ");
-			        for(String activity : activities){		            	   	            	 	            	   
-			        	RelationTable table = new RelationTable();	
-			        	// Copy all appNodes in appList to RelationTable
-			        	Map<String,AppNode> appList = EnvStructure.appList;
-			        	Set<String> sensorSet = appList.keySet();
-			        	for(String sensors : sensorSet){
-			        		AppNode app = appList.get(sensors);
-			        		// Add app into table
-			        		AppNode newApp = app.copyAppNode(app);
-			        		table.appList.add(newApp);
-			        	}
-			        	// Get Intensity of activity and store in table
-			        	Node node = document.selectSingleNode("/metaData/activityList/type[@id='" + activity + "']/intensity[1]");		            	 
-			        	table.intensity = Double.parseDouble(node.getText());
-			        	// Add table to tableList
-			        	tableList.put(roomName + "_" + activity, table);      		            	   
-			        }
-		        } 
-		    }   
-		} catch (Exception e){
+			while(iter.hasNext()){
+				Element roomElement = (Element)iter.next();
+				String roomName = roomElement.attributeValue("id");
+				tmpRoomList.add(roomName);
+			}
+		} catch(Exception e){
 			e.printStackTrace();
 		}
-		return tableList;
+		return tmpRoomList;
 	}
-	
-	/* Get <roomName, visualComforTable(Relation between light level and lux)> */
+		
+    /* Get <roomName, visualComforTable(Relation between light level and lux)> */
 	public Map<String, VisualComfortTable> getVisualComfortTableList(){
 		Map<String, VisualComfortTable> tableList = new LinkedHashMap<String, VisualComfortTable>();
 		try{
@@ -307,50 +324,27 @@ public class XMLHandler {
 		}
 		return tableList;
 	}
-	
-	/* Empty */
-	public void getThermalComfortTable(){
-	}
-	
-	/* Get <roomName> 
-	 * Implemented by Shu-Fan, 2013/11/18
-	 * */
-	public HashSet<String> getRoomList(){
-		HashSet<String> tmpRoomList = new HashSet<String>();
-		try{	
-			SAXReader saxReader = new SAXReader();
-			Document document = saxReader.read(xml);
-			List list = document.selectNodes("/metaData/roomList/type");
-			Iterator iter = list.iterator();
-			while(iter.hasNext()){
-				Element roomElement = (Element)iter.next();
-				String roomName = roomElement.attributeValue("id");
-				tmpRoomList.add(roomName);
-			}
-		} catch(Exception e){
-			e.printStackTrace();
-		}
-		return tmpRoomList;
-	}
-	
+
 	/* Get <Socketmeter_id, sensorNode(Name, Status, Threshold, Switch)> */
-	public Map<String, SensorNode> getApplianceList() {
+	public Map<String, SensorNode> getEZMeterList() {
 		Map<String, SensorNode> sensorList = new LinkedHashMap<String, SensorNode>();
-		
 		try {
 			SAXReader saxReader = new SAXReader();
 			Document document = saxReader.read(xml);
-			List list = document.selectNodes("/metaData/applianceList/type");
+			List list = document.selectNodes("/metaData/ezMeterList/type");
 			Iterator iter = list.iterator();
 			while (iter.hasNext()) {
 				Element typeElement = (Element) iter.next();
-				String type = typeElement.attributeValue("id"); // id = socketMeter
+				// Get sensor type = socketMeter
+				String type = typeElement.attributeValue("id");
+				// Iterator of sensor
 				List list2 = typeElement.selectNodes("sensor");
 				Iterator iter2 = list2.iterator();
 				while (iter2.hasNext()) {
 					Element sensorElement = (Element) iter2.next();
+					// Get sensor ID
 					String sensorID = sensorElement.attributeValue("id");
-					/* Get name, status, threshold */
+					// Get name, status, threshold
 					String sensorName = sensorElement.element("name").getText();
 					String[] sensorStatus = sensorElement.element("status").getText().split(" ");
 					String[] sensorThreshold = sensorElement.element("threshold").getText().split(" ");
@@ -360,8 +354,8 @@ public class XMLHandler {
 					}
 					SensorNode tmp = null;
 					/* If the corresponding sensor is level related */
-					if (sensorElement.element("switch") != null && sensorElement.element("switch_lux") != null) {
-						String[] switchLevel = sensorElement.element("switch").getText().split(" ");
+					if (sensorElement.element("switch_level") != null && sensorElement.element("switch_lux") != null) {
+						String[] switchLevel = sensorElement.element("switch_level").getText().split(" ");
 						int[] switchLevelInteger = new int[switchLevel.length];
 						String[] switchLux = sensorElement.element("switch_lux").getText().split(" ");
 						double[] switchLuxDouble = new double[switchLux.length];
@@ -383,13 +377,13 @@ public class XMLHandler {
 	}
 	
 	/* Get <current_appliance_location> */
-	public ArrayList<String> getApplianceNameList() {
+	public ArrayList<String> getEZMeterNameList() {
 		ArrayList<String> applianceNameList = new ArrayList<String>();
 		
 		try {
 			SAXReader saxReader = new SAXReader();
 			Document document = saxReader.read(xml);
-			List list = document.selectNodes("/metaData/applianceList/type");
+			List list = document.selectNodes("/metaData/ezMeterList/type");
 			Iterator iter = list.iterator();
 			while (iter.hasNext()) {
 				Element typeElement = (Element) iter.next();

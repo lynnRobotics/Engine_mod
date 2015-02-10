@@ -26,6 +26,7 @@ public class Mchess extends Consumer implements Runnable {
 
 	public static String ercieInitializationPath = "./_input_data/ercieInitilization.xml";
 	public static String thermalInitializationPath = "./_input_data/thermalInitilization.xml";
+	public static String environmentInitializationPath = "./_input_data/environmentInitialization.xml";
 	
 	/* Two main engine */
 	static Ercie ercie = null;

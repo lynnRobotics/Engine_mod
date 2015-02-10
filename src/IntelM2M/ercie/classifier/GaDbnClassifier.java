@@ -133,7 +133,7 @@ public class GaDbnClassifier implements Classifier {
 		}
 		return classifier;
 	}
-
+	
 	public void allSetDefaultValue(GaGenerator GA) {
 		Set<String> gSet = GA.gaList.keySet();
 		String[] gaList = (String[]) gSet.toArray(new String[0]);
@@ -146,7 +146,7 @@ public class GaDbnClassifier implements Classifier {
 
 				}
 			}
-			/* Print result */
+			// Print result 
 			double[] result;
 			// String []activityList=(String[])EnvStructure.activityList.toArray(new String[0]);
 			try {
@@ -165,7 +165,8 @@ public class GaDbnClassifier implements Classifier {
 		}
 
 	}
-
+	
+	
 	public String setDefaultValue(int index, int iNode, String nodeName) {
 		Map<String, String> sensorState = EnvStructure.sensorState;
 		String sensorValue = "";
@@ -193,6 +194,7 @@ public class GaDbnClassifier implements Classifier {
 	}
 	
 	// no longer used
+	/* Guan-Lin, 20150209
 	public void inference(String message, Sendable sender, GaGenerator GA) {
 
 		JsonBuilder json = MessageUtils.jsonBuilder();
@@ -211,7 +213,7 @@ public class GaDbnClassifier implements Classifier {
 			System.out.println("receive: {\"" + s.name + "\":\"" + s.discreteValue + "\"}");
 			try {
 
-				/* Inference */
+				// Inference 
 				inferDBN = GaDBNInference(GA, s.name, s.discreteValue);
 
 				if (inferDBN.size() != 0) {
@@ -231,8 +233,9 @@ public class GaDbnClassifier implements Classifier {
 
 		}
 
-	}
+	}*/
 
+	/* Guan-Lin 20150209
 	public Map<String, ExpResult> testing(GaGenerator GA, String testingDataPath, String resultPath) {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(testingDataPath));
@@ -240,13 +243,13 @@ public class GaDbnClassifier implements Classifier {
 			String read = null;
 			Map<String, ArrayList<String>> sensorStatus = EnvStructure.sensorStatus;
 
-			/* build gaList */
+			// build gaList 
 			Set<String> gSet = GA.gaList.keySet();
 			ArrayList<String> gaList = new ArrayList<String>();
 			for (String str : gSet) {
 				gaList.add(str);
 			}
-			/* precision and recall for one activity */
+			// precision and recall for one activity 
 			Map<String, ExpResult> expResult = new LinkedHashMap<String, ExpResult>();
 			for (int i = 0; i < gaList.size(); i++) {
 				ExpResult r = new ExpResult();
@@ -257,7 +260,7 @@ public class GaDbnClassifier implements Classifier {
 			try {
 				while ((read = reader.readLine()) != null) {
 					String[] sensorName = (String[]) sensorStatus.keySet().toArray(new String[0]);
-					/* initial */
+					// initial 
 					Map<String, Boolean> GAinferResult = new LinkedHashMap<String, Boolean>();
 					Map<String, Boolean> groundTruth = new LinkedHashMap<String, Boolean>();
 					Map<String, Boolean> GAgroundTruth = new LinkedHashMap<String, Boolean>();
@@ -283,7 +286,7 @@ public class GaDbnClassifier implements Classifier {
 
 					int humanNumber = split[1].split(" ").length;
 					if (rawFromDBN.size() != 0) {
-						/* prior Knowledge 處理 */
+						// prior Knowledge 處理 
 						rawFromDBN = Prior.priorForInference(rawFromDBN, humanNumber);
 
 					}
@@ -293,7 +296,7 @@ public class GaDbnClassifier implements Classifier {
 						probDBN.put(splitActPb[0], splitActPb[1]);
 					}
 
-					/* record result */
+					// record result 
 					for (String str : inferDBN) {
 						GAinferResult.put(str, true);
 					}
@@ -306,9 +309,9 @@ public class GaDbnClassifier implements Classifier {
 
 						}
 					}
-					/* record ground truth */
+					// record ground truth 
 					String[] truth = split[1].split(" ");
-					/* 去掉NO */
+					// 去掉NO 
 					ArrayList<String> tmpArr = new ArrayList<String>();
 					for (String str : truth) {
 						if (!str.equals("NO")) {
@@ -321,12 +324,12 @@ public class GaDbnClassifier implements Classifier {
 						groundTruth.put(str, true);
 					}
 
-					/* 選擇要不要印truth */
+					// 選擇要不要印truth 
 					writer.write("| truth");
 					// writer.write("  truth: "+ split[1]);
 					writer.flush();
 
-					/* record ground truth for GA */
+					// record ground truth for GA 
 					for (String str : truth) {
 						// String gid=GA.getGID(str);
 						ArrayList<String> gidArr = GA.getGID(str);
@@ -345,7 +348,7 @@ public class GaDbnClassifier implements Classifier {
 						}
 					}
 
-					/* record tp tn fp fn for GA */
+					// record tp tn fp fn for GA 
 					for (String str : gaList) {
 						if (GAgroundTruth.get(str) == true && GAinferResult.get(str) == true) {
 							ExpResult r = expResult.get(str);
@@ -375,7 +378,7 @@ public class GaDbnClassifier implements Classifier {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			/* write result */
+			// write result 
 			writer.write("####################\r\n\r\n");
 			for (String str : gaList) {
 				double precision = expResult.get(str).tp / (expResult.get(str).tp + expResult.get(str).fp);
@@ -384,7 +387,7 @@ public class GaDbnClassifier implements Classifier {
 				writer.write(str + ": Precision=" + precision + " Recall=" + recall + "\r\n");
 				writer.flush();
 			}
-			/* write GA member */
+			// write GA member 
 			for (String str : gaList) {
 				ArrayList<String> actList = GA.getGroupMember(str);
 				writer.write(str + " :");
@@ -397,7 +400,7 @@ public class GaDbnClassifier implements Classifier {
 
 			System.out.println("Testing Finish");
 
-			/* return test result */
+			// return test result 
 
 			return expResult;
 		} catch (Exception e) {
@@ -405,7 +408,7 @@ public class GaDbnClassifier implements Classifier {
 			return null;
 		}
 
-	}
+	}*/
 
 	public ArrayList<String> GaDBNInference(GaGenerator GA, String sensorName, String sensorValue) {
 		double[] result;
@@ -443,7 +446,8 @@ public class GaDbnClassifier implements Classifier {
 
 		return strArray;
 	}
-
+	
+	/* Guan-Lin 20150209
 	public void allSetDefaultValue(boolean print) {
 		try {
 			for (int i = 0; i < classifier.length; i++) {
@@ -454,7 +458,7 @@ public class GaDbnClassifier implements Classifier {
 
 				}
 			}
-			/* Print result */
+			// Print result 
 			double[] result;
 			String[] activityList = (String[]) EnvStructure.activityList.toArray(new String[0]);
 			try {
@@ -472,7 +476,7 @@ public class GaDbnClassifier implements Classifier {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 
 	private void set(String sensorName, String sensorValue) {
 		try {

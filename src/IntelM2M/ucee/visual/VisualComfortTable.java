@@ -6,18 +6,17 @@ import java.util.Map;
 import java.util.Set;
 
 import IntelM2M.datastructure.AppNode;
-import IntelM2M.datastructure.RelationTable;
 
 public class VisualComfortTable {
-	ArrayList<String> appNameList; // All of light_location
+	ArrayList<String> applianceList; // All of light_location
 	Map<String,Double> luxTable;   // e.g., <1-1, 50> 
 	
 	/* Set visual comfort table */
 	public VisualComfortTable(String[] appliances, String[] relation){
-		appNameList = new ArrayList<String>();
+		applianceList = new ArrayList<String>();
 		
 		for(String str : appliances){
-			appNameList.add(str);
+			applianceList.add(str);
 		}
 		luxTable = new LinkedHashMap<String, Double>();
 		
@@ -37,7 +36,6 @@ public class VisualComfortTable {
 		/* Get key for lux table from appList */
 		try {
 			String key = "";
-		
 			for(int i = 0; i < appList.size(); i++){
 				AppNode app = appList.get(i);
 				if(app.envContext.equals("off") || app.envContext.equals("standby")){	
@@ -47,18 +45,15 @@ public class VisualComfortTable {
 						key += "+";
 					}
 					String switchNum = app.envContext.split("_")[1];
-					key = key + Integer.toString(appNameList.indexOf(app.appName) + 1) + "_" + switchNum;
+					key = key + Integer.toString(applianceList.indexOf(app.appName) + 1) + "_" + switchNum;
 				} 
 			}
 			double lux = 0;
 			if(key.equals("")){
 				lux = 0;
-			}else{
-				if(!luxTable.containsKey(key)){
-					/*for debug*/
-					int aa = 0;
-					aa++;
-				}else{
+			}
+			else{
+				if(luxTable.containsKey(key)){
 					lux = luxTable.get(key);
 				}
 			}
@@ -68,4 +63,5 @@ public class VisualComfortTable {
 		}
 		return 0;
 	}
-	}
+	
+}

@@ -23,30 +23,29 @@ public class AppNode {
 	public Boolean haveAPControlFromOn = false;  // 有沒有被ap agent 控制
 	public Map<String, Double> ampere =  new LinkedHashMap<String, Double>(); // getAppList
 		
-		public AppNode(){
-		}
+	public AppNode(){
+	}
 		
-		public AppNode(String name){
-			appName = name;
-		}
+	public AppNode(String name){
+		appName = name;
+	}
 		
-		public AppNode copyAppNode(AppNode tmp){
-			AppNode app = new AppNode();
-
-			/* Notice : This is not clone */
-			app.appName = tmp.appName;
-			app.state = tmp.state;
-			app.confidence = tmp.confidence;
-			app.escType = tmp.escType;			
-			app.location = tmp.location;
-			app.comfortType = tmp.comfortType;
-			app.ampere = tmp.ampere;
-			app.global = tmp.global;
-			app.agentName = tmp.agentName;
-			app.envContext = tmp.envContext;
-			app.haveAPControlFromOn = tmp.haveAPControlFromOn;
-			
-			return app;
-		}
+	public AppNode copyAppNode(AppNode tmp){
+		AppNode app = new AppNode();
+		/* Notice : This is not clone */
+		app.appName = tmp.appName;
+		app.state = tmp.state;
+		app.confidence = tmp.confidence;
+		app.escType = tmp.escType;
+		app.envContext = tmp.envContext;
+		app.agentName = tmp.agentName;
+		app.comfortType = tmp.comfortType;
+		app.location = tmp.location;
+		app.global = tmp.global;
+		
+		app.haveAPControlFromOn = tmp.haveAPControlFromOn;		
+		app.ampere = tmp.ampere;
+		return app;
+	}
 		
 }

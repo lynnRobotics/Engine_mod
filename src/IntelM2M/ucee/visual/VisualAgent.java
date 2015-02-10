@@ -114,64 +114,6 @@ public class VisualAgent {
 		return null;
 	}
 
-	// public Map<String, ArrayList<AppNode>> getActAppList2( Set<String> singleAct, ArrayList<String> locationList,ArrayList<AppNode>decisionList ){
-	// Map<String, ArrayList<AppNode>> actAppList = new LinkedHashMap<String, ArrayList<AppNode>>();
-	// int i=0;
-	// for(String act:singleAct){
-	// ArrayList<AppNode> appList= new ArrayList<AppNode>();
-	// for(AppNode app:decisionList){
-	// if(locationList.get(i).equals(app.location)){
-	// appList.add(app.copyAppNode(app));
-	// }
-	// }
-	// actAppList.put(act, appList);
-	// i+=1;
-	// }
-	// return actAppList;
-	// }
-
-	// public Map<String, ArrayList<AppNode>> removeNotOnApp(Map<String, ArrayList<AppNode>> actAppList,GAinference gaInference){
-	//
-	// Map<String, RelationTable> ga0ActAppList=gaInference.GaEscList.get(0).actAppList;
-	// Map<String, RelationTable> ga0ActAppList2= new HashMap <String, RelationTable>();
-	// GaGenerator ga0Generator=gaInference.GaGeneratorList.get(0);
-	// Set<String> ga0ActAppListKey=ga0ActAppList.keySet();
-	// for(String gaName:ga0ActAppListKey){
-	// String actName=ga0Generator.getGroupMember(gaName).get(0);
-	// RelationTable tmp=ga0ActAppList.get(actName);
-	// ga0ActAppList2.put(actName, tmp);
-	//
-	// }
-	//
-	// Set<String> actAppListKey=actAppList.keySet();
-	// Set<String> ga0Key=ga0ActAppList2.keySet();
-	//
-	// for(String actName:actAppListKey){
-	//
-	// ArrayList<AppNode> appList=actAppList.get(actName);
-	// ArrayList<AppNode> eusList=ga0ActAppList2.get(actName).appList;
-	//
-	// ArrayList<AppNode> newAppList= new ArrayList<AppNode>();
-	//
-	// for(AppNode app:appList){
-	// for(AppNode eus:eusList){
-	// if(eus.appName.equals(app.appName)){
-	// if(!eus.state.equals("off")){
-	// newAppList.add(app);
-	// }
-	// }
-	// }
-	// }
-	//
-	// actAppList.put(actName, newAppList);
-	//
-	//
-	// }
-	//
-	// return actAppList;
-	//
-	// }
-
 	/* Calculate ILL-List according to context from status of appliance */
 	public ArrayList<Double> getIllList(Map<String, ArrayList<AppNode>> actAppList) {
 		ArrayList<Double> illList = new ArrayList<Double>();

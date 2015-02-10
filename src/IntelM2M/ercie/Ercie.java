@@ -60,7 +60,6 @@ public class Ercie {
 		// build i layer GA
 		for (int i = 1; i <= trainLevel; i++) {
 			GaGenerator GA = new GaGenerator(i);  // Multiple GA at layer i
-			
 			if (i == 1) GA.buildFirstGaList();
 			else {
 				Boolean flag = GA.buildHGA(GaDbnList.get(i - 2), GaGeneratorList.get(i - 2), GaEscList.get(i - 2), retrain);

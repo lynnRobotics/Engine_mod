@@ -21,7 +21,6 @@ import IntelM2M.datastructure.ExpResult;
 //import IntelM2M.ercie.Epcieold;
 import IntelM2M.ercie.GaGenerator;
 import IntelM2M.ercie.classifier.GaDbnClassifier;
-import IntelM2M.tmp.KmCluster;
 
 public class CrossValidate {
 	

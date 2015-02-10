@@ -161,7 +161,7 @@ public class Esdse {
 		}
 		
 		// Initialization of ezmeter reading of each appliance
-		for (String appliance : EnvStructure.applianceNameList) {
+		for (String appliance : EnvStructure.ezMeterNameList) {
 			Mchess.ezMeterAmpereReading.put(appliance, -1.0);
 		}
 		
@@ -852,10 +852,10 @@ public class Esdse {
 			double ampere_value = Double.parseDouble(ampere);
 			String type = subject;                   
 			String id = extractValue(message, "id"); 
-			SensorNode node = EnvStructure.applianceList.get(type + "_" + id);
+			SensorNode node = EnvStructure.ezMeterList.get(type + "_" + id);
 			if (node != null) {
 				// Get corresponding appliance name according to ezMeter id
-				String applianceName = EnvStructure.applianceList.get(type + "_" + id).name;
+				String applianceName = EnvStructure.ezMeterList.get(type + "_" + id).name;
 				// Put newest ampere info into ezMete reading
 				Mchess.ezMeterAmpereReading.put(applianceName, ampere_value);
 			}

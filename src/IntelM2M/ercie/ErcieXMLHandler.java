@@ -16,7 +16,6 @@ import IntelM2M.mchess.Mchess;
 
 public class ErcieXMLHandler {
 	
-	static public String ercieInitializationPath;
 	File xml = new File("./_input_data/ercielInitilization.xml");
 	
 	public ErcieXMLHandler(){

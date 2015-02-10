@@ -46,20 +46,17 @@ public class GaGenerator {
 		try {
 			ercieXMLHandler = new ErcieXMLHandler();
 			File dir = new File("./_weka_training_data");
-			insts = new Instances(new FileReader("./_weka_training_data/"
-		    			+ dir.list()[0]));
+			insts = new Instances(new FileReader("./_weka_training_data/" + dir.list()[0]));
 		} catch (Exception ex) {
 		}
 		this.level = level;
 	}
 
 	public void buildFirstGaList() {
-		String[] activityList = (String[]) EnvStructure.activityList
-				.toArray(new String[0]);
+		String[] activityList = (String[]) EnvStructure.activityList.toArray(new String[0]);
 		int i = 0;
 		for (String str : activityList) {
-			GroupActivity ga = new GroupActivity("g1-"
-					+ Integer.toString(i + 1));
+			GroupActivity ga = new GroupActivity("g1-" + Integer.toString(i + 1));
 			ga.actMemberList.add(activityList[i]);
 			gaList.put(ga.GID, ga);
 			i++;
