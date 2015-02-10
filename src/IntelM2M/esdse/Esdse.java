@@ -655,7 +655,7 @@ public class Esdse {
 			ercie.duration = (currentTime.getTime() - ercie.startTime.getTime()) / 1000.0;
 			activityChanged = false;
 			// Make sure activity changed is not because some noise
-			if (ercie.duration < ercie.threshold) {
+			if (ercie.duration < ercie.stableDuration) {
 				activityChanged = true;
 				System.err.println("Still in the non-stable period!");
 				System.out.println("===========================================");

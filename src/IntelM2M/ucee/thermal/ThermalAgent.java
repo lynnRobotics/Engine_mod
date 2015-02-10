@@ -37,7 +37,7 @@ public class ThermalAgent {
 	boolean tooColdFlag = false; // The weather is too cold or not
 	int iterateLimit = 20; //final int iterateLimit = 20; the number of iterations in getOptThermalListForOnline()
 	double incrementConstraint = 0.1; //final double incrementConstraint = 0.1; the increments in every iteration in thermalIterate()
-	Map<String, Integer> priorityList = new HashMap<String, Integer>();
+	Map<String, Integer> priorityList = new HashMap<String, Integer>(); // seems not used, Guan-Lin 20150210
 	/* modularize */
 	
 	ArrayList<Double> constraintList = null;
@@ -53,6 +53,7 @@ public class ThermalAgent {
 		tooColdFlag = thermalXMLHandler.getTooColdFlag();
 		iterateLimit = thermalXMLHandler.getIterateLimit();
 		incrementConstraint = thermalXMLHandler.getIncrementConstraint();
+		priorityList = thermalXMLHandler.getActivityPriorityList();
 	}
 
 	/* Get <activity, appList> */

@@ -24,18 +24,24 @@ import weka.classifiers.bayes.net.MarginCalculator;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 import weka.core.Utils;
-
 import IntelM2M.algo.Classifier;
 import IntelM2M.algo.Prior;
 import IntelM2M.datastructure.EnvStructure;
 import IntelM2M.datastructure.ExpResult;
 import IntelM2M.datastructure.SensorNode;
+import IntelM2M.ercie.ErcieXMLHandler;
 import IntelM2M.ercie.GaGenerator;
 import IntelM2M.esdse.Esdse;
 import IntelM2M.mchess.Mchess;
 
 public class GaDbnClassifier implements Classifier {
 	public EditableBayesNet[] classifier;
+	
+	ErcieXMLHandler ercieXMLHandler;
+	/* modularize */
+	static public Map<String,String> defaultValueMap = new LinkedHashMap<String, String>();
+	/* modularize */
+	
 	/* Threshold for Single TraingData */
 	// static final double inferThreshold=0.7;
 	/* noise confidence */
@@ -49,6 +55,10 @@ public class GaDbnClassifier implements Classifier {
 	private ArrayList<String> preInferDBN = new ArrayList<String>();
 	/* For Debug */
 	public Map<String, String> allGaProb = new LinkedHashMap<String, String>();
+	
+	public GaDbnClassifier(){
+		ercieXMLHandler = new ErcieXMLHandler();
+	}
 
 	public void buildGaModel(GaGenerator GA, Boolean retrain) {
 		Instances insts, attSelected;
@@ -168,8 +178,16 @@ public class GaDbnClassifier implements Classifier {
 	
 	
 	public String setDefaultValue(int index, int iNode, String nodeName) {
+		GaDbnClassifier.defaultValueMap = ercieXMLHandler.getDefaultValueMap();
 		Map<String, String> sensorState = EnvStructure.sensorState;
 		String sensorValue = "";
+		// Guan-Lin 20150210
+		if (GaDbnClassifier.defaultValueMap.containsKey(nodeName)){
+			sensorValue = GaDbnClassifier.defaultValueMap.get(nodeName);
+		}
+		else sensorValue = "off";
+		sensorState.put(nodeName, sensorValue);
+		/* Guan-Lin 20150210
 		if (nodeName.contains("TV") || nodeName.contains("kinect") || nodeName.contains("fan")) {
 			classifier[index].setEvidence(iNode, 1);
 			if (nodeName.contains("accelerometer")) {
@@ -188,6 +206,7 @@ public class GaDbnClassifier implements Classifier {
 			sensorValue = "off";
 			sensorState.put(nodeName, sensorValue);
 		}
+		*/
 		update(classifier[index]);
 
 		return sensorValue;

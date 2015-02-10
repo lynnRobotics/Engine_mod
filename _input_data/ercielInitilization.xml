@@ -3,9 +3,9 @@
 	<rawTrainingDataPath>
 		<value>./_input_data/trainingData.txt</value>
 	</rawTrainingDataPath>
-	<threshold>
+	<stableDuration>
 		<value>5</value>
-	</threshold>
+	</stableDuration>
 	<retrain>
 		<value>false</value>
 	</retrain>
@@ -44,5 +44,26 @@
 			<activityName>AllSleeping</activityName>
 		</ga>
 	</gaList>
-
+	<defaultValueMap>
+		<defaultValue>
+			<name>current_TV_livingroom</name>
+			<value>standby</value>
+		</defaultValue>
+		<defaultValue>
+			<name>current_xbox_livingroom</name>
+			<value>standby</value>
+		</defaultValue>
+		<defaultValue>
+			<name>current_watercoldfan_livingroom</name>
+			<value>standby</value>
+		</defaultValue>
+		<defaultValue>
+			<name>current_AC_bedroom</name>
+			<value>on</value>
+		</defaultValue>
+		<defaultValue>
+			<name>current_AC_livingroom</name>
+			<value>on</value>
+		</defaultValue>
+	</defaultValueMap>
 </metaData>

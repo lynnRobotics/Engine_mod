@@ -35,7 +35,7 @@ public class Ercie {
 	public double duration;				// used in Esdse
 	
 	/* modularize */
-	public double threshold = 5;        // used in Esdse       // unit is second 
+	public double stableDuration = 5;        // used in Esdse       // unit is second 
 	static Boolean retrain = false;     // Retrain or not
 	static int trainLevel = 3;          // Level of group activity
 	String rawTrainingDataPath = "./_input_data/ercielInitilization.xml"; // For real-time usage
@@ -43,12 +43,11 @@ public class Ercie {
 
 	public Ercie() {
 		ercieXMLHandler = new ErcieXMLHandler();
-		threshold = ercieXMLHandler.getThreshold();
+		stableDuration = ercieXMLHandler.getStableDuration();
 		retrain = ercieXMLHandler.getRetrain();
 		trainLevel = ercieXMLHandler.getTrainLevel();
 		rawTrainingDataPath = ercieXMLHandler.getRawTrainingDataPath();
 		
-		System.out.println("...using training threshold: "+Double.toString(threshold));
 		
 		GaGeneratorList = new ArrayList<GaGenerator>();  // Record GA structure 
 		GaDbnList = new ArrayList<GaDbnClassifier>();    // Record DBN for each GA 

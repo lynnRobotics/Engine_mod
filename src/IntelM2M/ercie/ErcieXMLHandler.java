@@ -39,12 +39,12 @@ public class ErcieXMLHandler {
 		return rawTrainingDataPath;
 	}
 
-	public double getThreshold(){
+	public double getStableDuration(){
 		double threshold = 0.1;
 		try{
   			SAXReader saxReader = new SAXReader();
   			Document document = saxReader.read(xml);
-  			List list = document.selectNodes("/metaData/threshold");
+  			List list = document.selectNodes("/metaData/stableDuration");
   			Iterator iter = list.iterator();
   			while(iter.hasNext()){
   				Element curElement = (Element)iter.next();
@@ -112,6 +112,25 @@ public class ErcieXMLHandler {
 			e.printStackTrace();
 		}
 		return gaList;
+	}
+	
+	public Map<String, String> getDefaultValueMap(){
+		Map<String, String> defaultValueMap = new LinkedHashMap<String, String>();
+		try{
+  			SAXReader saxReader = new SAXReader();
+  			Document document = saxReader.read(xml);
+  			List list = document.selectNodes("/metaData/defaultValueMap/defaultValue");
+  			Iterator iter = list.iterator();
+  			while(iter.hasNext()){
+  				Element curElement = (Element)iter.next();
+  				String key = curElement.element("name").getText();
+  				String value = curElement.element("value").getText();
+  				defaultValueMap.put(key, value);
+  			}
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		return defaultValueMap;
 	}
 	
 }
