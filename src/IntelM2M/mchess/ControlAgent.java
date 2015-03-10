@@ -1,4 +1,4 @@
-package IntelM2M.ucee.control;
+package IntelM2M.mchess;
 
 import java.util.ArrayList;
 
@@ -31,7 +31,6 @@ public class ControlAgent {
 	
 	public boolean controlAppliance(ArrayList<AppNode> decisionList, ArrayList<AppNode> eusList){
 		controlExistence = false;
-		//sendControlStartSignal();
 		int i, j, k;
 		for(i = 0; i < decisionList.size(); i++){
 			AppNode app = decisionList.get(i);
@@ -317,10 +316,6 @@ public class ControlAgent {
 			controlExistence = true;
 		}
 		producer.sendOut(command.toJson(), "ssh.HCI.COMMAND.DISPLAY");
-//		try {
-//			Thread.sleep(sleepInterval);
-//		} catch (InterruptedException e) {
-//		}
 	}
 	
 	public void sendCommand(JsonBuilder command, String topic) {
@@ -329,10 +324,6 @@ public class ControlAgent {
 			controlExistence = true;
 		}
 		producer.sendOut(command.toJson(), topic);
-//		try {
-//			Thread.sleep(sleepInterval);
-//		} catch (InterruptedException e) {
-//		}
 	}
 	
 	public void sendCommand(JsonBuilder command, String topic, boolean directContorl) {
@@ -347,7 +338,8 @@ public class ControlAgent {
 		}
 	}
 	
-	/* TODO Integrate with new light system */
+	// Integrate with new light system
+	/*
 	public void controlLivingRoomLight(String newState, String oldState) {
 		if (newState.equals("off")) {
 			if (oldState.equals("on_1")) {
@@ -413,8 +405,9 @@ public class ControlAgent {
 				sendCommand(json.add("value", "LIVINGROOM-LIGHT_TWO_ON"));
 			}
 		}
-	}
+	}*/
 	
+	/*
 	public void controlLivingRoomFan(String newState, String oldState) {
 		if (oldState.startsWith("on") && (newState.equals("standby") || newState.equals("off"))) {
 			json.reset();
@@ -466,17 +459,9 @@ public class ControlAgent {
 			}
 		}
 	}
-	
+	*/
+	/*
 	public void controlLivingRoomWaterColdFan(String newState, String oldState) {
-//		if (Esdse.isPlayingKinect && Esdse.accumulatedCalorie < fanOnThreshold) {
-//			if (oldState.startsWith("on")) {
-//				json.reset();
-//				sendCommand(json.add("value", "WATER_COLD_FAN_FOG"));
-//				json.reset();
-//				sendCommand(json.add("value", "WATER_COLD_FAN_STOP"));
-//			}
-//			return;
-//		}
 		if (oldState.startsWith("on") && (newState.equals("standby") || newState.equals("off"))) {
 			json.reset();
 			sendCommand(json.add("value", "WATER_COLD_FAN_FOG"));
@@ -542,18 +527,9 @@ public class ControlAgent {
 				sendCommand(json.add("value", "WATER_COLD_FAN_SPEED"));
 			}
 		}
-	}
+	}*/
 	
 	public void controlLivingRoomWaterColdFan2(String newState, String oldState) {
-//		if (Esdse.isPlayingKinect && Esdse.accumulatedCalorie < fanOnThreshold) {
-//			if (oldState.startsWith("on")) {
-//				json.reset();
-//				sendCommand(json.add("value", "WATER_COLD_FAN_FOG"));
-//				json.reset();
-//				sendCommand(json.add("value", "WATER_COLD_FAN_STOP"));
-//			}
-//			return;
-//		}
 		if (oldState.startsWith("on") && (newState.equals("standby") || newState.equals("off"))) {
 			json.reset();
 			sendCommand(json.add("value", "WATER_COLD_FAN_FOG"));

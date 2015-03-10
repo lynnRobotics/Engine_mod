@@ -1,4 +1,4 @@
-package IntelM2M.ucee.ap;
+package IntelM2M.ap;
 
 import net.sourceforge.jFuzzyLogic.FIS;
 import IntelM2M.datastructure.AppNode;

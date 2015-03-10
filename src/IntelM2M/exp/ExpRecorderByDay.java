@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-import IntelM2M.test.SimulatorTest;
-
 public class ExpRecorderByDay {
 
 		static public ExpRecorderByDay expByDay= new ExpRecorderByDay();

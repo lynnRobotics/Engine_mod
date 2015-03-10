@@ -27,12 +27,11 @@ import IntelM2M.ercie.GAinference;
 import IntelM2M.ercie.classifier.GaDbnClassifier;
 import IntelM2M.ercie.erc.GaEscGenerator;
 import IntelM2M.exp.ExpRecorder;
+import IntelM2M.mchess.ControlAgent;
 import IntelM2M.mchess.Mchess;
 import IntelM2M.mq.Producer;
 import IntelM2M.preference.PreferenceAgent;
 import IntelM2M.preference.PreferenceAgent.PreferenceModel;
-import IntelM2M.test.SimulatorTest;
-import IntelM2M.ucee.control.ControlAgent;
 import IntelM2M.ucee.thermal.ThermalAgent;
 import IntelM2M.ucee.visual.VisualAgent;
 
@@ -181,13 +180,14 @@ public class Esdse {
 	}
 
 	/* If there's a GA we need to merge them (no longer use) */
+	/*
 	private ArrayList<AppNode> eusAggregation(GAinference gaInference, String envContext) {
 		ArrayList<String> gaInferResultList = gaInference.gaInferResultList;
-		/* Get eus */
+		// Get eus 
 		ArrayList<AppNode> eusAggregationList = new ArrayList<AppNode>();
-		/* There might be nothing after inference */
+		// There might be nothing after inference 
 		if (gaInferResultList.size() == 0) {
-			/* Copy app from appList */
+			// Copy app from appList 
 			Map<String, AppNode> appList = EnvStructure.appList;
 			Set<String> keySet = appList.keySet();
 			for (String str : keySet) {
@@ -195,11 +195,6 @@ public class Esdse {
 				AppNode newApp = app.copyAppNode(app);
 				eusAggregationList.add(newApp);
 			}
-			// Update EUS from sensorReading (I don't really understand)
-			/* Map<String, ArrayList<String>> sensorStatus=EnvStructure.sensorStatus;
-			   String [] sensorName=(String[])sensorStatus.keySet().toArray(new String[0]);
-			   String[] split = envContext.split("#");
-			   String []sensorContext=split[0].split(" "); */
 		} 
 		else {
 			for (String str : gaInferResultList) {
@@ -230,12 +225,12 @@ public class Esdse {
 				}
 			}
 		}
-
-		/* Update EUS from sensorReading */
-		/* A map to store status of each sensor and extract list of sensor name from sensorStatus  */
+		
+		// Update EUS from sensorReading 
+		// A map to store status of each sensor and extract list of sensor name from sensorStatus  
 		Map<String, ArrayList<String>> sensorStatus = EnvStructure.sensorStatus;
 		String[] sensorName = (String[]) sensorStatus.keySet().toArray(new String[0]);
-		/* Extract environment context */
+		// Extract environment context 
 		String[] split = envContext.split("#");
 		String[] sensorContext = split[0].split(" ");
 
@@ -248,7 +243,7 @@ public class Esdse {
 		}
 		
 		return eusAggregationList;
-	}
+	}*/
 
 	/* If there's a GA we need to merge them (real-time version) */
 	private ArrayList<AppNode> eusAggregationForRealTime(GAinference gaInference, Map<String, String> sensorReading){
@@ -406,94 +401,95 @@ public class Esdse {
 	}
 
 	/* This function is for simulator (No longer use) */
+	/*
 	public void processForSimulator(Ercie ercie, String read, String read2, String updatedRead) {
 
-		/* Infer GA */
+		// Infer GA 
 		String processRead = SimulatorTest.rawDataPreprocessing(updatedRead);
 		ercie.gaInferenceForSimulator(processRead);
 
-		/* 1. EUS aggregation */
-		ArrayList<AppNode> eusList = eusAggregation(ercie.gaInference, read);/* 這邊怪怪，我沒有用process的read function裡面自己有process */
+		// 1. EUS aggregation 
+		ArrayList<AppNode> eusList = eusAggregation(ercie.gaInference, read);// 這邊怪怪，我沒有用process的read function裡面自己有process 
 		ArrayList<AppNode> decisionList = null;
-		/* infer 有可能沒有結果 */
+		// infer 有可能沒有結果 
 		if (ercie.gaInference.gaInferResultList.size() == 0) {
 			decisionList = eusList;
 		} else {
 
-			/* 2. EUS dispatch */
-			eusDispatch(eusList, ercie.gaInference);/* update eusList */
+			// 2. EUS dispatch 
+			eusDispatch(eusList, ercie.gaInference);// update eusList 
 
-			/* 3 optimization */
+			// 3 optimization 
 			Optimizer op = new Optimizer();
 			decisionList = op.getOptDecisionList(eusList, ercie.gaInference);
 		}
 
-		/* update decision for lastRead */
-		/* todo2 :check if error */
+		// update decision for lastRead 
+		// todo2 :check if error 
 		SimulatorTest.updateDecisionForMchess(decisionList);
 		SimulatorTest.setLastDataForMchess(read2, decisionList);
 
-		/* 5 record result */
+		// 5 record result 
 		ExpRecorder.exp.processEXP(read, read2, ercie, decisionList, eusList);
 
-	}
+	}*/
 	
 	/* This function is for simulator (No longer use) */
+	/*
 	public void processForSimulatorWithPR_new(Ercie ercie, String read, String read2, String updatedRead) {
 
-		/* 更新READ的資料 */
-		/*
-		 * 我上次"關掉的電器中"，如果"確認是上次的noise"，且也是"這次的noise"， 那我就直接重這次的noise中刪除這些電器，且加入我的turn off 陣列中
-		 */
+		// 更新READ的資料 
+		//我上次"關掉的電器中"，如果"確認是上次的noise"，且也是"這次的noise"， 那我就直接重這次的noise中刪除這些電器，且加入我的turn off 陣列中
+		 
 
-		/* Infer GA */
+		// Infer GA
 
 		String processRead = SimulatorTest.rawDataPreprocessing(updatedRead); // 去掉電器的狀態，例如on_19後面的_19會被去掉
 		ercie.gaInferenceForSimulator(processRead);
 
-		/* 1. EUS aggregation */
+		// 1. EUS aggregation 
 		ArrayList<AppNode> eusList = null;
 		ArrayList<AppNode> decisionList = null;
 
-		/* infer 結果可能為空 */
+		// infer 結果可能為空 
 		if (ercie.gaInference.gaInferResultList.size() == 0) {
 			eusList = eusAggregation(ercie.gaInference, read);
 			decisionList = eusList;
 		} else if (pr.inferPRmodel(ercie.gaInference) == null) {
-			/* 1.EUS aggregation */
+			// 1.EUS aggregation 
 			eusList = eusAggregation(ercie.gaInference, read);
-			/* 2. EUS dispatch */
-			eusDispatch(eusList, ercie.gaInference);/* update eusList */
-			/* 3 optimization */
+			// 2. EUS dispatch
+			eusDispatch(eusList, ercie.gaInference);// update eusList 
+			// 3 optimization 
 			Optimizer op = new Optimizer();
 			decisionList = op.getOptDecisionList(eusList, ercie.gaInference);
-			/* 這邊可能有錯，檢查decisionList和gaInference是否有被update */
-			/* todo4 : chek if error */
+			// 這邊可能有錯，檢查decisionList和gaInference是否有被update 
+			// todo4 : chek if error 
 			pr.buildPRModel(decisionList, ercie.gaInference);
 		} else {
 			PreferenceModel prM = pr.inferPRmodel(ercie.gaInference);
 			pr.updateInferResult(ercie.gaInference, prM);
-			/* 1.EUS aggregation */
+			// 1.EUS aggregation 
 			eusList = eusAggregation(ercie.gaInference, read);
-			/* 2. EUS dispatch */
-			eusDispatch(eusList, ercie.gaInference);/* update eusList */
-			/* 3 optimization */
+			// 2. EUS dispatch 
+			eusDispatch(eusList, ercie.gaInference);// update eusList
+			// 3 optimization 
 			Optimizer op = new Optimizer();
 			decisionList = op.getOptDecisionList(eusList, ercie.gaInference);
 		}
 
-		/* update decision for lastRead */
-		/* todo2 :check if error */
+		// update decision for lastRead 
+		// todo2 :check if error 
 		SimulatorTest.updateDecisionForMchess(decisionList);
 		SimulatorTest.setLastDataForMchess(read2, decisionList);
 
-		/* 5 record result */
+		// 5 record result 
 		ExpRecorder.exp.processEXP(read, read2, ercie, decisionList, eusList);
 
-		/* update prModel with feedback */
+		// update prModel with feedback 
 		pr.userFeedback_new(ercie.gaInference, read, read2);
 
-	}
+	}*/
 	
 	/* Go through all process (Recognition -> Provide Service) */
 	public void processForRealTime(Ercie ercie, String message) {

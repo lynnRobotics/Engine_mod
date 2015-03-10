@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metaData>
+	<MQCommand>
+		<app_appName id="light_livingroom">
+			<app_envContext id="off">
+				<eusApp_envContext id="off_off">
+					<json id="2">
+						<command>@@value@livingroom-central-light_0@@change@Darken</command>
+					</json>
+					<json id="6">
+						<command>@@value@livingroom-ring-light_0@@change@Darken</command>
+					</json>
+				</eusApp_envContext>
+			</app_envContext>
+			<app_envContext id="on">
+			</app_envContext>
+		</app_appName>
+		<app_appName id="light_hallway">
+		</app_appName>
+		<app_appName id="light_kitchen">
+		</app_appName>
+		<app_appName id="light_study">
+		</app_appName>
+		<app_appName id="light_bedroom">
+		</app_appName>
+		<app_appName id="light_bedroom">
+		</app_appName>
+	</MQCommand>
+	
+</metaData>

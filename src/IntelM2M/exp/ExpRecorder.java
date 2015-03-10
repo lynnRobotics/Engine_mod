@@ -12,7 +12,6 @@ import IntelM2M.datastructure.EnvStructure;
 import IntelM2M.ercie.Ercie;
 import IntelM2M.ercie.GAinference;
 import IntelM2M.esdse.Optimizer;
-import IntelM2M.test.SimulatorTest;
 import IntelM2M.ucee.thermal.ThermalAgent;
 import IntelM2M.ucee.visual.VisualAgent;
 

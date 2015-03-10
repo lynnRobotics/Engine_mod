@@ -5,12 +5,12 @@ import java.util.Map;
 import java.util.Set;
 
 import s2h.platform.node.Sendable;
+import IntelM2M.ap.APAgent;
 import IntelM2M.datastructure.AppNode;
 import IntelM2M.datastructure.EnvStructure;
 import IntelM2M.ercie.GAinference;
 import IntelM2M.exp.ExpRecorder;
 import IntelM2M.mq.Producer;
-import IntelM2M.ucee.ap.APAgent;
 import IntelM2M.ucee.thermal.ThermalAgent;
 import IntelM2M.ucee.visual.VisualAgent;
 

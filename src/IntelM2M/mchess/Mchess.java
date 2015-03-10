@@ -13,7 +13,6 @@ import IntelM2M.ercie.ErcieXMLHandler;
 import IntelM2M.ercie.GaGenerator;
 import IntelM2M.esdse.Esdse;
 import IntelM2M.mq.Consumer;
-import IntelM2M.test.SimulatorTest;
 import IntelM2M.ucee.thermal.ThermalXMLHandler;
 
 /**
