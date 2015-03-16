@@ -126,7 +126,7 @@ public class ControlAgent {
 					}
 				}
 			} 
-			else if(app.appName.equals("light_hallway")){
+			else if(app.appName.equals("light_hallway")){ //mod_done
 				if (app.envContext.equals("off")) {
 					json.reset();
 					sendCommand(json.add("value", "DOOR-LIGHT_OFF"));
@@ -136,7 +136,7 @@ public class ControlAgent {
 					sendCommand(json.add("value", "DOOR-LIGHT_ON"));
 				}
 			}
-			else if(app.appName.equals("light_kitchen")){
+			else if(app.appName.equals("light_kitchen")){ //mod done
 				if(app.envContext.equals("off")){
 					json.reset();
 					json.add("value", "kitchen-light_0");
@@ -164,7 +164,7 @@ public class ControlAgent {
 					}
 				}
 			}
-			else if(app.appName.equals("light_study")){
+			else if(app.appName.equals("light_study")){ //mod done
 				if(app.envContext.equals("off")){
 					json.reset();
 					json.add("value", "study-light_0");
@@ -191,7 +191,7 @@ public class ControlAgent {
 					}
 				}
 			}
-			else if(app.appName.equals("light_bedroom")){
+			else if(app.appName.equals("light_bedroom")){ //mod done
 				if(app.envContext.equals("off")){
 					json.reset();
 					json.add("value", "bedroom-light_0");
@@ -219,7 +219,7 @@ public class ControlAgent {
 				}
 			}
 			// TV command
-			else if(app.appName.equals("current_TV_livingroom")){
+			else if(app.appName.equals("current_TV_livingroom")){ // mod done
 				if (eusApp.envContext.equals("on") && (app.envContext.equals("standby") || app.envContext.equals("off"))) {
 					json.reset();
 					sendCommand(json.add("value", "TV_OFF"));
@@ -230,14 +230,14 @@ public class ControlAgent {
 				controlLivingRoomWaterColdFan2(app.envContext, eusApp.envContext);
 			} 
 			// XBOX command
-			else if(app.appName.equals("current_xbox_livingroom")){
+			else if(app.appName.equals("current_xbox_livingroom")){ //mod done
 				if (eusApp.envContext.equals("on") && (app.envContext.equals("standby") || app.envContext.equals("off"))) {
 					json.reset();
 					sendCommand(json.add("value", "XBOX_STOP"));
 				}
 			}
 			// AC control command
-			else if(app.appName.equals("current_AC_livingroom")){
+			else if(app.appName.equals("current_AC_livingroom")){ //mod done
 				if(!eusApp.envContext.startsWith("on") && app.envContext.startsWith("on")){
 					json.reset();
 					json.add("value", "openspace-AC_" + app.envContext);
@@ -263,7 +263,7 @@ public class ControlAgent {
 					}
 				}
 			}
-			else if(app.appName.equals("current_AC_bedroom")){
+			else if(app.appName.equals("current_AC_bedroom")){ //mod done
 				if(!eusApp.envContext.equals("on") && app.envContext.startsWith("on")){
 					json.reset();
 					json.add("value", "bedroom-AC_" + app.envContext);

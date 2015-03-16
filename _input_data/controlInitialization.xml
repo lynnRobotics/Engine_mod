@@ -1,29 +1,178 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metaData>
 	<MQCommand>
-		<app_appName id="light_livingroom">
+		<app_appName id="equal@light_livingroom">
 			<app_envContext id="off">
-				<eusApp_envContext id="off_off">
-					<json id="2">
-						<command>@@value@livingroom-central-light_0@@change@Darken</command>
-					</json>
-					<json id="6">
-						<command>@@value@livingroom-ring-light_0@@change@Darken</command>
-					</json>
-				</eusApp_envContext>
+				<json id="2">
+					<command>@@value@livingroom-central-light_0@@change@Darken</command>
+					<condition>@@eusApp_envContext_level1=off</condition>
+				</json>
+				<json id="6">
+					<command>@@value@livingroom-ring-light_0@@change@Darken</command>
+					<condition>@@eusApp_envContext_level2=off</condition>
+				</json>
 			</app_envContext>
 			<app_envContext id="on">
+				<json id="2">
+					<command>@@value@livingroom-central-light_99@@change@Brighten</command>
+					<condition>@@app_envContext+99@@eusApp_envContext_level1-99</condition>
+				</json>
+				<json id="2">
+					<command>@@value@livingroom-central-light_99@@change@Brighten</command>
+					<condition>@@app_envContext+99@@eusApp_envContext_level1-99</condition>
+				</json>
+			
+			
 			</app_envContext>
 		</app_appName>
-		<app_appName id="light_hallway">
+		<app_appName id="equal@light_hallway">
+			<app_envContext id="equal@off">
+				<json id="1">
+					<command>@@value@DOOR-LIGHT_OFF</command>
+				</json>
+			</app_envContext>
+			<app_envContext id="equal@on_1">
+				<json id="1">
+					<command>@@value@DOOR-LIGHT_ON</command>
+				</json>
+			</app_envContext>
 		</app_appName>
-		<app_appName id="light_kitchen">
+		<app_appName id="equal@light_kitchen">
+			<app_envContext id="equal@off">
+				<json id="1">
+					<command>@@value@kitchen-light_0@@change@Darken</command>
+				</json>
+			</app_envContext>
+			<app_envContext id="contain@on">
+				<json id="2">
+					<condition>@@eusApp_envContext=off</condition>
+					<command>@@value@kitchen-light_level@@change@Brighten</command>
+				</json>
+				<json id="3">
+					<condition>@@eusApp_envContext=on_*@@eusApp_envContext-app_envContext</condition> <!-- - represents less than -->
+					<command>@@value@kitchen-light_level@@change@Brighten</command>
+				</json>
+				<json id="4">
+					<condition>@@eusApp_envContext=on_*@@eusApp_envContext+app_envContext</condition> <!-- - represents more than -->
+					<command>@@value@kitchen-light_level@@change@Darken</command>
+				</json>
+			</app_envContext>
 		</app_appName>
-		<app_appName id="light_study">
+		<app_appName id="equal@light_study">
+			<app_envContext id="equal@off">
+				<json id="1">
+					<command>@@value@study-light_0@@change@Darken</command>
+				</json>
+			</app_envContext>
+			<app_envContext id="contain@on">
+				<json id="2">
+					<condition>@@eusApp_envContext=off</condition>
+					<command>@@value@study-light_level@@change@Brighten</command>
+				</json>
+				<json id="3">
+					<condition>@@eusApp_envContext=on_*@@eusApp_envContext-app_envContext</condition> <!-- - represents less than -->
+					<command>@@value@study-light_level@@change@Brighten</command>
+				</json>
+				<json id="4">
+					<condition>@@eusApp_envContext=on_*@@eusApp_envContext+app_envContext</condition> <!-- - represents more than -->
+					<command>@@value@study-light_level@@change@Darken</command>
+				</json>
+			</app_envContext>
 		</app_appName>
-		<app_appName id="light_bedroom">
+		<app_appName id="equal@light_bedroom">
+			<app_envContext id="equal@off">
+				<json id="1">
+					<command>@@value@bedroom-light_0@@change@Darken</command>
+				</json>
+			</app_envContext>
+			<app_envContext id="contain@on">
+				<json id="2">
+					<condition>@@eusApp_envContext=off</condition>
+					<command>@@value@bedroom-light_level@@change@Brighten</command>
+				</json>
+				<json id="3">
+					<condition>@@eusApp_envContext=on_*@@eusApp_envContext-app_envContext</condition> <!-- - represents less than -->
+					<command>@@value@bedroom-light_level@@change@Brighten</command>
+				</json>
+				<json id="4">
+					<condition>@@eusApp_envContext=on_*@@eusApp_envContext+app_envContext</condition> <!-- - represents more than -->
+					<command>@@value@bedroom-light_level@@change@Darken</command>
+				</json>
+			</app_envContext>
 		</app_appName>
-		<app_appName id="light_bedroom">
+		<app_appName id="equal@current_TV_livingroom">
+			<app_envContext id="equal@standby">
+				<json id="1">
+					<command>@@value@TV_OFF</command>
+					<condition>@@eusApp_envContext=on</condition>
+				</json>
+			</app_envContext>
+			<app_envContext id="equal@off">
+				<json id="2">
+					<command>@@value@TV_OFF</command>
+					<condition>@@eusApp_envContext=on</condition>
+				</json>
+			</app_envContext>
+		</app_appName>
+		<app_appName id="equal@current_watercoldfan_livingroom">
+		</app_appName>
+		<app_appName id="equal@current_xbox_livingroom">
+			<app_envContext id="equal@standby">
+				<json id="1">
+					<command>@@value@XBOX_STOP</command>
+					<condition>eusApp_envContext=on</condition>
+				</json>
+			</app_envContext>
+			<app_envContext id="equal@off">
+				<json id="3">
+					<command>@@value@XBOX_STOP</command>
+					<condition>eusApp_envContext=on</condition>
+				</json>
+			</app_envContext>
+		</app_appName>
+		<app_appName id="equal@current_AC_livingroom">
+			<app_envContext id="contain@on">
+				<json id="1">
+					<command>@@value@openspace-AC_level@@change@Cool down</command>
+					<condition>@@eusApp_envContext!=on*</condition>
+				</json>
+				<json id="2">
+					<command>@@value@openspace-AC_level@@change@Cool down</command>
+					<condition>@@eusApp_envContext=on*@@eusApp_envContext+app_envContext</condition>
+				</json>
+				<json id="3">
+					<command>@@value@openspace-AC_level@@change@Warm up</command>
+					<condition>@@eusApp_envContext=on*@@eusApp_envContext-app_envContext</condition>
+				</json>
+			</app_envContext>
+			<app_envContext id="equal@off">
+				<json id="1">
+					<command>@@value@openspace-AC_OFF@@change@Warm up</command>
+					<condition>eusApp_envContext=on*</condition>
+				</json>
+			</app_envContext>
+		</app_appName>
+		<app_appName id="equal@current_AC_bedroom">
+			<app_envContext id="contain@on">
+				<json id="1">
+					<command>@@value@bedroom-AC_level@@change@Cool down</command>
+					<condition>@@eusApp_envContext!=on*</condition>
+				</json>
+				<json id="2">
+					<command>@@value@bedroom-AC_level@@change@Cool down</command>
+					<condition>@@eusApp_envContext=on*@@eusApp_envContext+app_envContext</condition>
+				</json>
+				<json id="3">
+					<command>@@value@bedroom-AC_level@@change@Warm up</command>
+					<condition>@@eusApp_envContext=on*@@eusApp_envContext-app_envContext</condition>
+				</json>
+			</app_envContext>
+			<app_envContext id="equal@off">
+				<json id="1">
+					<command>@@value@bedroom-AC_OFF@@change@Warm up</command>
+					<condition>eusApp_envContext=on*</condition>
+				</json>
+			</app_envContext>
 		</app_appName>
 	</MQCommand>
 	
