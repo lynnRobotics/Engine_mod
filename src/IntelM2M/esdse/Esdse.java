@@ -18,6 +18,7 @@ import s2h.platform.node.PlatformTopic;
 import s2h.platform.node.Sendable;
 import s2h.platform.support.JsonBuilder;
 import s2h.platform.support.MessageUtils;
+import IntelM2M.control.ControlAgent;
 import IntelM2M.datastructure.AppNode;
 import IntelM2M.datastructure.EnvStructure;
 import IntelM2M.datastructure.RelationTable;
@@ -27,7 +28,6 @@ import IntelM2M.ercie.GAinference;
 import IntelM2M.ercie.classifier.GaDbnClassifier;
 import IntelM2M.ercie.erc.GaEscGenerator;
 import IntelM2M.exp.ExpRecorder;
-import IntelM2M.mchess.ControlAgent;
 import IntelM2M.mchess.Mchess;
 import IntelM2M.mq.Producer;
 import IntelM2M.preference.PreferenceAgent;
@@ -43,52 +43,50 @@ import IntelM2M.ucee.visual.VisualAgent;
 
 public class Esdse {
 	
-	/* MQ related */
+	// MQ related 
 	public Producer producer = new Producer();
 	private JsonBuilder json = MessageUtils.jsonBuilder();
-	private final String MQ_URL = "tcp://140.112.49.154:61616";
 	private int reconnect_counter = 0;
 
-	/* Preference and Control agent */
+	// Preference and Control agent 
 	private PreferenceAgent pr = new PreferenceAgent();
 	public ControlAgent controlAgent = new ControlAgent(producer);
 	
-	/* Maintain AC temperature */
+	// Maintain AC temperature 
 	public static int acTemperature_livingroom = 20;
 	public static int acTemperature_bedroom = 20;
 	
-	/* Check whether all the sensors are collected */
+	// Check whether all the sensors are collected 
 	private ArrayList<String> updatedSensorList = new ArrayList<String>();
 	public Date firstSensorArrivalTime = null;
-	/* sensorReading.size() - "current" - "camera" - "audio"
-	 * 24 - 12 - 5 - 1 = 6
-	 * */
+	// sensorReading.size() - "current" - "camera" - "audio"
+	// 24 - 12 - 5 - 1 = 6
 	int sensorCount = 6;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
 	
-	/* Activity intensity usage */
+	// Activity intensity usage 
 	public static double accumulatedCalorie = 0;
 	public ArrayList<Double> calorieTimeWindow = new ArrayList<Double>();
 	public final int calorieTimeWindowMaxSize = 300;
 	public static boolean isPlayingKinect = false;
 	
-	/* Control the appliance or not */
+	// Control the appliance or not 
 	private boolean doControl = true;
 	private boolean initialization = true;
 	
-	/* Some parameters for rule based condition*/
+	// Some parameters for rule based condition
 	private boolean activityChanged = false;
 	private boolean wakeUpFlag = false;
 	private boolean standbyOff = false;
 	
-	/* Communicate with web page for confirming the control */
+	// Communicate with web page for confirming the control 
 	public boolean signal = true;
 	private Date noSignalStartTime = null;
 	private final int maxNoSignalDuration = 45; // unit is second
 	public boolean reject = false;
 	public boolean backToLive = false;
 	
-	/* Hallway activity recognition usage */
+	// Hallway activity recognition usage 
 	private int NumOfPeople = 0;
 	private int OldNumOfPeople = 0;
 	private boolean ToBeGoOut = false;
@@ -96,48 +94,24 @@ public class Esdse {
 	private int hallwayLightLuxTreshold = 30;
 	private boolean doorOpen = false;
 	
-	/* For new testing data collection (Yi-Hsiu's experiment usage)*/
+	// For new testing data collection (Yi-Hsiu's experiment usage)
 	private String sensorDataVector;
 	private String sensorDataVectorStoredPath;
 	private FileWriter sensorDataVectorWriter;
 	
+	// Modularization
+	EsdseXMLHandler esdseXmlHanlder;
+	
 	
 	public Esdse() {
 		// MQ producer send initialization signal to web interface
-		producer.setURL(MQ_URL);
+		producer.setURL(Mchess.mqURL);
 		while(!producer.connect());
 		producer.getSendor();
 		json.reset();
 		producer.sendOut(json.add("subject", "signal").add("initialization", "start").toJson(), "ssh.CONTEXT");
 		
-		
-		/* 
-		 Initialization of status of each appliance according to sensor number 
-			0 light_livingroom
-			1 light_hallway
-			2 light_bedroom
-			3 light_kitchen
-			4 light_study
-			5 switch_door_hallway
-			6 audio_livingroom
-			7 current_watercoldfan_livingroom
-			8 current_lamp_bedroom
-			9 current_PC_bedroom
-			10 current_TV_livingroom
-			11 current_lamp_livingroom
-			12 current_xbox_livingroom
-			13 current_microwave_kitchen
-			14 current_AC_bedroom
-			15 current_AC_livingroom
-			16 current_lamp_study
-			17 current_NB_study
-			18 current_nightlamp_bedroom
-			19 people_hallway
-			20 people_livingroom
-			21 people_bedroom
-			22 people_kitchen
-			23 people_study
-		 */
+
 		// A map to store status of each sensor and <Name, on off...>
 		Map<String, ArrayList<String>> sensorStatus = EnvStructure.sensorStatus;
 		// Extract list of sensor name from sensorStatus

@@ -26,6 +26,8 @@ public class Mchess extends Consumer implements Runnable {
 	public static String ercieInitializationPath = "./_input_data/ercieInitilization.xml";
 	public static String thermalInitializationPath = "./_input_data/thermalInitilization.xml";
 	public static String environmentInitializationPath = "./_input_data/environmentInitialization.xml";
+	public static String esdseInitializationPath = "./_input_data/esdseInitilization.xml";
+	public static String mqURL = "tcp://140.112.49.154:61616"; // used by esdse and Mchess
 	
 	/* Two main engine */
 	static Ercie ercie = null;
@@ -37,6 +39,7 @@ public class Mchess extends Consumer implements Runnable {
 	public static Map<String, Double> temperatureReading = new LinkedHashMap<String, Double>();
 	public static Map<String, Double> humidityReading = new LinkedHashMap<String, Double>();
 	public static Map<String, Double> illuminationReading = new LinkedHashMap<String, Double>();
+	
 	
 	
 	s2h.platform.support.JsonBuilder json = MessageUtils.jsonBuilder();

@@ -1,4 +1,4 @@
-package IntelM2M.mchess;
+package IntelM2M.control;
 
 import java.util.ArrayList;
 
