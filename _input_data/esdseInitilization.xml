@@ -3,5 +3,13 @@
 	<mqURL>
 		<value>tcp://140.112.49.154:61616</value>
 	</mqURL>
-	
+	<sensorCount>
+		<value>6</value>
+	</sensorCount>
+	<maxNoSignalDuration>
+		<value>45</value>
+	</maxNoSignalDuration>
+	<stableDuration>
+		<value>1.0</value>
+	</stableDuration>
 </metaData>
