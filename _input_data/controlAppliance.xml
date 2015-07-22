@@ -1,0 +1,1780 @@
+<control_statement_if id="1"> <!-- if(app.appName.equals("light_livingroom")) -->
+	<condition>
+		<function id="equals">
+			<prevar>app.appName</prevar>
+			<sufvar>"light_livingroom"</sufvar>
+		</function>
+	</condition>
+	<statement>
+		<!-- String currentCentral = "off"; -->
+		<var_String id="String">
+			<name>currentCentral</name>
+		</var_String>
+		<operator id="">
+			<prevar>currentCentral</prevar>
+			<sufvar>"off"</sufvar>
+		</operator>
+		<!-- String currentRing = "off"; -->
+		<var id="String">
+			<name>currentRing</name>
+		</var>
+		<operator id="=">
+			<prevar>currentRing</prevar>
+			<sufvar>"off"</sufvar>
+		</operator>
+		<control_statement id="if2"> <!-- if(!eusApp.envContext.equals("off")) -->
+			<condition>
+				<operator id="!"> 
+					<sufvar>
+						<function id="equals">
+							<prevar>eusApp.envContext</prevar>
+							<sufvar>"off"</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+			</condition>
+			<statement>
+				<operator id="="> <!-- currentCentral = eusApp.envContext.split("_")[1]; -->
+					<prevar>currentCentral</prevar>
+					<sufvar>
+						<operator id="[]">
+							<prevar>
+								<function id="split">
+									<prevar>eusApp.envContext</prevar>
+									<sufvar>"_"</sufvar>
+								</function>
+							</prevar>
+							<sufvar>1</sufvar>
+						</operator>
+					</sufvar>
+				</operator>
+				<function id="="> <!-- currentRing = eusApp.envContext.split("_")[2]; -->
+					<prevar>currentRing</prevar>
+					<sufvar>
+						<function id="[]">
+							<prevar>
+								<function id="split">
+									<prevar>eusApp.envContext</prevar>
+									<sufvar>"_"</sufvar>
+								</function>
+							</prevar>
+							<sufvar>2</sufvar>
+						</function>
+					</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+		<control_statement id="if2"> <!-- if(app.envContext.equals("off")) -->
+			<condition>
+				<function id="equals">
+					<prevar>app.envContext</prevar>
+					<sufvar>"off"</sufvar>
+				</function>
+			</condition>
+			<statement>
+				<control_statement id="if3"> <!-- if(!currentCentral.equals("off")) -->
+					<condition>
+						<operator id="!">
+							<sufvar>
+								<function id="equals">
+									<prevar>currentCentral</prevar>
+									<sufvar>"off"</sufvar>
+								</function>
+							</sufvar>
+						</operator>
+					</condition>
+					<statement>
+						<function id="reset"> <!-- json.reset(); -->
+							<prevar>json</prevar>
+						</function>
+						<function id="add"> <!-- json.add("value", "livingroom-central-light_0"); -->
+							<prevar>json</prevar>
+							<sufvar>"value"</sufvar>
+							<sufvar>"livingroom-central-light_0"</sufvar>
+						</function>
+						<!-- sendCommand(json.add("change", "Darken")); -->
+						<function id="add"> 
+							<prevar>json</prevar>
+							<sufvar>"change"</sufvar>
+							<sufvar>"Darken"</sufvar>
+						</function>
+						<function id="sendCommand">
+							<sufvar>json</sufvar>
+						</function>
+					</statement>
+				</control_statement>
+				<control_statement id="if3"> <!-- if(!currentRing.equals("off")) -->
+					<condition>
+						<funcoperatortion id="!">
+							<sufvar>
+								<function id="equals">
+									<prevar>currentRing</prevar>
+									<sufvar>"off"</sufvar>
+								</function>
+							</sufvar>
+						</operator>
+					</condition>
+					<statement>
+						<function id="reset"> <!-- json.reset(); -->
+							<prevar>json</prevar>
+						</function>
+						<function id="add"> <!-- json.add("value", "livingroom-ring-light_0"); -->
+							<prevar>json</prevar>
+							<sufvar>"value"</sufvar>
+							<sufvar>"livingroom-ring-light_0"</sufvar>
+						</function>
+						<!-- sendCommand(json.add("change", "Darken")); -->
+						<function id="add">
+							<prevar>json</prevar>
+							<sufvar>"change"</sufvar>
+							<sufvar>"Darken"</sufvar>
+						</function>
+						<function id="sendCommand">
+							<sufvar>json</sufvar>
+						</function>
+					</statement>
+				</control_statement>
+			</statement>
+		</control_statement>
+		<control_statement id="else if2"> <!-- else if(app.envContext.contains("on")) -->
+			<condition>
+				<function id="contains">
+					<prevar>app.envContext</prevar>
+					<sufvar>"on"</sufvar>
+				</function>
+			</condition>
+			<statement>
+				<!-- int level = Integer.valueOf(app.envContext.split("_")[1]); -->
+				<var id="int">
+					<name>level</name>
+				</var>
+				<operator id="=">
+					<prevar>level</prevar>
+					<sufvar>
+						<function="Integer.valueOf">
+							<sufvar>
+								<operator id="[]">
+									<prevar>
+										<function id="split">
+											<prevar>app.envContext</prevar>
+											<sufvar>"_"</sufvar>
+										</function>
+									</prevar>
+									<sufvar>1</sufvar>
+								</operator>
+							</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+				<control_statement id="if3"> <!-- if(level >= 100) -->
+					<condition>
+						<operator id=">=">
+							<prevar>level</prevar>
+							<sufvar>100</sufvar>
+						</operator>
+					</condition>
+					<statement>
+						<control_statement id="if4"> <!-- if(!currentCentral.equals("99")) -->
+							<condition>
+								<operator id="!"> 
+									<sufvar>
+										<function id="equals">
+											<prevar>currentCentral</prevar>
+											<sufvar>"99"</sufvar>
+										</function>
+									</sufvar>
+								</operator>
+							</condition>
+							<statement>
+								<function id="reset"> <!-- json.reset(); -->
+									<prevar>json</prevar>
+								</function>
+								<function id="add"> <!-- json.add("value", "livingroom-central-light_99"); -->
+									<prevar>json</prevar>
+									<sufvar>"value"</sufvar>
+									<sufvar>"livingroom-central-light_99"</sufvar>
+								</function>
+								<!-- sendCommand(json.add("change", "Brighten")); -->
+								<function id="add"> 
+									<prevar>json</prevar>
+									<sufvar>"change"</sufvar>
+									<sufvar>"Brighten"</sufvar>
+								</function>
+								<function id="sendCommand">
+									<sufvar>json</sufvar>
+								</function>
+							</statement>
+						</control_statement>
+						<control_statement id="if4"> <!-- if(!currentRing.equals("off")) -->
+							<condition>
+								<operator id="!"> 
+									<sufvar>
+										<function id="equals">
+											<prevar>currentRing</prevar>
+											<sufvar>"off"</sufvar>
+										</function>
+									</sufvar>
+								</operator>
+							</condition>
+							<statement>
+								<control_statement id="if5"> <!-- if(Integer.parseInt(currentRing) < level - 99) -->
+									<condition>
+										<operator id="<">
+											<prevar>
+												<function id="Integer.parseInt">
+													<sufvar>currentRing</sufvar>
+												</function>
+											</prevar>
+											<sufvar>
+												<operator id="-">
+													<prevar>level</prevar>
+													<sufvar>99</sufvar>
+												</operator>
+											</sufvar>
+										</operator>
+									</condition>
+									<statement>
+										<function id="reset"> <!-- json.reset(); -->
+											<prevar>json</prevar>
+										</function>
+										<function id="add"> <!-- json.add("value", "livingroom-ring-light_" + String.valueOf(level - 99)); -->
+											<prevar>json</prevar>
+											<sufvar>"value"</sufvar>
+											<sufvar>
+												<function id="+">
+													<prevar>"livingroom-ring-light_"</prevar>
+													<sufvar>
+														<function id="String.valueOf">
+															<sufvar>
+																<function id="-">
+																	<prevar>level</prevar>
+																	<sufvar>99</sufvar>
+																</function>
+															</sufvar>
+														</function>
+													</sufvar>
+												</function>
+											</sufvar>
+										</function>
+										<!-- sendCommand(json.add("change", "Brighten")); -->
+										<function id="add"> 
+											<prevar>json</prevar>
+											<sufvar>"change"</sufvar>
+											<sufvar>"Brighten"</sufvar>
+										</function>
+										<function id="sendCommand">
+											<sufvar>json</sufvar>
+										</function>
+									</statement>
+								</control_statement>
+								<control_statement id="else if5"> <!-- else if(Integer.parseInt(currentRing) > level - 99) -->
+									<condition>
+										<operator id=">">
+											<prevar>
+												<function id="Integer.parseInt">
+													<sufvar>currentRing</sufvar>
+												</function>
+											</prevar>
+											<sufvar>
+												<operator id="-">
+													<prevar>level</prevar>
+													<sufvar>99</sufvar>
+												</operator>
+											</sufvar>
+										</operator>
+									</condition>
+									<statement>
+										<function id="reset"> <!-- json.reset(); -->
+											<prevar>json</prevar>
+										</function>
+										<function id="add"> <!-- json.add("value", "livingroom-ring-light_" + String.valueOf(level - 99)); -->
+											<prevar>json</prevar>
+											<sufvar>"value"</sufvar>
+											<sufvar>
+												<operator id="+">
+													<prevar>"livingroom-ring-light_"</prevar>
+													<sufvar>
+														<function id="String.valueOf">
+															<sufvar>
+																<operator id="-">
+																	<prevar>level</prevar>
+																	<sufvar>99</sufvar>
+																</operator>
+															</sufvar>
+														</function>
+													</sufvar>
+												</operator>
+											</sufvar>
+										</function>
+										<!-- sendCommand(json.add("change", "Darken")); -->
+										<function id="add"> 
+											<prevar>json</prevar>
+											<sufvar>"change"</sufvar>
+											<sufvar>"Darken"</sufvar>
+										</function>
+										<function id="sendCommand">
+											<sufvar>json</sufvar>
+										</function>
+									</statement>
+								</control_statement>							
+							</statement>
+						</control_statement>
+						<control_statement id="else if4"> <!-- else if(currentRing.equals("off")) -->
+							<condition>
+								<function id="equals">
+									<prevar>currentRing</prevar>
+									<sufvar>"off"</sufvar>
+								</function>
+							</condition>
+							<statement>
+								<function id="reset"> <!-- json.reset(); -->
+									<prevar>json</prevar>
+								</function>
+								<function id="add"> <!-- json.add("value", "livingroom-ring-light_" + String.valueOf(level - 99)); -->
+									<prevar>json</prevar>
+									<sufvar>"value"</sufvar>
+									<sufvar>
+										<operator id="+">
+											<prevar>"livingroom-ring-light_"</prevar>
+											<sufvar>
+												<function id="String.valueOf">
+													<sufvar>
+														<operator id="-">
+															<prevar>level</prevar>
+															<sufvar>99</sufvar>
+														</operator>
+													</sufvar>
+												</function>
+											</sufvar>
+										</operator>
+									</sufvar>
+								</function>
+								<!-- sendCommand(json.add("change", "Brighten")); -->
+								<function id="add"> 
+									<prevar>json</prevar>
+									<sufvar>"change"</sufvar>
+									<sufvar>"Brighten"</sufvar>
+								</function>
+								<function id="sendCommand">
+									<sufvar>json</sufvar>
+								</function>
+							</statement>
+						</control_statement>
+					</statement>
+				</control_statement>
+				<control_statement id="else3"> <!-- else -->
+					<statement>
+						<control_statement id="if4"> <!-- if(eusApp.envContext.equals("off")) -->
+							<condition>
+								<function id="equals">
+									<prevar>eusApp.envContext</prevar>
+									<sufvar>"off"</sufvar>
+								</function>
+							</condition>
+							<statement>
+								<function id="reset"> <!-- json.reset(); -->
+									<prevar>json</prevar>
+								</function>
+								<function id="add"> <!-- json.add("value", "livingroom-central-light_" + String.valueOf(level)); -->
+									<prevar>json</prevar>
+									<sufvar>"value"</sufvar>
+									<sufvar>
+										<operator id="+">
+											<prevar>"livingroom-central-light_"</prevar>
+											<sufvar>
+												<function id="String.valueOf">
+													<sufvar>level</sufvar>
+												</function>
+											</sufvar>
+										</operator>
+									</sufvar>
+								</function>
+								<!-- sendCommand(json.add("change", "Brighten")); -->
+								<function id="add"> 
+									<prevar>json</prevar>
+									<sufvar>"change"</sufvar>
+									<sufvar>"Brighten"</sufvar>
+								</function>
+								<function id="sendCommand">
+									<sufvar>json</sufvar>
+								</function>
+							</statement>
+						</control_statement>
+						<control_statement id="else4"> <!-- else -->
+							<statement>
+								<control_statement id="if5"> <!-- if(Integer.parseInt(currentCentral) < level) -->
+									<condition>
+										<operator id="<">
+											<prevar>
+												<function id="Integer.parseInt">
+													<sufvar>currentCentral</sufvar>
+												</function>																							
+											</prevar>
+											<sufvar>level</sufvar>
+										</operator>									
+									</condition>
+									<statement>
+										<function id="reset"> <!-- json.reset(); -->
+											<prevar>json</prevar>
+										</function>
+										<function id="add"> <!-- json.add("value", "livingroom-central-light_" + String.valueOf(level)); -->
+											<prevar>json</prevar>
+											<sufvar>"value"</sufvar>
+											<sufvar>
+												<operator id="+">
+													<prevar>"livingroom-central-light_"</prevar>
+													<sufvar>
+														<function id="String.valueOf">
+															<sufvar>level</sufvar>
+														</function>
+													</sufvar>
+												</operator>
+											</sufvar>
+										</function>
+										<!-- sendCommand(json.add("change", "Brighten")); -->
+										<function id="add"> 
+											<prevar>json</prevar>
+											<sufvar>"change"</sufvar>
+											<sufvar>"Brighten"</sufvar>
+										</function>
+										<function id="sendCommand">
+											<sufvar>json</sufvar>
+										</function>
+									</statement>
+								</control_statement>
+								<control_statement id="else if5"> <!-- else if(Integer.parseInt(currentCentral) > level) -->
+									<condition>
+										<operator id=">">
+											<prevar>
+												<function id="Integer.parseInt">
+													<sufvar>currentCentral</sufvar>
+												</function>																							
+											</prevar>
+											<sufvar>level</sufvar>
+										</operator>		
+									</condition>
+									<statement>
+										<function id="reset"> <!-- json.reset(); -->
+											<prevar>json</prevar>
+										</function>
+										<function id="add"> <!-- json.add("value", "livingroom-central-light_" + String.valueOf(level)); -->
+											<prevar>json</prevar>
+											<sufvar>"value"</sufvar>
+											<sufvar>
+												<operator id="+">
+													<prevar>"livingroom-central-light_"</prevar>
+													<sufvar>
+														<function id="String.valueOf">
+															<sufvar>level</sufvar>
+														</function>
+													</sufvar>
+												</operator>
+											</sufvar>
+										</function>
+										<!-- sendCommand(json.add("change", "Darken")); -->
+										<function id="add"> 
+											<prevar>json</prevar>
+											<sufvar>"change"</sufvar>
+											<sufvar>"Darken"</sufvar>
+										</function>
+										<function id="sendCommand">
+											<sufvar>json</sufvar>
+										</function>
+									</statement>
+								</control_statement>
+								<control_statement id="if5"> <!-- if(!currentRing.equals("0")) -->
+									<condition>
+										<operator id="!"> 
+											<sufvar>
+												<function id="equals">
+													<prevar>currentRing</prevar>
+													<sufvar>"0"</sufvar>
+												</function>
+											</sufvar>
+										</operator>
+									</condition>
+									<statement>
+										<function id="reset"> <!-- json.reset(); -->
+											<prevar>json</prevar>
+										</function>
+										<function id="add"> <!-- json.add("value", "livingroom-ring-light_0"); -->
+											<prevar>json</prevar>
+											<sufvar>"value"</sufvar>
+											<sufvar>"livingroom-ring-light_0"</sufvar>
+										</function>
+										<!-- sendCommand(json.add("change", "Darken")); -->
+										<function id="add"> 
+											<prevar>json</prevar>
+											<sufvar>"change"</sufvar>
+											<sufvar>"Darken"</sufvar>
+										</function>
+										<function id="sendCommand">
+											<sufvar>json</sufvar>
+										</function>	
+									</statement>
+								</control_statement>							
+							</statement>
+						</control_statement>
+					</statement>
+				</control_statement>
+			</statement>
+		</control_statement>
+	</statement>
+</control_statement_if>
+<control_statement_elseif id="2"> <!-- else if(app.appName.equals("light_hallway")) -->
+	<condition>
+		<function id="equals">
+			<prevar>app.appName</prevar>
+			<sufvar>"light_hallway"</sufvar>
+		</function>
+	</condition>
+	<statement>
+		<control_statement id="if2"> <!-- if (app.envContext.equals("off")) -->
+			<condition>
+				<function id="equals"> 
+					<prevar>app.envContext</prevar>
+					<sufvar>"off"</sufvar>
+				</function>
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<!-- sendCommand(json.add("value", "DOOR-LIGHT_OFF")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>"DOOR-LIGHT_OFF"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+		<control_statement id="else if2"> <!-- else if (app.envContext.equals("on_1")) -->
+			<condition>
+				<function id="equals"> 
+					<prevar>app.envContext</prevar>
+					<sufvar>"on_1"</sufvar>
+				</function>
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<!-- sendCommand(json.add("value", "DOOR-LIGHT_ON")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>"DOOR-LIGHT_ON"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+	</statement>
+</control_statement_elseif>
+<control_statement_elseif id="3"> <!-- else if(app.appName.equals("light_kitchen")) -->
+	<condition>
+		<function id="equals">
+			<prevar>app.appName</prevar>
+			<sufvar>"light_kitchen"</sufvar>
+		</function>
+	</condition>
+	<statement>
+		<control_statement id="if2"> <!-- if (app.envContext.equals("off")) -->
+			<condition>
+				<function id="equals"> 
+					<prevar>app.envContext</prevar>
+					<sufvar>"off"</sufvar>
+				</function>
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<function id="add"> <!-- json.add("value", "kitchen-light_0"); -->
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>"kitchen-light_0"</sufvar>
+				</function>
+				<!-- sendCommand(json.add("change", "Darken")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"change"</sufvar>
+					<sufvar>"Darken"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+		<control_statement id="else if2"> <!-- else if (app.envContext.equals("on")) -->
+			<condition>
+				<function id="contains"> 
+					<prevar>app.envContext</prevar>
+					<sufvar>"on"</sufvar>
+				</function>
+			</condition>
+			<statement>
+				<!-- int level = Integer.valueOf(app.envContext.split("_")[1]); -->
+				<var id="int">
+					<name>level</name>
+				</var>
+				<operator id="=">
+					<prevar>level</prevar>
+					<sufvar>
+						<function="Integer.valueOf">
+							<sufvar>
+								<operator id="[]">
+									<prevar>
+										<function id="split">
+											<prevar>app.envContext</prevar>
+											<sufvar>"_"</sufvar>
+										</function>
+									</prevar>
+									<sufvar>1</sufvar>
+								</operator>
+							</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+				<control_statement id="if3"> <!-- if(eusApp.envContext.equals("off")) -->
+					<condition>
+						<function id="equals"> 
+							<prevar>eusApp.envContext</prevar>
+							<sufvar>"off"</sufvar>
+						</function>
+					</condition>
+					<statement>
+						<function id="reset"> <!-- json.reset(); -->
+							<prevar>json</prevar>
+						</function>
+						<function id="add"> <!-- json.add("value", "kitchen-light_" + String.valueOf(level)); -->
+							<prevar>json</prevar>
+							<sufvar>"value"</sufvar>
+							<sufvar>
+								<operator id="+">
+									<prevar>"kitchen-light_"</prevar>
+									<sufvar>
+										<function id="String.valueOf">
+											<sufvar>level</sufvar>
+										</function>
+									</sufvar>
+								</operator>
+							</sufvar>
+						</function>
+						<!-- sendCommand(json.add("change", "Brighten")); -->
+						<function id="add"> 
+							<prevar>json</prevar>
+							<sufvar>"change"</sufvar>
+							<sufvar>"Brighten"</sufvar>
+						</function>
+						<function id="sendCommand">
+							<sufvar>json</sufvar>
+						</function>
+					</statement>
+				</control_statement>
+				<control_statement id="else3"> <!-- else -->
+					<statement>
+						<control_statement id="if4"> <!--if(Integer.parseInt(eusApp.envContext.split("_")[1]) < level) -->
+							<condition>
+								<operator id="<">
+									<prevar>
+										<function id="Integer.parseInt">
+											<sufvar>
+												<operator id="[]">
+													<prevar>
+														<function id="split">
+															<prevar>eusApp.envContext</prevar>
+															<sufvar>"_"</sufvar>
+														</function>				
+													</prevar>
+													<sufvar>1</sufvar>
+												</operator>						
+											</sufvar>
+										</function>
+									</prevar>
+									<sufvar>level</sufvar>
+								</operator>
+							</condition>
+							<statement>
+								<function id="reset"> <!-- json.reset(); -->
+									<prevar>json</prevar>
+								</function>
+								<function id="add"> <!-- json.add("value", "kitchen-light_" + String.valueOf(level)); -->
+									<prevar>json</prevar>
+									<sufvar>"value"</sufvar>
+									<sufvar>
+										<operator id="+">
+											<prevar>"kitchen-light_"</prevar>
+											<sufvar>
+												<function id="String.valueOf">
+													<sufvar>level</sufvar>
+												</function>
+											</sufvar>
+										</operator>
+									</sufvar>
+								</function>
+								<!-- sendCommand(json.add("change", "Brighten")); -->
+								<function id="add"> 
+									<prevar>json</prevar>
+									<sufvar>"change"</sufvar>
+									<sufvar>"Brighten"</sufvar>
+								</function>
+								<function id="sendCommand">
+									<sufvar>json</sufvar>
+								</function>
+							</statement>
+						</control_statement>
+						<function id="else if4"> <!-- else if(Integer.parseInt(eusApp.envContext.split("_")[1]) > level) -->
+							<condition>
+								<operator id=">">
+									<prevar>
+										<function id="Integer.parseInt">
+											<sufvar>
+												<operator id="[]">
+													<prevar>
+														<function id="split">
+															<prevar>eusApp.envContext</prevar>
+															<sufvar>"_"</sufvar>
+														</function>				
+													</prevar>
+													<sufvar>1</sufvar>
+												</operator>						
+											</sufvar>
+										</function>
+									</prevar>
+									<sufvar>level</sufvar>
+								</operator>
+							</condition>
+							<statement>
+								<function id="reset"> <!-- json.reset(); -->
+									<prevar>json</prevar>
+								</function>
+								<function id="add"> <!-- json.add("value", "kitchen-light_" + String.valueOf(level)); -->
+									<prevar>json</prevar>
+									<sufvar>"value"</sufvar>
+									<sufvar>
+										<operator id="+">
+											<prevar>"kitchen-light_"</prevar>
+											<sufvar>
+												<function id="String.valueOf">
+													<sufvar>level</sufvar>
+												</function>
+											</sufvar>
+										</operator>
+									</sufvar>
+								</function>
+								<!-- sendCommand(json.add("change", "Darken")); -->
+								<function id="add"> 
+									<prevar>json</prevar>
+									<sufvar>"change"</sufvar>
+									<sufvar>"Darken"</sufvar>
+								</function>
+								<function id="sendCommand">
+									<sufvar>json</sufvar>
+								</function>
+							</statement>
+						</function>					
+					</statement>
+				</control_statement>
+			</statement>	
+		</control_statement>
+	</statement>
+</control_statement_elseif>
+<control_statement id="else if1"> <!-- else if(app.appName.equals("light_study")) -->
+	<condition>
+		<function id="equals">
+			<prevar>app.appName</prevar>
+			<sufvar>"light_study"</sufvar>
+		</function>
+	</condition>
+	<statement>
+		<control_statement id="if2"> <!-- if(app.envContext.equals("off")) -->
+			<condition>
+				<function id="equals">
+					<prevar>app.envContext</prevar>
+					<sufvar>"off"</sufvar>
+				</function>
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<function id="add"> <!-- json.add("value", "study-light_0"); -->
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>"study-light_0"</sufvar>
+				</function>
+				<!-- sendCommand(json.add("change", "Darken")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"change"</sufvar>
+					<sufvar>"Darken"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+		<control_statement id="else if2"> <!-- else if(app.envContext.contains("on")) -->
+			<condition>
+				<function id="contains">
+					<prevar>app.envContext</prevar>
+					<sufvar>"on"</sufvar>
+				</function>
+			</condition>
+			<statement>
+				<!-- int level = Integer.valueOf(app.envContext.split("_")[1]); -->
+				<var id="int">
+					<name>level</name>
+				</var>
+				<operator id="=">
+					<prevar>level</prevar>
+					<sufvar>
+						<function="Integer.valueOf">
+							<sufvar>
+								<operator id="[]">
+									<prevar>
+										<function id="split">
+											<prevar>app.envContext</prevar>
+											<sufvar>"_"</sufvar>
+										</function>
+									</prevar>
+									<sufvar>1</sufvar>
+								</operator>
+							</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+				<control_statement id="if3"> <!-- if(eusApp.envContext.equals("off")) -->
+					<condition>
+						<function id="equals"> 
+							<prevar>eusApp.envContext</prevar>
+							<sufvar>"off"</sufvar>
+						</function>
+					</condition>
+					<statement>
+						<function id="reset"> <!-- json.reset(); -->
+							<prevar>json</prevar>
+						</function>
+						<function id="add"> <!-- json.add("value", "study-light_" + String.valueOf(level)); -->
+							<prevar>json</prevar>
+							<sufvar>"value"</sufvar>
+							<sufvar>
+								<operator id="+">
+									<prevar>"study-light_"</prevar>
+									<sufvar>
+										<function id="String.valueOf">
+											<sufvar>level</sufvar>
+										</function>
+									</sufvar>
+								</operator>
+							</sufvar>
+						</function>
+						<!-- sendCommand(json.add("change", "Brighten")); -->
+						<function id="add"> 
+							<prevar>json</prevar>
+							<sufvar>"change"</sufvar>
+							<sufvar>"Brighten"</sufvar>
+						</function>
+						<function id="sendCommand">
+							<sufvar>json</sufvar>
+						</function>
+					</statement>
+				</control_statement>
+				<control_statement id="else3"> <!-- else -->
+					<statement>
+						<control_statement id="if4"> <!-- if(Integer.parseInt(eusApp.envContext.split("_")[1]) < level) -->
+							<condition>
+								<operator id="<">
+									<prevar>
+										<function id="Integer.parseInt">
+											<sufvar>
+												<operator id="[]">
+													<prevar>
+														<function id="split">
+															<prevar>eusApp.envContext</prevar>
+															<sufvar>"_"</sufvar>
+														</function>				
+													</prevar>
+													<sufvar>1</sufvar>
+												</operator>						
+											</sufvar>
+										</function>
+									</prevar>
+									<sufvar>level</sufvar>
+								</operator>
+							</condition>
+							<statement>
+								<function id="reset"> <!-- json.reset(); -->
+									<prevar>json</prevar>
+								</function>
+								<function id="add"> <!-- json.add("value", "study-light_" + String.valueOf(level)); -->
+									<prevar>json</prevar>
+									<sufvar>"value"</sufvar>
+									<sufvar>
+										<operator id="+">
+											<prevar>"study-light_"</prevar>
+											<sufvar>
+												<function id="String.valueOf">
+													<sufvar>level</sufvar>
+												</function>
+											</sufvar>
+										</operator>
+									</sufvar>
+								</function>
+								<!-- sendCommand(json.add("change", "Brighten")); -->
+								<function id="add"> 
+									<prevar>json</prevar>
+									<sufvar>"change"</sufvar>
+									<sufvar>"Brighten"</sufvar>
+								</function>
+								<function id="sendCommand">
+									<sufvar>json</sufvar>
+								</function>
+							</statement>
+						</control_statement>
+						<control_statement id="else if4"> <!-- else if(Integer.parseInt(eusApp.envContext.split("_")[1]) > level) -->
+							<condition>
+								<operator id=">">
+									<prevar>
+										<function id="Integer.parseInt">
+											<sufvar>
+												<operator id="[]">
+													<prevar>
+														<function id="split">
+															<prevar>eusApp.envContext</prevar>
+															<sufvar>"_"</sufvar>
+														</function>				
+													</prevar>
+													<sufvar>1</sufvar>
+												</operator>						
+											</sufvar>
+										</function>
+									</prevar>
+									<sufvar>level</sufvar>
+								</operator>
+							</condition>
+							<statement>
+								<function id="reset"> <!-- json.reset(); -->
+									<prevar>json</prevar>
+								</function>
+								<function id="add"> <!-- json.add("value", "study-light_" + String.valueOf(level)); -->
+									<prevar>json</prevar>
+									<sufvar>"value"</sufvar>
+									<sufvar>
+										<operator id="+">
+											<prevar>"study-light_"</prevar>
+											<sufvar>
+												<function id="String.valueOf">
+													<sufvar>level</sufvar>
+												</function>
+											</sufvar>
+										</operator>
+									</sufvar>
+								</function>
+								<!-- sendCommand(json.add("change", "Darken")); -->
+								<function id="add"> 
+									<prevar>json</prevar>
+									<sufvar>"change"</sufvar>
+									<sufvar>"Darken"</sufvar>
+								</function>
+								<function id="sendCommand">
+									<sufvar>json</sufvar>
+								</function>
+							</statement>
+						</control_statement>					
+					</statement>
+				</control_statement>
+			</statement>
+		</control_statement>	
+	</statement>
+</control_statement>
+<control_statement id="else if1"> <!-- else if(app.appName.equals("light_bedroom")) -->
+	<condition>
+		<function id="equals">
+			<prevar>app.appName</prevar>
+			<sufvar>"light_bedroom"</sufvar>
+		</function>
+	</condition>
+	<statement>
+		<control_statement id="if2"> <!-- if(app.envContext.equals("off")) -->
+			<condition>
+				<function id="equals">
+					<prevar>app.envContext</prevar>
+					<sufvar>"off"</sufvar>
+				</function>
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<function id="add"> <!-- json.add("value", "bedroom-light_0"); -->
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>"bedroom-light_0"</sufvar>
+				</function>
+				<!-- sendCommand(json.add("change", "Darken")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"change"</sufvar>
+					<sufvar>"Darken"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+		<control_statement id="else if2"> <!-- else if(app.envContext.startsWith("on")) -->
+			<condition>
+				<function id="startsWith">
+					<prevar>app.envContext</prevar>
+					<sufvar>"on"</sufvar>
+				</function>
+			</condition>
+			<statement>
+				<!-- int level = Integer.valueOf(app.envContext.split("_")[1]); -->
+				<var id="int">
+					<name>level</name>
+				</var>
+				<operator id="=">
+					<prevar>level</prevar>
+					<sufvar>
+						<function="Integer.valueOf">
+							<sufvar>
+								<operator id="[]">
+									<prevar>
+										<function id="split">
+											<prevar>app.envContext</prevar>
+											<sufvar>"_"</sufvar>
+										</function>
+									</prevar>
+									<sufvar>1</sufvar>
+								</operator>
+							</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+				<control_statement id="if3"> <!-- if(eusApp.envContext.equals("off")) -->
+					<condition>
+						<function id="equals"> 
+							<prevar>eusApp.envContext</prevar>
+							<sufvar>"off"</sufvar>
+						</function>
+					</condition>
+					<statement>
+						<function id="reset"> <!-- json.reset(); -->
+							<prevar>json</prevar>
+						</function>
+						<function id="add"> <!-- json.add("value", "bedroom-light_" + String.valueOf(level)); -->
+							<prevar>json</prevar>
+							<sufvar>"value"</sufvar>
+							<sufvar>
+								<operator id="+">
+									<prevar>"bedroom-light_"</prevar>
+									<sufvar>
+										<function id="String.valueOf">
+											<sufvar>level</sufvar>
+										</function>
+									</sufvar>
+								</operator>
+							</sufvar>
+						</function>
+						<!-- sendCommand(json.add("change", "Brighten")); -->
+						<function id="add"> 
+							<prevar>json</prevar>
+							<sufvar>"change"</sufvar>
+							<sufvar>"Brighten"</sufvar>
+						</function>
+						<function id="sendCommand">
+							<sufvar>json</sufvar>
+						</function>
+					</statement>
+				</control_statement>
+				<control_statement id="else3"> <!-- else -->
+					<statement>
+						<control_statement id="if4"> <!-- if(Integer.parseInt(eusApp.envContext.split("_")[1]) < level) -->
+							<condition>
+								<operator id="<">
+									<prevar>
+										<function id="Integer.parseInt">
+											<sufvar>
+												<operator id="[]">
+													<prevar>
+														<function id="split">
+															<prevar>eusApp.envContext</prevar>
+															<sufvar>"_"</sufvar>
+														</function>				
+													</prevar>
+													<sufvar>1</sufvar>
+												</operator>						
+											</sufvar>
+										</function>
+									</prevar>
+									<sufvar>level</sufvar>
+								</operator>
+							</condition>
+							<statement>
+								<function id="reset"> <!-- json.reset(); -->
+									<prevar>json</prevar>
+								</function>
+								<function id="add"> <!-- json.add("value", "bedroom-light_" + String.valueOf(level)); -->
+									<prevar>json</prevar>
+									<sufvar>"value"</sufvar>
+									<sufvar>
+										<operator id="+">
+											<prevar>"bedroom-light_"</prevar>
+											<sufvar>
+												<function id="String.valueOf">
+													<sufvar>level</sufvar>
+												</function>
+											</sufvar>
+										</operator>
+									</sufvar>
+								</function>
+								<!-- sendCommand(json.add("change", "Brighten")); -->
+								<function id="add"> 
+									<prevar>json</prevar>
+									<sufvar>"change"</sufvar>
+									<sufvar>"Brighten"</sufvar>
+								</function>
+								<function id="sendCommand">
+									<sufvar>json</sufvar>
+								</function>
+							</statement>
+						</control_statement>
+						<control_statement id="else if4"> <!-- else if(Integer.parseInt(eusApp.envContext.split("_")[1]) > level) -->
+							<condition>
+								<operator id=">">
+									<prevar>
+										<function id="Integer.parseInt">
+											<sufvar>
+												<operator id="[]">
+													<prevar>
+														<function id="split">
+															<prevar>eusApp.envContext</prevar>
+															<sufvar>"_"</sufvar>
+														</function>				
+													</prevar>
+													<sufvar>1</sufvar>
+												</operator>						
+											</sufvar>
+										</function>
+									</prevar>
+									<sufvar>level</sufvar>
+								</operator>
+							</condition>
+							<statement>
+								<function id="reset"> <!-- json.reset(); -->
+									<prevar>json</prevar>
+								</function>
+								<function id="add"> <!-- json.add("value", "bedroom-light_" + String.valueOf(level)); -->
+									<prevar>json</prevar>
+									<sufvar>"value"</sufvar>
+									<sufvar>
+										<operator id="+">
+											<prevar>"bedroom-light_"</prevar>
+											<sufvar>
+												<function id="String.valueOf">
+													<sufvar>level</sufvar>
+												</function>
+											</sufvar>
+										</operator>
+									</sufvar>
+								</function>
+								<!-- sendCommand(json.add("change", "Darken")); -->
+								<function id="add"> 
+									<prevar>json</prevar>
+									<sufvar>"change"</sufvar>
+									<sufvar>"Darken"</sufvar>
+								</function>
+								<function id="sendCommand">
+									<sufvar>json</sufvar>
+								</function>
+							</statement>
+						</control_statement>					
+					</statement>
+				</control_statement>
+			</statement>
+		</control_statement>
+	</statement>
+</control_statement>
+<control_statement id="else if1"> <!-- else if(app.appName.equals("current_TV_livingroom")) -->
+	<condition>
+		<function id="equals">
+			<prevar>app.appName</prevar>
+			<sufvar>"current_TV_livingroom"</sufvar>
+		</function>
+	</condition>
+	<statement>
+		<control_statement id="if2"> <!-- if (eusApp.envContext.equals("on") && (app.envContext.equals("standby") || app.envContext.equals("off"))) -->
+			<condition>
+				<operator id="&&">
+					<prevar>
+						<function id="equals">
+							<prevar>eusApp.envContext</prevar>
+							<sufvar>"on"</sufvar>
+						</function>
+					</prevar>
+					<sufvar>
+						<function id="||">
+							<prevar>
+								<function id="equals">
+									<prevar>app.envContext</prevar>
+									<sufvar>"standby"</sufvar>
+								</function>
+							</prevar>
+							<sufvar>
+								<function id="equals">
+									<prevar>app.envContext</prevar>
+									<sufvar>"off"</sufvar>
+								</function>
+							</sufvar>
+						</function>
+					</sufvar>
+				</operator>				
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<!-- sendCommand(json.add("value", "TV_OFF")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>"TV_OFF"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+	</statement>
+</control_statement>
+<control_statement id="else if1"> <!-- else if(app.appName.equals("current_watercoldfan_livingroom")) -->
+	<condition>
+		<function id="equals">
+			<prevar>app.appName</prevar>
+			<sufvar>"current_watercoldfan_livingroom"</sufvar>
+		</function>
+	</condition>
+	<statement>
+		<function id="controlLivingRoomWaterColdFan2">
+			<sufvar>app.envContext</sufvar>
+			<sufvar>eusApp.envContext</sufvar>
+		</function>		
+	</statement>
+</control_statement>
+<control_statement id="else if1"> <!-- else if(app.appName.equals("current_xbox_livingroom")) -->
+	<condition>
+		<function id="equals">
+			<prevar>app.appName</prevar>
+			<sufvar>"current_xbox_livingroom"</sufvar>
+		</function>
+	</condition>
+	<statement>
+		<control_statement id="if2"> <!-- if (eusApp.envContext.equals("on") && (app.envContext.equals("standby") || app.envContext.equals("off"))) -->
+			<condition>
+				<operator id="&&">
+					<prevar>
+						<function id="equals">
+							<prevar>eusApp.envContext</prevar>
+							<sufvar>"on"</sufvar>
+						</function>
+					</prevar>
+					<sufvar>
+						<operator id="||">
+							<prevar>
+								<function id="equals">
+									<prevar>app.envContext</prevar>
+									<sufvar>"standby"</sufvar>
+								</function>
+							</prevar>
+							<sufvar>
+								<function id="equals">
+									<prevar>app.envContext</prevar>
+									<sufvar>"off"</sufvar>
+								</function>
+							</sufvar>
+						</operator>
+					</sufvar>
+				</operator>				
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<!-- sendCommand(json.add("value", "XBOX_STOP")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>"XBOX_STOP"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+	</statement>
+</control_statement>
+<control_statement id="else if1"> <!-- else if(app.appName.equals("current_AC_livingroom")) -->
+	<condition>
+		<function id="equals">
+			<prevar>app.appName</prevar>
+			<sufvar>"current_AC_livingroom"</sufvar>
+		</function>
+	</condition>
+	<statement>
+		<control_statement id="if2"> <!-- if(!eusApp.envContext.startsWith("on") && app.envContext.startsWith("on")) -->
+			<condition>
+				<operator id="&&">
+					<prevar>
+						<operator id="!"> 
+							<sufvar>
+								<function id="startsWith">
+									<prevar>eusApp.envContext</prevar>
+									<sufvar>"on"</sufvar>
+								</function>
+							</sufvar>
+						</operator>
+					</prevar>
+					<sufvar>
+						<function id="startsWith">
+							<prevar>app.envContext</prevar>
+							<sufvar>"on"</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<function id="add"> <!-- json.add("value", "openspace-AC_" + app.envContext); -->
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>
+						<operator id="+">
+							<prevar>"openspace-AC_"</prevar>
+							<sufvar>app.envContext</sufvar>
+						</operator>
+					</sufvar>
+				</function>
+				<!-- sendCommand(json.add("change", "Cool down")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"change"</sufvar>
+					<sufvar>"Cool down"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+		<control_statement id="else if2"> <!-- else if(eusApp.envContext.startsWith("on") && app.envContext.equals("off")) -->
+			<condition>
+				<operator id="&&">
+					<prevar>
+						<function id="startsWith">
+							<prevar>eusApp.envContext</prevar>
+							<sufvar>"on"</sufvar>
+						</function>
+					</prevar>
+					<sufvar>
+						<function id="equals">
+							<prevar>app.envContext</prevar>
+							<sufvar>"off"</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<function id="add"> <!-- json.add("value", "openspace-AC_off"); -->
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>"openspace-AC_off"</sufvar>
+				</function>
+				<!-- sendCommand(json.add("change", "Warm up")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"change"</sufvar>
+					<sufvar>"Warm up"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+		<control_statement id="else if2"> <!-- else if(eusApp.envContext.startsWith("on") && app.envContext.startsWith("on")) -->
+			<condition>
+				<operator id="&&">
+					<prevar>
+						<function id="startsWith">
+							<prevar>eusApp.envContext</prevar>
+							<sufvar>"on"</sufvar>
+						</function>
+					</prevar>
+					<sufvar>
+						<function id="startsWith">
+							<prevar>app.envContext</prevar>
+							<sufvar>"on"</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+			</condition>
+			<statement>
+				<!-- String tempCurrent = eusApp.envContext.split("_")[1]; -->
+				<var id="String">
+					<name>tempCurrent</name>
+				</var>
+				<operator id="=">
+					<prevar>tempCurrent</prevar>
+					<sufvar>
+						<operator id="[]">
+							<prevar>
+								<function id="split">
+									<prevar>eusApp.envContext</prevar>
+									<sufvar>"_"</sufvar>
+								</function>
+							</prevar>
+							<sufvar>1</sufvar>
+						</operator>
+					</sufvar>
+				</operator>
+				<!-- String tempNew = app.envContext.split("_")[1]; -->
+				<var id="String">
+					<name>tempNew</name>
+				</var>
+				<operator id="=">
+					<prevar>tempNew</prevar>
+					<sufvar>
+						<operator id="[]">
+							<prevar>
+								<function id="split">
+									<prevar>app.envContext</prevar>
+									<sufvar>"_"</sufvar>
+								</function>
+							</prevar>
+							<sufvar>1</sufvar>
+						</operator>
+					</sufvar>
+				</operator>
+				<control_statement id="if3"> <!-- if(Integer.parseInt(tempCurrent) > Integer.parseInt(tempNew)) -->
+					<condition>
+						<operator id=">">
+							<prevar>
+								<function id="Integer.parseInt">
+									<sufvar>tempCurrent</sufvar>
+								</function>
+							</prevar>
+							<sufvar>
+								<function id="Integer.parseInt">
+									<sufvar>tempNew</sufvar>
+								</function>
+							</sufvar>
+						</operator>	
+					</condition>
+					<statement>
+						<function id="reset"> <!-- json.reset(); -->
+							<prevar>json</prevar>
+						</function>
+						<function id="add"> <!-- json.add("value", "openspace-AC_" + app.envContext); -->
+							<prevar>json</prevar>
+							<sufvar>"value"</sufvar>
+							<sufvar>
+								<function id="+">
+									<prevar>"openspace-AC_"</prevar>
+									<sufvar>app.envContext</sufvar>
+								</function>
+							</sufvar>
+						</function>
+						<!-- sendCommand(json.add("change", "Cool down")); -->
+						<function id="add"> 
+							<prevar>json</prevar>
+							<sufvar>"change"</sufvar>
+							<sufvar>"Cool down"</sufvar>
+						</function>
+						<function id="sendCommand">
+							<sufvar>json</sufvar>
+						</function>
+					</statement>
+				</control_statement>
+				<control_statement id="else if3"> <!-- else if(Integer.parseInt(tempCurrent) < Integer.parseInt(tempNew)) -->
+					<condition>
+						<operator id="<">
+							<prevar>
+								<function id="Integer.parseInt">
+									<sufvar>tempCurrent</sufvar>
+								</function>
+							</prevar>
+							<sufvar>
+								<function id="Integer.parseInt">
+									<sufvar>tempNew</sufvar>
+								</function>
+							</sufvar>
+						</operator>
+					</condition>
+					<statement>
+						<function id="reset"> <!-- json.reset(); -->
+							<prevar>json</prevar>
+						</function>
+						<function id="add"> <!-- json.add("value", "openspace-AC_" + app.envContext); -->
+							<prevar>json</prevar>
+							<sufvar>"value"</sufvar>
+							<sufvar>
+								<operator id="+">
+									<prevar>"openspace-AC_"</prevar>
+									<sufvar>app.envContext</sufvar>
+								</operator>
+							</sufvar>
+						</function>
+						<!-- sendCommand(json.add("change", "Warm up")); -->
+						<function id="add"> 
+							<prevar>json</prevar>
+							<sufvar>"change"</sufvar>
+							<sufvar>"Warm up"</sufvar>
+						</function>
+						<function id="sendCommand">
+							<sufvar>json</sufvar>
+						</function>
+					</statement>
+				</control_statement>
+			</statement>
+		</control_statement>		
+	</statement>
+</control_statement>
+<control_statement id="else if1"> <!-- else if(app.appName.equals("current_AC_bedroom")) -->
+	<condition>
+		<function id="equals">
+			<prevar>app.appName</prevar>
+			<sufvar>"current_AC_bedroom"</sufvar>
+		</function>
+	</condition>
+	<statement>
+		<control_statement id="if2"> <!-- if(!eusApp.envContext.equals("on") && app.envContext.startsWith("on")) -->
+			<condition>
+				<operator id="&&">
+					<prevar>
+						<operator id="!"> 
+							<sufvar>
+								<function id="startsWith">
+									<prevar>eusApp.envContext</prevar>
+									<sufvar>"on"</sufvar>
+								</function>
+							</sufvar>
+						</operator>
+					</prevar>
+					<sufvar>
+						<function id="startsWith">
+							<prevar>app.envContext</prevar>
+							<sufvar>"on"</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<function id="add"> <!-- json.add("value", "bedroom-AC_" + app.envContext); -->
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>
+						<operator id="+">
+							<prevar>"bedroom-AC_"</prevar>
+							<sufvar>app.envContext</sufvar>
+						</operator>
+					</sufvar>
+				</function>
+				<!-- sendCommand(json.add("change", "Cool down")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"change"</sufvar>
+					<sufvar>"Cool down"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+		<control_statement id="else if2"> <!-- else if(eusApp.envContext.startsWith("on") && app.envContext.equals("off")) -->
+			<condition>
+				<operator id="&&">
+					<prevar>
+						<function id="startsWith">
+							<prevar>eusApp.envContext</prevar>
+							<sufvar>"on"</sufvar>
+						</function>
+					</prevar>
+					<sufvar>
+						<function id="equals">
+							<prevar>app.envContext</prevar>
+							<sufvar>"off"</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+			</condition>
+			<statement>
+				<function id="reset"> <!-- json.reset(); -->
+					<prevar>json</prevar>
+				</function>
+				<function id="add"> <!-- json.add("value", "bedroom-AC_off"); -->
+					<prevar>json</prevar>
+					<sufvar>"value"</sufvar>
+					<sufvar>"bedroom-AC_off"</sufvar>
+				</function>
+				<!-- sendCommand(json.add("change", "Warm up")); -->
+				<function id="add"> 
+					<prevar>json</prevar>
+					<sufvar>"change"</sufvar>
+					<sufvar>"Warm up"</sufvar>
+				</function>
+				<function id="sendCommand">
+					<sufvar>json</sufvar>
+				</function>
+			</statement>
+		</control_statement>
+		<control_statement id="else if2"> <!-- else if(eusApp.envContext.startsWith("on") && app.envContext.startsWith("on")) -->
+			<condition>
+				<operator id="&&">
+					<prevar>
+						<function id="startsWith">
+							<prevar>eusApp.envContext</prevar>
+							<sufvar>"on"</sufvar>
+						</function>
+					</prevar>
+					<sufvar>
+						<function id="startsWith">
+							<prevar>app.envContext</prevar>
+							<sufvar>"on"</sufvar>
+						</function>
+					</sufvar>
+				</operator>
+			</condition>
+			<statement>
+				<!-- String tempCurrent = eusApp.envContext.split("_")[1]; -->
+				<var id="String">
+					<name>tempCurrent</name>
+				</var>
+				<operator id="=">
+					<prevar>tempCurrent</prevar>
+					<sufvar>
+						<operator id="[]">
+							<prevar>
+								<function id="split">
+									<prevar>eusApp.envContext</prevar>
+									<sufvar>"_"</sufvar>
+								</function>
+							</prevar>
+							<sufvar>1</sufvar>
+						</operator>
+					</sufvar>
+				</operator>
+				<!-- String tempNew = app.envContext.split("_")[1]; -->
+				<var id="String">
+					<name>tempNew</name>
+				</var>
+				<operator id="=">
+					<prevar>tempNew</prevar>
+					<sufvar>
+						<operator id="[]">
+							<prevar>
+								<function id="split">
+									<prevar>app.envContext</prevar>
+									<sufvar>"_"</sufvar>
+								</function>
+							</prevar>
+							<sufvar>1</sufvar>
+						</operator>
+					</sufvar>
+				</operator>
+				<control_statement id="if3"> <!-- if(Integer.parseInt(tempCurrent) > Integer.parseInt(tempNew)) -->
+					<condition>
+						<operator id=">">
+							<prevar>
+								<function id="Integer.parseInt">
+									<sufvar>tempCurrent</sufvar>
+								</function>
+							</prevar>
+							<sufvar>
+								<function id="Integer.parseInt">
+									<sufvar>tempNew</sufvar>
+								</function>
+							</sufvar>
+						</operator>	
+					</condition>
+					<statement>
+						<function id="reset"> <!-- json.reset(); -->
+							<prevar>json</prevar>
+						</function>
+						<function id="add"> <!-- json.add("value", "bedroom-AC_" + app.envContext); -->
+							<prevar>json</prevar>
+							<sufvar>"value"</sufvar>
+							<sufvar>
+								<operator id="+">
+									<prevar>"bedroom-AC_"</prevar>
+									<sufvar>app.envContext</sufvar>
+								</operator>
+							</sufvar>
+						</function>
+						<!-- sendCommand(json.add("change", "Cool down")); -->
+						<function id="add"> 
+							<prevar>json</prevar>
+							<sufvar>"change"</sufvar>
+							<sufvar>"Cool down"</sufvar>
+						</function>
+						<function id="sendCommand">
+							<sufvar>json</sufvar>
+						</function>
+					</statement>
+				</control_statement>
+				<control_statement id="else if3"> <!-- else if(Integer.parseInt(tempCurrent) < Integer.parseInt(tempNew)) -->
+					<condition>
+						<operator id="<">
+							<prevar>
+								<function id="Integer.parseInt">
+									<sufvar>tempCurrent</sufvar>
+								</function>
+							</prevar>
+							<sufvar>
+								<function id="Integer.parseInt">
+									<sufvar>tempNew</sufvar>
+								</function>
+							</sufvar>
+						</operator>
+					</condition>
+					<statement>
+						<function id="reset"> <!-- json.reset(); -->
+							<prevar>json</prevar>
+						</function>
+						<function id="add"> <!-- json.add("value", "bedroom-AC_" + app.envContext); -->
+							<prevar>json</prevar>
+							<sufvar>"value"</sufvar>
+							<sufvar>
+								<function id="+">
+									<prevar>"bedroom-AC_"</prevar>
+									<sufvar>app.envContext</sufvar>
+								</function>
+							</sufvar>
+						</function>
+						<!-- sendCommand(json.add("change", "Warm up")); -->
+						<function id="add"> 
+							<prevar>json</prevar>
+							<sufvar>"change"</sufvar>
+							<sufvar>"Warm up"</sufvar>
+						</function>
+						<function id="sendCommand">
+							<sufvar>json</sufvar>
+						</function>
+					</statement>
+				</control_statement>
+			</statement>
+		</control_statement>		
+	</statement>
+</control_statement>
